@@ -1,0 +1,8 @@
+{"name":"Info","rows":[
+{"name":"Project Name","data":["gemm_kernel"],"classes":["info-table"]},
+{"name":"Target Family, Device, Board","data":["Cyclone V, 5CSXFC6D6F31C8ES, de1soc:de1soc_sharedonly"]},
+{"name":"AOC Version","data":["18.1.0 Build 625"]},
+{"name":"Quartus Version","data":["18.1.0 Build 625"]},
+{"name":"Command","data":["aoc device/gemm_kernel.cl -o bin/gemm_kernel.aocx -board=de1soc_sharedonly"]},
+{"name":"Reports Generated At", "data":["Thu Apr 16 13:08:19 2026"]}
+]}

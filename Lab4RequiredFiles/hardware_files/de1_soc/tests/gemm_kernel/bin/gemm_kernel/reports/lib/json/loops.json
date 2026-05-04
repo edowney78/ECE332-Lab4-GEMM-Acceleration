@@ -1,0 +1,86 @@
+{
+  "columns":
+  ["", "Pipelined", "II", "Bottleneck", "Details"]
+  , "children":
+  [
+    {
+      "name":"Kernel: gemm_kernel"
+      , "data":
+      ["", "", ""]
+      , "debug":
+      [
+        [
+          {
+            "filename":"/ChanduHDD/Research/ECE332/final_lab4/Lab4RequiredFiles/de1_soc/tests/gemm_kernel/device/gemm_kernel.cl"
+            , "line":7
+          }
+        ]
+      ]
+      , "details":
+      [
+        {
+          "type":"brief"
+          , "text":"ND-Range"
+        }
+        , {
+          "type":"text"
+          , "text":"ND-Range"
+        }
+        , {
+          "type":"text"
+          , "text":"See %L for more information"
+          , "links":
+          [
+            {
+              "guide":"Best Practices Guide : Kernels"
+              , "link":"https://www.altera.com/documentation/mwh1391807516407.html#ipp1476408832230"
+            }
+          ]
+        }
+      ]
+      , "children":
+      [
+        {
+          "name":"gemm_kernel.B1"
+          , "data":
+          ["No", "n/a", "n/a"]
+          , "debug":
+          [
+            [
+              {
+                "filename":"/ChanduHDD/Research/ECE332/final_lab4/Lab4RequiredFiles/de1_soc/tests/gemm_kernel/device/gemm_kernel.cl"
+                , "line":13
+              }
+            ]
+            , [
+              {
+                "filename":"/ChanduHDD/Research/ECE332/final_lab4/Lab4RequiredFiles/de1_soc/tests/gemm_kernel/device/gemm_kernel.cl"
+                , "line":13
+              }
+            ]
+            , [
+              {
+                "filename":"/ChanduHDD/Research/ECE332/final_lab4/Lab4RequiredFiles/de1_soc/tests/gemm_kernel/device/gemm_kernel.cl"
+                , "line":15
+              }
+            ]
+          ]
+          , "details":
+          [
+            {
+              "type":"brief"
+              , "text":"Thread capacity = 186"
+            }
+            , {
+              "type":"text"
+              , "text":"Thread capacity = 186"
+            }
+          ]
+          , "children":
+          [
+          ]
+        }
+      ]
+    }
+  ]
+}

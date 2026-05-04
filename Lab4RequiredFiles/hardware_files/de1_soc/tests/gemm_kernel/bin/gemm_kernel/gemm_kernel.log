@@ -1,0 +1,518 @@
+Compiler Command: aoc device/gemm_kernel.cl -o bin/gemm_kernel.aocx -board=de1soc_sharedonly
+/ChanduHDD/Research/ECE332/final_lab4/Lab4RequiredFiles/de1_soc/tests/gemm_kernel/device/gemm_kernel.cl:1:49: warning: declaring kernel argument with no 'restrict' may lead to low kernel performance
+__kernel void gemm_kernel(__global const float *A,
+                                                ^
+/ChanduHDD/Research/ECE332/final_lab4/Lab4RequiredFiles/de1_soc/tests/gemm_kernel/device/gemm_kernel.cl:2:49: warning: declaring kernel argument with no 'restrict' may lead to low kernel performance
+                          __global const float *B,
+                                                ^
+/ChanduHDD/Research/ECE332/final_lab4/Lab4RequiredFiles/de1_soc/tests/gemm_kernel/device/gemm_kernel.cl:3:43: warning: declaring kernel argument with no 'restrict' may lead to low kernel performance
+                          __global float *C,
+                                          ^
+3 warnings generated.
+
+!===========================================================================
+! The report below may be inaccurate. A more comprehensive           
+! resource usage report can be found at gemm_kernel/reports/report.html    
+!===========================================================================
+
++--------------------------------------------------------------------+
+; Estimated Resource Usage Summary                                   ;
++----------------------------------------+---------------------------+
+; Resource                               + Usage                     ;
++----------------------------------------+---------------------------+
+; Logic utilization                      ;   28%                     ;
+; ALUTs                                  ;   18%                     ;
+; Dedicated logic registers              ;   11%                     ;
+; Memory blocks                          ;   24%                     ;
+; DSP blocks                             ;    6%                     ;
++----------------------------------------+---------------------------;
+System name: gemm_kernel
+
+2026.04.16.13:08:21 Info: Doing: <b>qsys-script --quartus-project=top --script=system.tcl --Xmx512M --XX:+UseSerialGC --system-file=system.qsys</b>
+2026.04.16.13:08:40 Info: set_validation_property AUTOMATIC_VALIDATION false
+2026.04.16.13:08:40 Info: add_instance gemm_kernel_system gemm_kernel_system 
+2026.04.16.13:08:40 Info: add_connection acl_iface.kernel_clk gemm_kernel_system.clock_reset
+2026.04.16.13:08:40 Info: add_connection acl_iface.kernel_clk2x gemm_kernel_system.clock_reset2x
+2026.04.16.13:08:40 Info: add_connection acl_iface.kernel_reset gemm_kernel_system.clock_reset_reset
+2026.04.16.13:08:40 Info: add_connection gemm_kernel_system.avm_mem_gmem0_port_0_0_rw acl_iface.kernel_mem0
+2026.04.16.13:08:40 Info: add_connection acl_iface.kernel_irq gemm_kernel_system.kernel_irq
+2026.04.16.13:08:40 Info: add_instance cra_root cra_ring_root 
+2026.04.16.13:08:40 Info: set_instance_parameter_value cra_root ASYNC_RESET 1
+2026.04.16.13:08:40 Info: set_instance_parameter_value cra_root SYNCHRONIZE_RESET 0
+2026.04.16.13:08:40 Info: set_instance_parameter_value cra_root DATA_W 64
+2026.04.16.13:08:40 Info: set_instance_parameter_value cra_root ADDR_W 5
+2026.04.16.13:08:40 Info: set_instance_parameter_value cra_root ID_W 0
+2026.04.16.13:08:40 Info: add_connection acl_iface.kernel_clk cra_root.clock
+2026.04.16.13:08:40 Info: add_connection acl_iface.kernel_reset cra_root.reset
+2026.04.16.13:08:40 Info: add_connection acl_iface.kernel_cra cra_root.cra_slave
+2026.04.16.13:08:40 Info: set_connection_parameter_value acl_iface.kernel_cra/cra_root.cra_slave baseAddress 0x0
+2026.04.16.13:08:40 Info: add_instance avs_gemm_kernel_cra_cra_ring cra_ring_node 
+2026.04.16.13:08:40 Info: set_instance_parameter_value avs_gemm_kernel_cra_cra_ring ASYNC_RESET 1
+2026.04.16.13:08:40 Info: set_instance_parameter_value avs_gemm_kernel_cra_cra_ring SYNCHRONIZE_RESET 0
+2026.04.16.13:08:40 Info: set_instance_parameter_value avs_gemm_kernel_cra_cra_ring DATA_W 64
+2026.04.16.13:08:40 Info: set_instance_parameter_value avs_gemm_kernel_cra_cra_ring RING_ADDR_W 5
+2026.04.16.13:08:40 Info: set_instance_parameter_value avs_gemm_kernel_cra_cra_ring CRA_ADDR_W 5
+2026.04.16.13:08:40 Info: set_instance_parameter_value avs_gemm_kernel_cra_cra_ring ID_W 0
+2026.04.16.13:08:40 Info: set_instance_parameter_value avs_gemm_kernel_cra_cra_ring ID 0
+2026.04.16.13:08:40 Info: add_connection acl_iface.kernel_clk avs_gemm_kernel_cra_cra_ring.clock
+2026.04.16.13:08:40 Info: add_connection acl_iface.kernel_reset avs_gemm_kernel_cra_cra_ring.reset
+2026.04.16.13:08:40 Info: add_connection cra_root.ring_out avs_gemm_kernel_cra_cra_ring.ring_in
+2026.04.16.13:08:40 Info: add_connection avs_gemm_kernel_cra_cra_ring.cra_master gemm_kernel_system.avs_gemm_kernel_cra
+2026.04.16.13:08:40 Info: set_connection_parameter_value avs_gemm_kernel_cra_cra_ring.cra_master/gemm_kernel_system.avs_gemm_kernel_cra baseAddress 0x0
+2026.04.16.13:08:40 Info: add_connection avs_gemm_kernel_cra_cra_ring.ring_out cra_root.ring_in
+2026.04.16.13:08:40 Info: save_system 
+2026.04.16.13:08:40 Info: 
+********************************************************************************************************************
+
+Use qsys-generate for a simpler command-line interface for generating IP.
+
+Run ip-generate with switch --remove-qsys-generate-warning to prevent this notice from appearing in subsequent runs.
+
+********************************************************************************************************************
+2026.04.16.13:08:44 Progress: Loading gemm_kernel/system.qsys
+2026.04.16.13:08:44 Progress: Reading input file
+2026.04.16.13:08:44 Progress: Adding acl_iface [acl_iface_system 1.0]
+2026.04.16.13:08:44 Progress: Reading input file
+2026.04.16.13:08:44 Progress: Adding ADC [altera_up_avalon_adc 18.0]
+2026.04.16.13:08:45 Progress: Parameterizing module ADC
+2026.04.16.13:08:45 Progress: Adding AV_Config [altera_up_avalon_audio_and_video_config 18.0]
+2026.04.16.13:08:45 Progress: Parameterizing module AV_Config
+2026.04.16.13:08:45 Progress: Adding D5M_Subsystem [D5M_Subsystem 1.0]
+2026.04.16.13:08:45 Progress: Reading input file
+2026.04.16.13:08:45 Progress: Adding Bayer_Resampler [altera_up_avalon_video_bayer_resampler 18.0]
+2026.04.16.13:08:45 Progress: Parameterizing module Bayer_Resampler
+2026.04.16.13:08:45 Progress: Adding D5M_Config [altera_up_avalon_audio_and_video_config 18.0]
+2026.04.16.13:08:45 Progress: Parameterizing module D5M_Config
+2026.04.16.13:08:45 Progress: Adding Sys_Clk [clock_source 18.1]
+2026.04.16.13:08:45 Progress: Parameterizing module Sys_Clk
+2026.04.16.13:08:45 Progress: Adding Video_In [altera_up_avalon_video_decoder 18.0]
+2026.04.16.13:08:45 Progress: Parameterizing module Video_In
+2026.04.16.13:08:45 Progress: Adding Video_In_Clipper [altera_up_avalon_video_clipper 18.0]
+2026.04.16.13:08:45 Progress: Parameterizing module Video_In_Clipper
+2026.04.16.13:08:45 Progress: Adding Video_In_DMA [altera_up_avalon_video_dma_controller 18.0]
+2026.04.16.13:08:45 Progress: Parameterizing module Video_In_DMA
+2026.04.16.13:08:45 Progress: Adding Video_In_RGB_Resampler [altera_up_avalon_video_rgb_resampler 18.0]
+2026.04.16.13:08:45 Progress: Parameterizing module Video_In_RGB_Resampler
+2026.04.16.13:08:45 Progress: Adding Video_In_Scaler [altera_up_avalon_video_scaler 18.0]
+2026.04.16.13:08:45 Progress: Parameterizing module Video_In_Scaler
+2026.04.16.13:08:45 Progress: Building connections
+2026.04.16.13:08:45 Progress: Parameterizing connections
+2026.04.16.13:08:45 Progress: Validating
+2026.04.16.13:08:45 Progress: Done reading input file
+2026.04.16.13:08:45 Progress: Parameterizing module D5M_Subsystem
+2026.04.16.13:08:45 Progress: Adding JTAG_to_FPGA_Bridge [altera_jtag_avalon_master 18.1]
+2026.04.16.13:08:45 Progress: Parameterizing module JTAG_to_FPGA_Bridge
+2026.04.16.13:08:45 Progress: Adding Onchip_SRAM [altera_avalon_onchip_memory2 18.1]
+2026.04.16.13:08:45 Progress: Parameterizing module Onchip_SRAM
+2026.04.16.13:08:45 Progress: Adding Pixel_DMA_Addr_Translation [altera_up_avalon_video_dma_ctrl_addr_trans 18.0]
+2026.04.16.13:08:45 Progress: Parameterizing module Pixel_DMA_Addr_Translation
+2026.04.16.13:08:45 Progress: Adding Pushbuttons [altera_avalon_pio 18.1]
+2026.04.16.13:08:45 Progress: Parameterizing module Pushbuttons
+2026.04.16.13:08:45 Progress: Adding SDRAM [altera_avalon_new_sdram_controller 18.1]
+2026.04.16.13:08:45 Progress: Parameterizing module SDRAM
+2026.04.16.13:08:45 Progress: Adding VGA_Subsystem [VGA_Subsystem 1.0]
+2026.04.16.13:08:45 Progress: Reading input file
+2026.04.16.13:08:45 Progress: Adding Sys_Clk [clock_source 18.1]
+2026.04.16.13:08:45 Progress: Parameterizing module Sys_Clk
+2026.04.16.13:08:45 Progress: Adding VGA_Alpha_Blender [altera_up_avalon_video_alpha_blender 18.0]
+2026.04.16.13:08:45 Progress: Parameterizing module VGA_Alpha_Blender
+2026.04.16.13:08:45 Progress: Adding VGA_Char_Buffer [altera_up_avalon_video_character_buffer_with_dma 18.0]
+2026.04.16.13:08:45 Progress: Parameterizing module VGA_Char_Buffer
+2026.04.16.13:08:45 Progress: Adding VGA_Controller [altera_up_avalon_video_vga_controller 18.0]
+2026.04.16.13:08:45 Progress: Parameterizing module VGA_Controller
+2026.04.16.13:08:45 Progress: Adding VGA_Dual_Clock_FIFO [altera_up_avalon_video_dual_clock_buffer 18.0]
+2026.04.16.13:08:45 Progress: Parameterizing module VGA_Dual_Clock_FIFO
+2026.04.16.13:08:45 Progress: Adding VGA_PLL [altera_up_avalon_video_pll 18.0]
+2026.04.16.13:08:45 Progress: Parameterizing module VGA_PLL
+2026.04.16.13:08:45 Progress: Adding VGA_Pixel_DMA [altera_up_avalon_video_pixel_buffer_dma 18.0]
+2026.04.16.13:08:45 Progress: Parameterizing module VGA_Pixel_DMA
+2026.04.16.13:08:45 Progress: Adding VGA_Pixel_FIFO [altera_up_avalon_video_dual_clock_buffer 18.0]
+2026.04.16.13:08:45 Progress: Parameterizing module VGA_Pixel_FIFO
+2026.04.16.13:08:45 Progress: Adding VGA_Pixel_RGB_Resampler [altera_up_avalon_video_rgb_resampler 18.0]
+2026.04.16.13:08:45 Progress: Parameterizing module VGA_Pixel_RGB_Resampler
+2026.04.16.13:08:45 Progress: Adding VGA_Pixel_Scaler [altera_up_avalon_video_scaler 18.0]
+2026.04.16.13:08:45 Progress: Parameterizing module VGA_Pixel_Scaler
+2026.04.16.13:08:45 Progress: Building connections
+2026.04.16.13:08:45 Progress: Parameterizing connections
+2026.04.16.13:08:45 Progress: Validating
+2026.04.16.13:08:47 Progress: Done reading input file
+2026.04.16.13:08:47 Progress: Parameterizing module VGA_Subsystem
+2026.04.16.13:08:47 Progress: Adding Video_In_DMA_Addr_Translation [altera_up_avalon_video_dma_ctrl_addr_trans 18.0]
+2026.04.16.13:08:47 Progress: Parameterizing module Video_In_DMA_Addr_Translation
+2026.04.16.13:08:47 Progress: Adding acl_kernel_clk [acl_kernel_clk_noreconfig 1.0]
+2026.04.16.13:08:48 Progress: Parameterizing module acl_kernel_clk
+2026.04.16.13:08:48 Progress: Adding acl_kernel_interface [acl_kernel_interface_soc 1.0]
+2026.04.16.13:08:49 Progress: Parameterizing module acl_kernel_interface
+2026.04.16.13:08:49 Progress: Adding address_span_extender_kernel [altera_address_span_extender 18.1]
+2026.04.16.13:08:49 Progress: Parameterizing module address_span_extender_kernel
+2026.04.16.13:08:49 Progress: Adding clock_bridge [altera_clock_bridge 18.1]
+2026.04.16.13:08:49 Progress: Parameterizing module clock_bridge
+2026.04.16.13:08:49 Progress: Adding clock_cross_kernel_mem1 [altera_avalon_mm_clock_crossing_bridge 18.1]
+2026.04.16.13:08:49 Progress: Parameterizing module clock_cross_kernel_mem1
+2026.04.16.13:08:49 Progress: Adding config_clk [altera_clock_bridge 18.1]
+2026.04.16.13:08:49 Progress: Parameterizing module config_clk
+2026.04.16.13:08:49 Progress: Adding global_reset [altera_reset_bridge 18.1]
+2026.04.16.13:08:49 Progress: Parameterizing module global_reset
+2026.04.16.13:08:49 Progress: Adding hps [altera_hps 18.1]
+2026.04.16.13:08:50 Progress: Parameterizing module hps
+2026.04.16.13:08:50 Progress: Adding kernel_clk [clock_source 18.1]
+2026.04.16.13:08:50 Progress: Parameterizing module kernel_clk
+2026.04.16.13:08:50 Progress: Adding led [altera_avalon_pio 18.1]
+2026.04.16.13:08:50 Progress: Parameterizing module led
+2026.04.16.13:08:50 Progress: Adding pipe_stage_host_ctrl [altera_avalon_mm_bridge 18.1]
+2026.04.16.13:08:50 Progress: Parameterizing module pipe_stage_host_ctrl
+2026.04.16.13:08:50 Progress: Adding pll [altera_pll 18.1]
+2026.04.16.13:08:50 Progress: Parameterizing module pll
+2026.04.16.13:08:50 Progress: Adding version_id [version_id 10.0]
+2026.04.16.13:08:50 Progress: Parameterizing module version_id
+2026.04.16.13:08:50 Progress: Building connections
+2026.04.16.13:08:50 Progress: Parameterizing connections
+2026.04.16.13:08:50 Progress: Validating
+2026.04.16.13:08:56 Progress: Done reading input file
+2026.04.16.13:08:58 Progress: Parameterizing module acl_iface
+2026.04.16.13:08:58 Progress: Adding avs_gemm_kernel_cra_cra_ring [cra_ring_node 1.0]
+2026.04.16.13:08:58 Progress: Parameterizing module avs_gemm_kernel_cra_cra_ring
+2026.04.16.13:08:58 Progress: Adding cra_root [cra_ring_root 1.0]
+2026.04.16.13:08:58 Progress: Parameterizing module cra_root
+2026.04.16.13:08:58 Progress: Adding ext_clk_50 [clock_source 18.1]
+2026.04.16.13:08:58 Progress: Parameterizing module ext_clk_50
+2026.04.16.13:08:58 Progress: Adding gemm_kernel_system [gemm_kernel_system 14.0]
+2026.04.16.13:08:58 Progress: Parameterizing module gemm_kernel_system
+2026.04.16.13:08:58 Progress: Building connections
+2026.04.16.13:08:58 Progress: Parameterizing connections
+2026.04.16.13:08:58 Progress: Validating
+2026.04.16.13:09:00 Progress: Done reading input file
+2026.04.16.13:09:02 Info: system.acl_iface.D5M_Subsystem.Bayer_Resampler: Change in Resolution: 2592 x 1944 -> 1296 x 972
+2026.04.16.13:09:02 Info: system.acl_iface.D5M_Subsystem.Video_In: Video In Stream: Format: 2592 x 1944 (default) with Colour: 8 (bits) x 1 (planes) (RGB Bayer Pattern)
+2026.04.16.13:09:02 Info: system.acl_iface.D5M_Subsystem.Video_In_Clipper: Change in Resolution: 1296 x 972 -> 1280 x 960
+2026.04.16.13:09:02 Info: system.acl_iface.D5M_Subsystem.Video_In_RGB_Resampler: RGB Resampling: 8 (bits) x 3 (planes) -> 16 (bits) x 1 (planes)
+2026.04.16.13:09:02 Info: system.acl_iface.D5M_Subsystem.Video_In_Scaler: Change in Resolution: 1280 x 960 -> 320 x 240
+2026.04.16.13:09:02 Warning: system.acl_iface.D5M_Subsystem.Video_In_RGB_Resampler: Video_In_RGB_Resampler.avalon_rgb_slave must be connected to an Avalon-MM master
+2026.04.16.13:09:02 Warning: system.acl_iface.Pixel_DMA_Addr_Translation.master: Master needs a minimum address width of 3 bits (has 2)
+2026.04.16.13:09:02 Info: system.acl_iface.Pushbuttons: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+2026.04.16.13:09:02 Info: system.acl_iface.SDRAM: SDRAM Controller will only be supported in Quartus Prime Standard Edition in the future release.
+2026.04.16.13:09:02 Info: system.acl_iface.VGA_Subsystem.VGA_Char_Buffer: Character Resolution: 80 x 60
+2026.04.16.13:09:02 Info: system.acl_iface.VGA_Subsystem.VGA_Controller: Video Output Stream: Format: 640 x 480 with Color: 10 (bits) x 3 (planes) converted to 8 (bits) per color plane
+2026.04.16.13:09:02 Info: system.acl_iface.VGA_Subsystem.VGA_Pixel_RGB_Resampler: RGB Resampling: 16 (bits) x 1 (planes) -> 10 (bits) x 3 (planes)
+2026.04.16.13:09:02 Info: system.acl_iface.VGA_Subsystem.VGA_Pixel_Scaler: Change in Resolution: 320 x 240 -> 640 x 480
+2026.04.16.13:09:02 Info: system.acl_iface.VGA_Subsystem.VGA_Pixel_Scaler.avalon_scaler_source/VGA_Alpha_Blender.avalon_background_sink: The source has a channel signal of 2 bits, but the sink does not. Avalon-ST Adapter will be inserted.
+2026.04.16.13:09:02 Warning: system.acl_iface.VGA_Subsystem.VGA_Pixel_RGB_Resampler: VGA_Pixel_RGB_Resampler.avalon_rgb_slave must be connected to an Avalon-MM master
+2026.04.16.13:09:02 Warning: system.acl_iface.Video_In_DMA_Addr_Translation.master: Master needs a minimum address width of 3 bits (has 2)
+2026.04.16.13:09:02 Warning: system.acl_iface.acl_kernel_clk.kernel_clk: The input clock frequency must be known or set by the parent if this is a subsystem.
+2026.04.16.13:09:02 Info: system.acl_iface.acl_kernel_clk.kernel_pll: The legal reference clock frequency is 50.0 MHz..800.0 MHz
+2026.04.16.13:09:02 Info: system.acl_iface.acl_kernel_clk.kernel_pll: Able to implement PLL with user settings
+2026.04.16.13:09:02 Warning: system.acl_iface.acl_kernel_clk.kernel_pll: kernel_pll.reconfig_to_pll must be exported, or connected to a matching conduit.
+2026.04.16.13:09:02 Warning: system.acl_iface.acl_kernel_clk.kernel_pll: kernel_pll.reconfig_from_pll must be exported, or connected to a matching conduit.
+2026.04.16.13:09:02 Info: system.acl_iface.hps: HPS Main PLL counter settings: n = 0  m = 73
+2026.04.16.13:09:02 Info: system.acl_iface.hps: HPS peripherial PLL counter settings: n = 0  m = 39
+2026.04.16.13:09:02 Warning: system.acl_iface.hps: "Configuration/HPS-to-FPGA user 0 clock frequency" (desired_cfg_clk_mhz) requested 100.0 MHz, but only achieved 97.368421 MHz
+2026.04.16.13:09:02 Warning: system.acl_iface.hps: 1 or more output clock frequencies cannot be achieved precisely, consider revising desired output clock frequencies.
+2026.04.16.13:09:02 Info: system.acl_iface.pll: The legal reference clock frequency is 5.0 MHz..800.0 MHz
+2026.04.16.13:09:02 Info: system.acl_iface.pll: Able to implement PLL with user settings
+2026.04.16.13:09:02 Warning: system.acl_iface.acl_kernel_clk.kernel_clk/kernel_clk.clk_in: kernel_clk.clk_in requires 50000000Hz, but source has frequency of 0Hz
+2026.04.16.13:09:02 Warning: system.acl_iface.SDRAM: SDRAM.wire must be exported, or connected to a matching conduit.
+2026.04.16.13:09:02 Warning: system.acl_iface.acl_kernel_interface: acl_kernel_interface.acl_bsp_memorg_host0x018 must be exported, or connected to a matching conduit.
+2026.04.16.13:09:02 Warning: system.acl_iface.VGA_Subsystem: VGA_Subsystem.char_buffer_control_slave must be connected to an Avalon-MM master
+2026.04.16.13:09:02 Warning: system.acl_iface.VGA_Subsystem: VGA_Subsystem.char_buffer_slave must be connected to an Avalon-MM master
+2026.04.16.13:09:02 Warning: system.acl_iface.acl_kernel_clk: acl_kernel_clk.ctrl must be connected to an Avalon-MM master
+2026.04.16.13:09:02 Warning: system.acl_iface: acl_iface.acl_internal_memorg_kernel must be exported, or connected to a matching conduit.
+2026.04.16.13:09:02 Warning: system.acl_iface: acl_iface.acl_kernel_clk_kernel_pll_locked must be exported, or connected to a matching conduit.
+2026.04.16.13:09:02 Info: system: Generating system "system" for QUARTUS_SYNTH
+2026.04.16.13:09:06 Info: Interconnect is inserted between master gemm_kernel_system.avm_mem_gmem0_port_0_0_rw and slave acl_iface.kernel_mem0 because the master has address signal 30 bit wide, but the slave is 25 bit wide.
+2026.04.16.13:09:06 Info: Interconnect is inserted between master acl_iface.kernel_cra and slave cra_root.cra_slave because the master has burstcount signal 1 bit wide, but the slave is 0 bit wide.
+2026.04.16.13:09:06 Info: Interconnect is inserted between master acl_iface.kernel_cra and slave cra_root.cra_slave because the master has address signal 30 bit wide, but the slave is 5 bit wide.
+2026.04.16.13:09:06 Info: Interconnect is inserted between master acl_iface.kernel_cra and slave cra_root.cra_slave because the master has debugaccess signal 1 bit wide, but the slave is 0 bit wide.
+2026.04.16.13:09:11 Info: Interconnect is inserted between master address_span_extender_kernel.expanded_master and slave hps.f2h_sdram0_data because the master has address signal 32 bit wide, but the slave is 27 bit wide.
+2026.04.16.13:09:11 Info: Interconnect is inserted between master address_span_extender_kernel.expanded_master and slave hps.f2h_sdram0_data because the master has burstcount signal 5 bit wide, but the slave is 8 bit wide.
+2026.04.16.13:09:11 Info: Interconnect is inserted between master hps.h2f_lw_axi_master and slave pipe_stage_host_ctrl.s0 because the master is of type axi and the slave is of type avalon.
+2026.04.16.13:09:12 Info: Interconnect is inserted between master clock_cross_kernel_mem1.m0 and slave address_span_extender_kernel.windowed_slave because the master has debugaccess signal 1 bit wide, but the slave is 0 bit wide.
+2026.04.16.13:09:12 Warning: hps.f2h_irq0: Cannot connect clock for irq_mapper.sender
+2026.04.16.13:09:12 Warning: hps.f2h_irq0: Cannot connect reset for irq_mapper.sender
+2026.04.16.13:09:12 Warning: hps.f2h_irq1: Cannot connect clock for irq_mapper_001.sender
+2026.04.16.13:09:12 Warning: hps.f2h_irq1: Cannot connect reset for irq_mapper_001.sender
+2026.04.16.13:09:16 Info: acl_iface: "system" instantiated acl_iface_system "acl_iface"
+2026.04.16.13:09:16 Info: avs_gemm_kernel_cra_cra_ring: "system" instantiated cra_ring_node "avs_gemm_kernel_cra_cra_ring"
+2026.04.16.13:09:16 Info: cra_root: "system" instantiated cra_ring_root "cra_root"
+2026.04.16.13:09:16 Info: gemm_kernel_system: "system" instantiated gemm_kernel_system "gemm_kernel_system"
+2026.04.16.13:09:16 Info: mm_interconnect_0: "system" instantiated altera_mm_interconnect "mm_interconnect_0"
+2026.04.16.13:09:16 Info: mm_interconnect_2: "system" instantiated altera_mm_interconnect "mm_interconnect_2"
+2026.04.16.13:09:16 Info: irq_mapper: "system" instantiated altera_irq_mapper "irq_mapper"
+2026.04.16.13:09:16 Info: rst_controller: "system" instantiated altera_reset_controller "rst_controller"
+2026.04.16.13:09:16 Info: ADC: Starting Generation of ADC Controller for DE-series Board
+2026.04.16.13:09:16 Info: ADC: /ChanduHDD/Research/FPGA/ip/altera/university_program/input_output/altera_up_avalon_adc/hdl/altera_up_avalon_adv_adc.v /tmp/alt0559_1649865332883767389.dir/0008_sopcgen/system_acl_iface_ADC.v
+2026.04.16.13:09:18 Info: ADC: "acl_iface" instantiated altera_up_avalon_adc "ADC"
+2026.04.16.13:09:18 Info: AV_Config: Starting Generation of Audio and Video Config
+2026.04.16.13:09:18 Info: AV_Config: "acl_iface" instantiated altera_up_avalon_audio_and_video_config "AV_Config"
+2026.04.16.13:09:18 Info: D5M_Subsystem: "acl_iface" instantiated D5M_Subsystem "D5M_Subsystem"
+2026.04.16.13:09:18 Info: JTAG_to_FPGA_Bridge: "acl_iface" instantiated altera_jtag_avalon_master "JTAG_to_FPGA_Bridge"
+2026.04.16.13:09:18 Info: Onchip_SRAM: Starting RTL generation for module 'system_acl_iface_Onchip_SRAM'
+2026.04.16.13:09:18 Info: Onchip_SRAM:   Generation command is [exec /ChanduHDD/Research/FPGA/quartus/linux64/perl/bin/perl -I /ChanduHDD/Research/FPGA/quartus/linux64/perl/lib -I /ChanduHDD/Research/FPGA/quartus/sopc_builder/bin/europa -I /ChanduHDD/Research/FPGA/quartus/sopc_builder/bin/perl_lib -I /ChanduHDD/Research/FPGA/quartus/sopc_builder/bin -I /ChanduHDD/Research/FPGA/quartus/../ip/altera/sopc_builder_ip/common -I /ChanduHDD/Research/FPGA/quartus/../ip/altera/sopc_builder_ip/altera_avalon_onchip_memory2 -- /ChanduHDD/Research/FPGA/quartus/../ip/altera/sopc_builder_ip/altera_avalon_onchip_memory2/generate_rtl.pl --name=system_acl_iface_Onchip_SRAM --dir=/tmp/alt0559_1649865332883767389.dir/0012_Onchip_SRAM_gen/ --quartus_dir=/ChanduHDD/Research/FPGA/quartus --verilog --config=/tmp/alt0559_1649865332883767389.dir/0012_Onchip_SRAM_gen//system_acl_iface_Onchip_SRAM_component_configuration.pl  --do_build_sim=0  ]
+2026.04.16.13:09:18 Info: Onchip_SRAM: Done RTL generation for module 'system_acl_iface_Onchip_SRAM'
+2026.04.16.13:09:18 Info: Onchip_SRAM: "acl_iface" instantiated altera_avalon_onchip_memory2 "Onchip_SRAM"
+2026.04.16.13:09:19 Info: Pixel_DMA_Addr_Translation: "acl_iface" instantiated altera_up_avalon_video_dma_ctrl_addr_trans "Pixel_DMA_Addr_Translation"
+2026.04.16.13:09:19 Info: Pushbuttons: Starting RTL generation for module 'system_acl_iface_Pushbuttons'
+2026.04.16.13:09:19 Info: Pushbuttons:   Generation command is [exec /ChanduHDD/Research/FPGA/quartus/linux64/perl/bin/perl -I /ChanduHDD/Research/FPGA/quartus/linux64/perl/lib -I /ChanduHDD/Research/FPGA/quartus/sopc_builder/bin/europa -I /ChanduHDD/Research/FPGA/quartus/sopc_builder/bin/perl_lib -I /ChanduHDD/Research/FPGA/quartus/sopc_builder/bin -I /ChanduHDD/Research/FPGA/quartus/../ip/altera/sopc_builder_ip/common -I /ChanduHDD/Research/FPGA/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- /ChanduHDD/Research/FPGA/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=system_acl_iface_Pushbuttons --dir=/tmp/alt0559_1649865332883767389.dir/0014_Pushbuttons_gen/ --quartus_dir=/ChanduHDD/Research/FPGA/quartus --verilog --config=/tmp/alt0559_1649865332883767389.dir/0014_Pushbuttons_gen//system_acl_iface_Pushbuttons_component_configuration.pl  --do_build_sim=0  ]
+2026.04.16.13:09:19 Info: Pushbuttons: Done RTL generation for module 'system_acl_iface_Pushbuttons'
+2026.04.16.13:09:19 Info: Pushbuttons: "acl_iface" instantiated altera_avalon_pio "Pushbuttons"
+2026.04.16.13:09:19 Info: SDRAM: Starting RTL generation for module 'system_acl_iface_SDRAM'
+2026.04.16.13:09:19 Info: SDRAM:   Generation command is [exec /ChanduHDD/Research/FPGA/quartus/linux64/perl/bin/perl -I /ChanduHDD/Research/FPGA/quartus/linux64/perl/lib -I /ChanduHDD/Research/FPGA/quartus/sopc_builder/bin/europa -I /ChanduHDD/Research/FPGA/quartus/sopc_builder/bin/perl_lib -I /ChanduHDD/Research/FPGA/quartus/sopc_builder/bin -I /ChanduHDD/Research/FPGA/quartus/../ip/altera/sopc_builder_ip/common -I /ChanduHDD/Research/FPGA/quartus/../ip/altera/sopc_builder_ip/altera_avalon_new_sdram_controller -- /ChanduHDD/Research/FPGA/quartus/../ip/altera/sopc_builder_ip/altera_avalon_new_sdram_controller/generate_rtl.pl --name=system_acl_iface_SDRAM --dir=/tmp/alt0559_1649865332883767389.dir/0015_SDRAM_gen/ --quartus_dir=/ChanduHDD/Research/FPGA/quartus --verilog --config=/tmp/alt0559_1649865332883767389.dir/0015_SDRAM_gen//system_acl_iface_SDRAM_component_configuration.pl  --do_build_sim=0  ]
+2026.04.16.13:09:19 Info: SDRAM: Done RTL generation for module 'system_acl_iface_SDRAM'
+2026.04.16.13:09:19 Info: SDRAM: "acl_iface" instantiated altera_avalon_new_sdram_controller "SDRAM"
+2026.04.16.13:09:19 Info: avalon_st_adapter: Inserting channel_adapter: channel_adapter_0
+2026.04.16.13:09:19 Info: VGA_Subsystem: "acl_iface" instantiated VGA_Subsystem "VGA_Subsystem"
+2026.04.16.13:09:19 Info: Inserting clock-crossing logic between cmd_demux.src1 and cmd_mux_001.sink0
+2026.04.16.13:09:19 Info: Inserting clock-crossing logic between rsp_demux_001.src0 and rsp_mux.sink1
+2026.04.16.13:09:20 Info: acl_kernel_clk: "acl_iface" instantiated acl_kernel_clk_noreconfig "acl_kernel_clk"
+2026.04.16.13:09:20 Info: Interconnect is inserted between master address_span_extender_0.expanded_master and slave kernel_cra.s0 because the master has readdata signal 32 bit wide, but the slave is 64 bit wide.
+2026.04.16.13:09:20 Info: Interconnect is inserted between master address_span_extender_0.expanded_master and slave kernel_cra.s0 because the master has writedata signal 32 bit wide, but the slave is 64 bit wide.
+2026.04.16.13:09:20 Info: Interconnect is inserted between master address_span_extender_0.expanded_master and slave kernel_cra.s0 because the master has byteenable signal 4 bit wide, but the slave is 8 bit wide.
+2026.04.16.13:09:20 Info: Inserting clock-crossing logic between cmd_demux.src0 and cmd_mux.sink0
+2026.04.16.13:09:20 Info: Inserting clock-crossing logic between cmd_demux.src1 and cmd_mux_001.sink0
+2026.04.16.13:09:20 Info: Inserting clock-crossing logic between rsp_demux.src0 and rsp_mux.sink0
+2026.04.16.13:09:20 Info: Inserting clock-crossing logic between rsp_demux_001.src0 and rsp_mux.sink1
+2026.04.16.13:09:21 Warning: irq_ena_0.my_irq_in: Cannot connect clock for irq_mapper.sender
+2026.04.16.13:09:21 Warning: irq_ena_0.my_irq_in: Cannot connect reset for irq_mapper.sender
+2026.04.16.13:09:21 Info: acl_kernel_interface: "acl_iface" instantiated acl_kernel_interface_soc "acl_kernel_interface"
+2026.04.16.13:09:21 Info: address_span_extender_kernel: "acl_iface" instantiated altera_address_span_extender "address_span_extender_kernel"
+2026.04.16.13:09:21 Info: clock_cross_kernel_mem1: "acl_iface" instantiated altera_avalon_mm_clock_crossing_bridge "clock_cross_kernel_mem1"
+2026.04.16.13:09:21 Info: hps: "Running  for module: hps"
+2026.04.16.13:09:22 Info: hps: HPS Main PLL counter settings: n = 0  m = 73
+2026.04.16.13:09:22 Info: hps: HPS peripherial PLL counter settings: n = 0  m = 39
+2026.04.16.13:09:22 Warning: hps: "Configuration/HPS-to-FPGA user 0 clock frequency" (desired_cfg_clk_mhz) requested 100.0 MHz, but only achieved 97.368421 MHz
+2026.04.16.13:09:22 Warning: hps: 1 or more output clock frequencies cannot be achieved precisely, consider revising desired output clock frequencies.
+2026.04.16.13:09:23 Info: hps: "acl_iface" instantiated altera_hps "hps"
+2026.04.16.13:09:23 Info: led: Starting RTL generation for module 'system_acl_iface_led'
+2026.04.16.13:09:23 Info: led:   Generation command is [exec /ChanduHDD/Research/FPGA/quartus/linux64/perl/bin/perl -I /ChanduHDD/Research/FPGA/quartus/linux64/perl/lib -I /ChanduHDD/Research/FPGA/quartus/sopc_builder/bin/europa -I /ChanduHDD/Research/FPGA/quartus/sopc_builder/bin/perl_lib -I /ChanduHDD/Research/FPGA/quartus/sopc_builder/bin -I /ChanduHDD/Research/FPGA/quartus/../ip/altera/sopc_builder_ip/common -I /ChanduHDD/Research/FPGA/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- /ChanduHDD/Research/FPGA/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=system_acl_iface_led --dir=/tmp/alt0559_1649865332883767389.dir/0018_led_gen/ --quartus_dir=/ChanduHDD/Research/FPGA/quartus --verilog --config=/tmp/alt0559_1649865332883767389.dir/0018_led_gen//system_acl_iface_led_component_configuration.pl  --do_build_sim=0  ]
+2026.04.16.13:09:23 Info: led: Done RTL generation for module 'system_acl_iface_led'
+2026.04.16.13:09:23 Info: led: "acl_iface" instantiated altera_avalon_pio "led"
+2026.04.16.13:09:23 Info: pipe_stage_host_ctrl: "acl_iface" instantiated altera_avalon_mm_bridge "pipe_stage_host_ctrl"
+2026.04.16.13:09:23 Info: pll: "acl_iface" instantiated altera_pll "pll"
+2026.04.16.13:09:23 Info: version_id: "acl_iface" instantiated version_id "version_id"
+2026.04.16.13:09:23 Info: avalon_st_adapter: Inserting error_adapter: error_adapter_0
+2026.04.16.13:09:23 Info: mm_interconnect_0: "acl_iface" instantiated altera_mm_interconnect "mm_interconnect_0"
+2026.04.16.13:09:23 Info: avalon_st_adapter: Inserting error_adapter: error_adapter_0
+2026.04.16.13:09:24 Info: avalon_st_adapter_001: Inserting error_adapter: error_adapter_0
+2026.04.16.13:09:24 Info: avalon_st_adapter_002: Inserting error_adapter: error_adapter_0
+2026.04.16.13:09:24 Info: mm_interconnect_1: "acl_iface" instantiated altera_mm_interconnect "mm_interconnect_1"
+2026.04.16.13:09:24 Info: avalon_st_adapter: Inserting error_adapter: error_adapter_0
+2026.04.16.13:09:24 Info: mm_interconnect_2: "acl_iface" instantiated altera_mm_interconnect "mm_interconnect_2"
+2026.04.16.13:09:24 Info: avalon_st_adapter: Inserting error_adapter: error_adapter_0
+2026.04.16.13:09:25 Info: avalon_st_adapter_001: Inserting error_adapter: error_adapter_0
+2026.04.16.13:09:25 Info: avalon_st_adapter_002: Inserting error_adapter: error_adapter_0
+2026.04.16.13:09:25 Info: avalon_st_adapter_003: Inserting error_adapter: error_adapter_0
+2026.04.16.13:09:25 Info: avalon_st_adapter_004: Inserting error_adapter: error_adapter_0
+2026.04.16.13:09:25 Info: avalon_st_adapter_005: Inserting error_adapter: error_adapter_0
+2026.04.16.13:09:25 Info: avalon_st_adapter_006: Inserting error_adapter: error_adapter_0
+2026.04.16.13:09:25 Info: avalon_st_adapter_007: Inserting error_adapter: error_adapter_0
+2026.04.16.13:09:25 Info: avalon_st_adapter_008: Inserting error_adapter: error_adapter_0
+2026.04.16.13:09:25 Info: avalon_st_adapter_009: Inserting error_adapter: error_adapter_0
+2026.04.16.13:09:25 Info: avalon_st_adapter_010: Inserting error_adapter: error_adapter_0
+2026.04.16.13:09:25 Info: mm_interconnect_3: "acl_iface" instantiated altera_mm_interconnect "mm_interconnect_3"
+2026.04.16.13:09:25 Info: mm_interconnect_4: "acl_iface" instantiated altera_mm_interconnect "mm_interconnect_4"
+2026.04.16.13:09:25 Info: irq_mapper: "acl_iface" instantiated altera_irq_mapper "irq_mapper"
+2026.04.16.13:09:25 Info: gemm_kernel_system_avm_mem_gmem0_port_0_0_rw_translator: "mm_interconnect_0" instantiated altera_merlin_master_translator "gemm_kernel_system_avm_mem_gmem0_port_0_0_rw_translator"
+2026.04.16.13:09:25 Info: acl_iface_kernel_mem0_translator: "mm_interconnect_0" instantiated altera_merlin_slave_translator "acl_iface_kernel_mem0_translator"
+2026.04.16.13:09:25 Info: Bayer_Resampler: Starting Generation of Video Bayer Pattern Resampler
+2026.04.16.13:09:25 Info: Bayer_Resampler: "D5M_Subsystem" instantiated altera_up_avalon_video_bayer_resampler "Bayer_Resampler"
+2026.04.16.13:09:25 Info: D5M_Config: Starting Generation of Audio and Video Config
+2026.04.16.13:09:25 Info: D5M_Config: "D5M_Subsystem" instantiated altera_up_avalon_audio_and_video_config "D5M_Config"
+2026.04.16.13:09:25 Info: Reusing file /ChanduHDD/Research/ECE332/final_lab4/Lab4RequiredFiles/de1_soc/tests/gemm_kernel/bin/gemm_kernel/system/synthesis/submodules/altera_up_av_config_serial_bus_controller.v
+2026.04.16.13:09:25 Info: Reusing file /ChanduHDD/Research/ECE332/final_lab4/Lab4RequiredFiles/de1_soc/tests/gemm_kernel/bin/gemm_kernel/system/synthesis/submodules/altera_up_slow_clock_generator.v
+2026.04.16.13:09:25 Info: Reusing file /ChanduHDD/Research/ECE332/final_lab4/Lab4RequiredFiles/de1_soc/tests/gemm_kernel/bin/gemm_kernel/system/synthesis/submodules/altera_up_av_config_auto_init.v
+2026.04.16.13:09:25 Info: Reusing file /ChanduHDD/Research/ECE332/final_lab4/Lab4RequiredFiles/de1_soc/tests/gemm_kernel/bin/gemm_kernel/system/synthesis/submodules/altera_up_av_config_auto_init_dc2.v
+2026.04.16.13:09:25 Info: Reusing file /ChanduHDD/Research/ECE332/final_lab4/Lab4RequiredFiles/de1_soc/tests/gemm_kernel/bin/gemm_kernel/system/synthesis/submodules/altera_up_av_config_auto_init_d5m.v
+2026.04.16.13:09:25 Info: Reusing file /ChanduHDD/Research/ECE332/final_lab4/Lab4RequiredFiles/de1_soc/tests/gemm_kernel/bin/gemm_kernel/system/synthesis/submodules/altera_up_av_config_auto_init_lcm.v
+2026.04.16.13:09:25 Info: Reusing file /ChanduHDD/Research/ECE332/final_lab4/Lab4RequiredFiles/de1_soc/tests/gemm_kernel/bin/gemm_kernel/system/synthesis/submodules/altera_up_av_config_auto_init_ltm.v
+2026.04.16.13:09:25 Info: Reusing file /ChanduHDD/Research/ECE332/final_lab4/Lab4RequiredFiles/de1_soc/tests/gemm_kernel/bin/gemm_kernel/system/synthesis/submodules/altera_up_av_config_auto_init_ob_de1_soc.v
+2026.04.16.13:09:25 Info: Reusing file /ChanduHDD/Research/ECE332/final_lab4/Lab4RequiredFiles/de1_soc/tests/gemm_kernel/bin/gemm_kernel/system/synthesis/submodules/altera_up_av_config_auto_init_ob_de2_115.v
+2026.04.16.13:09:25 Info: Reusing file /ChanduHDD/Research/ECE332/final_lab4/Lab4RequiredFiles/de1_soc/tests/gemm_kernel/bin/gemm_kernel/system/synthesis/submodules/altera_up_av_config_auto_init_ob_de2i_150.v
+2026.04.16.13:09:25 Info: Reusing file /ChanduHDD/Research/ECE332/final_lab4/Lab4RequiredFiles/de1_soc/tests/gemm_kernel/bin/gemm_kernel/system/synthesis/submodules/altera_up_av_config_auto_init_ob_de10_standard.v
+2026.04.16.13:09:25 Info: Reusing file /ChanduHDD/Research/ECE332/final_lab4/Lab4RequiredFiles/de1_soc/tests/gemm_kernel/bin/gemm_kernel/system/synthesis/submodules/altera_up_av_config_auto_init_ob_audio.v
+2026.04.16.13:09:25 Info: Reusing file /ChanduHDD/Research/ECE332/final_lab4/Lab4RequiredFiles/de1_soc/tests/gemm_kernel/bin/gemm_kernel/system/synthesis/submodules/altera_up_av_config_auto_init_ob_adv7180.v
+2026.04.16.13:09:25 Info: Reusing file /ChanduHDD/Research/ECE332/final_lab4/Lab4RequiredFiles/de1_soc/tests/gemm_kernel/bin/gemm_kernel/system/synthesis/submodules/altera_up_av_config_auto_init_ob_adv7181.v
+2026.04.16.13:09:25 Info: Video_In: Starting Generation of Video In Decoder
+2026.04.16.13:09:25 Info: Video_In: "D5M_Subsystem" instantiated altera_up_avalon_video_decoder "Video_In"
+2026.04.16.13:09:25 Info: Video_In_Clipper: Starting generation of the video clipper
+2026.04.16.13:09:25 Info: Video_In_Clipper: "D5M_Subsystem" instantiated altera_up_avalon_video_clipper "Video_In_Clipper"
+2026.04.16.13:09:25 Info: Video_In_DMA: Starting Generation of Video DMA Controller
+2026.04.16.13:09:25 Info: Video_In_DMA: "D5M_Subsystem" instantiated altera_up_avalon_video_dma_controller "Video_In_DMA"
+2026.04.16.13:09:25 Info: Video_In_RGB_Resampler: Starting Generation of Video RGB Resampler
+2026.04.16.13:09:25 Info: Video_In_RGB_Resampler: "D5M_Subsystem" instantiated altera_up_avalon_video_rgb_resampler "Video_In_RGB_Resampler"
+2026.04.16.13:09:25 Info: Video_In_Scaler: Starting Generation of Video Scaler
+2026.04.16.13:09:25 Info: Video_In_Scaler: "D5M_Subsystem" instantiated altera_up_avalon_video_scaler "Video_In_Scaler"
+2026.04.16.13:09:25 Info: jtag_phy_embedded_in_jtag_master: "JTAG_to_FPGA_Bridge" instantiated altera_jtag_dc_streaming "jtag_phy_embedded_in_jtag_master"
+2026.04.16.13:09:25 Info: Reusing file /ChanduHDD/Research/ECE332/final_lab4/Lab4RequiredFiles/de1_soc/tests/gemm_kernel/bin/gemm_kernel/system/synthesis/submodules/altera_std_synchronizer_nocut.v
+2026.04.16.13:09:25 Info: timing_adt: "JTAG_to_FPGA_Bridge" instantiated timing_adapter "timing_adt"
+2026.04.16.13:09:25 Info: fifo: "JTAG_to_FPGA_Bridge" instantiated altera_avalon_sc_fifo "fifo"
+2026.04.16.13:09:25 Info: b2p: "JTAG_to_FPGA_Bridge" instantiated altera_avalon_st_bytes_to_packets "b2p"
+2026.04.16.13:09:25 Info: p2b: "JTAG_to_FPGA_Bridge" instantiated altera_avalon_st_packets_to_bytes "p2b"
+2026.04.16.13:09:25 Info: transacto: "JTAG_to_FPGA_Bridge" instantiated altera_avalon_packets_to_master "transacto"
+2026.04.16.13:09:25 Info: b2p_adapter: "JTAG_to_FPGA_Bridge" instantiated channel_adapter "b2p_adapter"
+2026.04.16.13:09:25 Info: p2b_adapter: "JTAG_to_FPGA_Bridge" instantiated channel_adapter "p2b_adapter"
+2026.04.16.13:09:25 Info: VGA_Alpha_Blender: Starting Generation of the Alpha Blender
+2026.04.16.13:09:25 Info: VGA_Alpha_Blender: "VGA_Subsystem" instantiated altera_up_avalon_video_alpha_blender "VGA_Alpha_Blender"
+2026.04.16.13:09:25 Info: VGA_Char_Buffer: Starting Generation of Character Buffer
+2026.04.16.13:09:25 Info: VGA_Char_Buffer: "VGA_Subsystem" instantiated altera_up_avalon_video_character_buffer_with_dma "VGA_Char_Buffer"
+2026.04.16.13:09:25 Info: VGA_Controller: Starting Generation of VGA Controller
+2026.04.16.13:09:25 Info: VGA_Controller: "VGA_Subsystem" instantiated altera_up_avalon_video_vga_controller "VGA_Controller"
+2026.04.16.13:09:25 Info: VGA_Dual_Clock_FIFO: Starting Generation of the Dual Clock Buffer
+2026.04.16.13:09:25 Info: VGA_Dual_Clock_FIFO: "VGA_Subsystem" instantiated altera_up_avalon_video_dual_clock_buffer "VGA_Dual_Clock_FIFO"
+2026.04.16.13:09:26 Info: VGA_PLL: "VGA_Subsystem" instantiated altera_up_avalon_video_pll "VGA_PLL"
+2026.04.16.13:09:26 Info: VGA_Pixel_DMA: Starting Generation of VGA Pixel Buffer
+2026.04.16.13:09:26 Info: VGA_Pixel_DMA: "VGA_Subsystem" instantiated altera_up_avalon_video_pixel_buffer_dma "VGA_Pixel_DMA"
+2026.04.16.13:09:26 Info: VGA_Pixel_FIFO: Starting Generation of the Dual Clock Buffer
+2026.04.16.13:09:26 Info: VGA_Pixel_FIFO: "VGA_Subsystem" instantiated altera_up_avalon_video_dual_clock_buffer "VGA_Pixel_FIFO"
+2026.04.16.13:09:26 Info: VGA_Pixel_RGB_Resampler: Starting Generation of Video RGB Resampler
+2026.04.16.13:09:26 Info: VGA_Pixel_RGB_Resampler: "VGA_Subsystem" instantiated altera_up_avalon_video_rgb_resampler "VGA_Pixel_RGB_Resampler"
+2026.04.16.13:09:26 Info: VGA_Pixel_Scaler: Starting Generation of Video Scaler
+2026.04.16.13:09:26 Info: VGA_Pixel_Scaler: "VGA_Subsystem" instantiated altera_up_avalon_video_scaler "VGA_Pixel_Scaler"
+2026.04.16.13:09:26 Info: Reusing file /ChanduHDD/Research/ECE332/final_lab4/Lab4RequiredFiles/de1_soc/tests/gemm_kernel/bin/gemm_kernel/system/synthesis/submodules/altera_up_video_scaler_shrink.v
+2026.04.16.13:09:26 Info: Reusing file /ChanduHDD/Research/ECE332/final_lab4/Lab4RequiredFiles/de1_soc/tests/gemm_kernel/bin/gemm_kernel/system/synthesis/submodules/altera_up_video_scaler_multiply_width.v
+2026.04.16.13:09:26 Info: Reusing file /ChanduHDD/Research/ECE332/final_lab4/Lab4RequiredFiles/de1_soc/tests/gemm_kernel/bin/gemm_kernel/system/synthesis/submodules/altera_up_video_scaler_multiply_height.v
+2026.04.16.13:09:26 Info: avalon_st_adapter: "VGA_Subsystem" instantiated altera_avalon_st_adapter "avalon_st_adapter"
+2026.04.16.13:09:26 Info: kernel_pll: "acl_kernel_clk" instantiated altera_pll "kernel_pll"
+2026.04.16.13:09:26 Info: counter: "acl_kernel_clk" instantiated acl_timer "counter"
+2026.04.16.13:09:26 Info: global_routing_kernel_clk: "acl_kernel_clk" instantiated global_routing_clk "global_routing_kernel_clk"
+2026.04.16.13:09:26 Info: pll_sw_reset: "acl_kernel_clk" instantiated sw_reset "pll_sw_reset"
+2026.04.16.13:09:26 Info: pll_lock_avs_0: "acl_kernel_clk" instantiated pll_lock_avs "pll_lock_avs_0"
+2026.04.16.13:09:26 Info: pll_rom: Starting RTL generation for module 'system_acl_iface_acl_kernel_clk_pll_rom'
+2026.04.16.13:09:26 Info: pll_rom:   Generation command is [exec /ChanduHDD/Research/FPGA/quartus/linux64/perl/bin/perl -I /ChanduHDD/Research/FPGA/quartus/linux64/perl/lib -I /ChanduHDD/Research/FPGA/quartus/sopc_builder/bin/europa -I /ChanduHDD/Research/FPGA/quartus/sopc_builder/bin/perl_lib -I /ChanduHDD/Research/FPGA/quartus/sopc_builder/bin -I /ChanduHDD/Research/FPGA/quartus/../ip/altera/sopc_builder_ip/common -I /ChanduHDD/Research/FPGA/quartus/../ip/altera/sopc_builder_ip/altera_avalon_onchip_memory2 -- /ChanduHDD/Research/FPGA/quartus/../ip/altera/sopc_builder_ip/altera_avalon_onchip_memory2/generate_rtl.pl --name=system_acl_iface_acl_kernel_clk_pll_rom --dir=/tmp/alt0559_1649865332883767389.dir/0048_pll_rom_gen/ --quartus_dir=/ChanduHDD/Research/FPGA/quartus --verilog --config=/tmp/alt0559_1649865332883767389.dir/0048_pll_rom_gen//system_acl_iface_acl_kernel_clk_pll_rom_component_configuration.pl  --do_build_sim=0  ]
+2026.04.16.13:09:26 Info: pll_rom: Done RTL generation for module 'system_acl_iface_acl_kernel_clk_pll_rom'
+2026.04.16.13:09:26 Info: pll_rom: "acl_kernel_clk" instantiated altera_avalon_onchip_memory2 "pll_rom"
+2026.04.16.13:09:26 Info: avalon_st_adapter: Inserting error_adapter: error_adapter_0
+2026.04.16.13:09:26 Info: avalon_st_adapter_001: Inserting error_adapter: error_adapter_0
+2026.04.16.13:09:26 Info: avalon_st_adapter_002: Inserting error_adapter: error_adapter_0
+2026.04.16.13:09:26 Info: avalon_st_adapter_003: Inserting error_adapter: error_adapter_0
+2026.04.16.13:09:26 Info: avalon_st_adapter_004: Inserting error_adapter: error_adapter_0
+2026.04.16.13:09:26 Info: mm_interconnect_0: "acl_kernel_clk" instantiated altera_mm_interconnect "mm_interconnect_0"
+2026.04.16.13:09:26 Info: sys_description_rom: Starting RTL generation for module 'system_acl_iface_acl_kernel_interface_sys_description_rom'
+2026.04.16.13:09:26 Info: sys_description_rom:   Generation command is [exec /ChanduHDD/Research/FPGA/quartus/linux64/perl/bin/perl -I /ChanduHDD/Research/FPGA/quartus/linux64/perl/lib -I /ChanduHDD/Research/FPGA/quartus/sopc_builder/bin/europa -I /ChanduHDD/Research/FPGA/quartus/sopc_builder/bin/perl_lib -I /ChanduHDD/Research/FPGA/quartus/sopc_builder/bin -I /ChanduHDD/Research/FPGA/quartus/../ip/altera/sopc_builder_ip/common -I /ChanduHDD/Research/FPGA/quartus/../ip/altera/sopc_builder_ip/altera_avalon_onchip_memory2 -- /ChanduHDD/Research/FPGA/quartus/../ip/altera/sopc_builder_ip/altera_avalon_onchip_memory2/generate_rtl.pl --name=system_acl_iface_acl_kernel_interface_sys_description_rom --dir=/tmp/alt0559_1649865332883767389.dir/0049_sys_description_rom_gen/ --quartus_dir=/ChanduHDD/Research/FPGA/quartus --verilog --config=/tmp/alt0559_1649865332883767389.dir/0049_sys_description_rom_gen//system_acl_iface_acl_kernel_interface_sys_description_rom_component_configuration.pl  --do_build_sim=0  ]
+2026.04.16.13:09:26 Info: sys_description_rom: Done RTL generation for module 'system_acl_iface_acl_kernel_interface_sys_description_rom'
+2026.04.16.13:09:26 Info: sys_description_rom: "acl_kernel_interface" instantiated altera_avalon_onchip_memory2 "sys_description_rom"
+2026.04.16.13:09:26 Info: mem_org_mode: "acl_kernel_interface" instantiated mem_org_mode "mem_org_mode"
+2026.04.16.13:09:26 Info: irq_bridge_0: "acl_kernel_interface" instantiated altera_irq_bridge "irq_bridge_0"
+2026.04.16.13:09:26 Info: irq_ena_0: "acl_kernel_interface" instantiated acl_irq_ena "irq_ena_0"
+2026.04.16.13:09:27 Info: avalon_st_adapter: Inserting error_adapter: error_adapter_0
+2026.04.16.13:09:27 Info: mm_interconnect_0: "acl_kernel_interface" instantiated altera_mm_interconnect "mm_interconnect_0"
+2026.04.16.13:09:27 Info: avalon_st_adapter: Inserting error_adapter: error_adapter_0
+2026.04.16.13:09:27 Info: avalon_st_adapter_001: Inserting error_adapter: error_adapter_0
+2026.04.16.13:09:27 Info: avalon_st_adapter_002: Inserting error_adapter: error_adapter_0
+2026.04.16.13:09:27 Info: avalon_st_adapter_003: Inserting error_adapter: error_adapter_0
+2026.04.16.13:09:27 Info: avalon_st_adapter_004: Inserting error_adapter: error_adapter_0
+2026.04.16.13:09:27 Info: avalon_st_adapter_005: Inserting error_adapter: error_adapter_0
+2026.04.16.13:09:27 Info: avalon_st_adapter_006: Inserting error_adapter: error_adapter_0
+2026.04.16.13:09:27 Info: mm_interconnect_1: "acl_kernel_interface" instantiated altera_mm_interconnect "mm_interconnect_1"
+2026.04.16.13:09:27 Info: fpga_interfaces: "hps" instantiated altera_interface_generator "fpga_interfaces"
+2026.04.16.13:09:28 Info: hps_io: "hps" instantiated altera_hps_io "hps_io"
+2026.04.16.13:09:28 Info: address_span_extender_kernel_expanded_master_agent: "mm_interconnect_0" instantiated altera_merlin_master_agent "address_span_extender_kernel_expanded_master_agent"
+2026.04.16.13:09:28 Info: hps_f2h_sdram0_data_agent: "mm_interconnect_0" instantiated altera_merlin_slave_agent "hps_f2h_sdram0_data_agent"
+2026.04.16.13:09:28 Info: router: "mm_interconnect_0" instantiated altera_merlin_router "router"
+2026.04.16.13:09:28 Info: router_001: "mm_interconnect_0" instantiated altera_merlin_router "router_001"
+2026.04.16.13:09:28 Info: cmd_demux: "mm_interconnect_0" instantiated altera_merlin_demultiplexer "cmd_demux"
+2026.04.16.13:09:28 Info: cmd_mux: "mm_interconnect_0" instantiated altera_merlin_multiplexer "cmd_mux"
+2026.04.16.13:09:28 Info: rsp_mux: "mm_interconnect_0" instantiated altera_merlin_multiplexer "rsp_mux"
+2026.04.16.13:09:28 Info: Reusing file /ChanduHDD/Research/ECE332/final_lab4/Lab4RequiredFiles/de1_soc/tests/gemm_kernel/bin/gemm_kernel/system/synthesis/submodules/altera_merlin_arbitrator.sv
+2026.04.16.13:09:28 Info: avalon_st_adapter: "mm_interconnect_0" instantiated altera_avalon_st_adapter "avalon_st_adapter"
+2026.04.16.13:09:28 Info: hps_h2f_axi_master_agent: "mm_interconnect_1" instantiated altera_merlin_axi_master_ni "hps_h2f_axi_master_agent"
+2026.04.16.13:09:28 Info: router: "mm_interconnect_1" instantiated altera_merlin_router "router"
+2026.04.16.13:09:28 Info: router_002: "mm_interconnect_1" instantiated altera_merlin_router "router_002"
+2026.04.16.13:09:28 Info: router_003: "mm_interconnect_1" instantiated altera_merlin_router "router_003"
+2026.04.16.13:09:28 Info: router_004: "mm_interconnect_1" instantiated altera_merlin_router "router_004"
+2026.04.16.13:09:28 Info: router_005: "mm_interconnect_1" instantiated altera_merlin_router "router_005"
+2026.04.16.13:09:28 Info: router_006: "mm_interconnect_1" instantiated altera_merlin_router "router_006"
+2026.04.16.13:09:28 Info: router_007: "mm_interconnect_1" instantiated altera_merlin_router "router_007"
+2026.04.16.13:09:28 Info: hps_h2f_axi_master_wr_limiter: "mm_interconnect_1" instantiated altera_merlin_traffic_limiter "hps_h2f_axi_master_wr_limiter"
+2026.04.16.13:09:28 Info: Reusing file /ChanduHDD/Research/ECE332/final_lab4/Lab4RequiredFiles/de1_soc/tests/gemm_kernel/bin/gemm_kernel/system/synthesis/submodules/altera_avalon_sc_fifo.v
+2026.04.16.13:09:28 Info: Reusing file /ChanduHDD/Research/ECE332/final_lab4/Lab4RequiredFiles/de1_soc/tests/gemm_kernel/bin/gemm_kernel/system/synthesis/submodules/altera_avalon_st_pipeline_base.v
+2026.04.16.13:09:28 Info: Onchip_SRAM_s1_burst_adapter: "mm_interconnect_1" instantiated altera_merlin_burst_adapter "Onchip_SRAM_s1_burst_adapter"
+2026.04.16.13:09:28 Info: Reusing file /ChanduHDD/Research/ECE332/final_lab4/Lab4RequiredFiles/de1_soc/tests/gemm_kernel/bin/gemm_kernel/system/synthesis/submodules/altera_merlin_address_alignment.sv
+2026.04.16.13:09:28 Info: Reusing file /ChanduHDD/Research/ECE332/final_lab4/Lab4RequiredFiles/de1_soc/tests/gemm_kernel/bin/gemm_kernel/system/synthesis/submodules/altera_avalon_st_pipeline_stage.sv
+2026.04.16.13:09:28 Info: Reusing file /ChanduHDD/Research/ECE332/final_lab4/Lab4RequiredFiles/de1_soc/tests/gemm_kernel/bin/gemm_kernel/system/synthesis/submodules/altera_avalon_st_pipeline_base.v
+2026.04.16.13:09:28 Info: cmd_demux: "mm_interconnect_1" instantiated altera_merlin_demultiplexer "cmd_demux"
+2026.04.16.13:09:28 Info: cmd_demux_004: "mm_interconnect_1" instantiated altera_merlin_demultiplexer "cmd_demux_004"
+2026.04.16.13:09:28 Info: cmd_mux: "mm_interconnect_1" instantiated altera_merlin_multiplexer "cmd_mux"
+2026.04.16.13:09:28 Info: Reusing file /ChanduHDD/Research/ECE332/final_lab4/Lab4RequiredFiles/de1_soc/tests/gemm_kernel/bin/gemm_kernel/system/synthesis/submodules/altera_merlin_arbitrator.sv
+2026.04.16.13:09:28 Info: cmd_mux_001: "mm_interconnect_1" instantiated altera_merlin_multiplexer "cmd_mux_001"
+2026.04.16.13:09:28 Info: Reusing file /ChanduHDD/Research/ECE332/final_lab4/Lab4RequiredFiles/de1_soc/tests/gemm_kernel/bin/gemm_kernel/system/synthesis/submodules/altera_merlin_arbitrator.sv
+2026.04.16.13:09:28 Info: cmd_mux_002: "mm_interconnect_1" instantiated altera_merlin_multiplexer "cmd_mux_002"
+2026.04.16.13:09:28 Info: Reusing file /ChanduHDD/Research/ECE332/final_lab4/Lab4RequiredFiles/de1_soc/tests/gemm_kernel/bin/gemm_kernel/system/synthesis/submodules/altera_merlin_arbitrator.sv
+2026.04.16.13:09:28 Info: rsp_demux: "mm_interconnect_1" instantiated altera_merlin_demultiplexer "rsp_demux"
+2026.04.16.13:09:28 Info: rsp_demux_001: "mm_interconnect_1" instantiated altera_merlin_demultiplexer "rsp_demux_001"
+2026.04.16.13:09:28 Info: rsp_demux_002: "mm_interconnect_1" instantiated altera_merlin_demultiplexer "rsp_demux_002"
+2026.04.16.13:09:28 Info: rsp_mux: "mm_interconnect_1" instantiated altera_merlin_multiplexer "rsp_mux"
+2026.04.16.13:09:28 Info: Reusing file /ChanduHDD/Research/ECE332/final_lab4/Lab4RequiredFiles/de1_soc/tests/gemm_kernel/bin/gemm_kernel/system/synthesis/submodules/altera_merlin_arbitrator.sv
+2026.04.16.13:09:28 Info: hps_h2f_axi_master_wr_cmd_width_adapter: "mm_interconnect_1" instantiated altera_merlin_width_adapter "hps_h2f_axi_master_wr_cmd_width_adapter"
+2026.04.16.13:09:28 Info: Reusing file /ChanduHDD/Research/ECE332/final_lab4/Lab4RequiredFiles/de1_soc/tests/gemm_kernel/bin/gemm_kernel/system/synthesis/submodules/altera_merlin_address_alignment.sv
+2026.04.16.13:09:28 Info: Reusing file /ChanduHDD/Research/ECE332/final_lab4/Lab4RequiredFiles/de1_soc/tests/gemm_kernel/bin/gemm_kernel/system/synthesis/submodules/altera_merlin_burst_uncompressor.sv
+2026.04.16.13:09:28 Info: avalon_st_adapter: "mm_interconnect_1" instantiated altera_avalon_st_adapter "avalon_st_adapter"
+2026.04.16.13:09:28 Info: router: "mm_interconnect_2" instantiated altera_merlin_router "router"
+2026.04.16.13:09:28 Info: router_002: "mm_interconnect_2" instantiated altera_merlin_router "router_002"
+2026.04.16.13:09:28 Info: cmd_demux: "mm_interconnect_2" instantiated altera_merlin_demultiplexer "cmd_demux"
+2026.04.16.13:09:28 Info: cmd_mux: "mm_interconnect_2" instantiated altera_merlin_multiplexer "cmd_mux"
+2026.04.16.13:09:28 Info: Reusing file /ChanduHDD/Research/ECE332/final_lab4/Lab4RequiredFiles/de1_soc/tests/gemm_kernel/bin/gemm_kernel/system/synthesis/submodules/altera_merlin_arbitrator.sv
+2026.04.16.13:09:28 Info: rsp_demux: "mm_interconnect_2" instantiated altera_merlin_demultiplexer "rsp_demux"
+2026.04.16.13:09:28 Info: rsp_mux: "mm_interconnect_2" instantiated altera_merlin_multiplexer "rsp_mux"
+2026.04.16.13:09:28 Info: Reusing file /ChanduHDD/Research/ECE332/final_lab4/Lab4RequiredFiles/de1_soc/tests/gemm_kernel/bin/gemm_kernel/system/synthesis/submodules/altera_merlin_arbitrator.sv
+2026.04.16.13:09:28 Info: avalon_st_adapter: "mm_interconnect_2" instantiated altera_avalon_st_adapter "avalon_st_adapter"
+2026.04.16.13:09:28 Info: router: "mm_interconnect_3" instantiated altera_merlin_router "router"
+2026.04.16.13:09:28 Info: router_001: "mm_interconnect_3" instantiated altera_merlin_router "router_001"
+2026.04.16.13:09:28 Info: router_002: "mm_interconnect_3" instantiated altera_merlin_router "router_002"
+2026.04.16.13:09:28 Info: router_003: "mm_interconnect_3" instantiated altera_merlin_router "router_003"
+2026.04.16.13:09:28 Info: router_007: "mm_interconnect_3" instantiated altera_merlin_router "router_007"
+2026.04.16.13:09:28 Info: router_013: "mm_interconnect_3" instantiated altera_merlin_router "router_013"
+2026.04.16.13:09:28 Info: cmd_demux: "mm_interconnect_3" instantiated altera_merlin_demultiplexer "cmd_demux"
+2026.04.16.13:09:28 Info: cmd_demux_001: "mm_interconnect_3" instantiated altera_merlin_demultiplexer "cmd_demux_001"
+2026.04.16.13:09:28 Info: cmd_mux: "mm_interconnect_3" instantiated altera_merlin_multiplexer "cmd_mux"
+2026.04.16.13:09:28 Info: Reusing file /ChanduHDD/Research/ECE332/final_lab4/Lab4RequiredFiles/de1_soc/tests/gemm_kernel/bin/gemm_kernel/system/synthesis/submodules/altera_merlin_arbitrator.sv
+2026.04.16.13:09:28 Info: cmd_mux_004: "mm_interconnect_3" instantiated altera_merlin_multiplexer "cmd_mux_004"
+2026.04.16.13:09:28 Info: Reusing file /ChanduHDD/Research/ECE332/final_lab4/Lab4RequiredFiles/de1_soc/tests/gemm_kernel/bin/gemm_kernel/system/synthesis/submodules/altera_merlin_arbitrator.sv
+2026.04.16.13:09:28 Info: rsp_demux_004: "mm_interconnect_3" instantiated altera_merlin_demultiplexer "rsp_demux_004"
+2026.04.16.13:09:28 Info: rsp_mux: "mm_interconnect_3" instantiated altera_merlin_multiplexer "rsp_mux"
+2026.04.16.13:09:28 Info: Reusing file /ChanduHDD/Research/ECE332/final_lab4/Lab4RequiredFiles/de1_soc/tests/gemm_kernel/bin/gemm_kernel/system/synthesis/submodules/altera_merlin_arbitrator.sv
+2026.04.16.13:09:28 Info: rsp_mux_001: "mm_interconnect_3" instantiated altera_merlin_multiplexer "rsp_mux_001"
+2026.04.16.13:09:28 Info: Reusing file /ChanduHDD/Research/ECE332/final_lab4/Lab4RequiredFiles/de1_soc/tests/gemm_kernel/bin/gemm_kernel/system/synthesis/submodules/altera_merlin_arbitrator.sv
+2026.04.16.13:09:28 Info: video_pll: "VGA_PLL" instantiated altera_pll "video_pll"
+2026.04.16.13:09:28 Info: reset_from_locked: "VGA_PLL" instantiated altera_up_avalon_reset_from_locked_signal "reset_from_locked"
+2026.04.16.13:09:28 Info: channel_adapter_0: "avalon_st_adapter" instantiated channel_adapter "channel_adapter_0"
+2026.04.16.13:09:28 Info: router: "mm_interconnect_0" instantiated altera_merlin_router "router"
+2026.04.16.13:09:28 Info: router_001: "mm_interconnect_0" instantiated altera_merlin_router "router_001"
+2026.04.16.13:09:28 Info: cmd_demux: "mm_interconnect_0" instantiated altera_merlin_demultiplexer "cmd_demux"
+2026.04.16.13:09:28 Info: cmd_mux: "mm_interconnect_0" instantiated altera_merlin_multiplexer "cmd_mux"
+2026.04.16.13:09:28 Info: Reusing file /ChanduHDD/Research/ECE332/final_lab4/Lab4RequiredFiles/de1_soc/tests/gemm_kernel/bin/gemm_kernel/system/synthesis/submodules/altera_merlin_arbitrator.sv
+2026.04.16.13:09:28 Info: rsp_demux: "mm_interconnect_0" instantiated altera_merlin_demultiplexer "rsp_demux"
+2026.04.16.13:09:28 Info: rsp_demux_001: "mm_interconnect_0" instantiated altera_merlin_demultiplexer "rsp_demux_001"
+2026.04.16.13:09:28 Info: rsp_mux: "mm_interconnect_0" instantiated altera_merlin_multiplexer "rsp_mux"
+2026.04.16.13:09:28 Info: Reusing file /ChanduHDD/Research/ECE332/final_lab4/Lab4RequiredFiles/de1_soc/tests/gemm_kernel/bin/gemm_kernel/system/synthesis/submodules/altera_merlin_arbitrator.sv
+2026.04.16.13:09:28 Info: async_fifo: "mm_interconnect_0" instantiated altera_avalon_dc_fifo "async_fifo"
+2026.04.16.13:09:28 Info: Reusing file /ChanduHDD/Research/ECE332/final_lab4/Lab4RequiredFiles/de1_soc/tests/gemm_kernel/bin/gemm_kernel/system/synthesis/submodules/altera_avalon_dc_fifo.v
+2026.04.16.13:09:28 Info: Reusing file /ChanduHDD/Research/ECE332/final_lab4/Lab4RequiredFiles/de1_soc/tests/gemm_kernel/bin/gemm_kernel/system/synthesis/submodules/altera_dcfifo_synchronizer_bundle.v
+2026.04.16.13:09:28 Info: Reusing file /ChanduHDD/Research/ECE332/final_lab4/Lab4RequiredFiles/de1_soc/tests/gemm_kernel/bin/gemm_kernel/system/synthesis/submodules/altera_std_synchronizer_nocut.v
+2026.04.16.13:09:28 Info: Reusing file /ChanduHDD/Research/ECE332/final_lab4/Lab4RequiredFiles/de1_soc/tests/gemm_kernel/bin/gemm_kernel/system/synthesis/submodules/altera_avalon_dc_fifo.sdc
+2026.04.16.13:09:28 Info: router: "mm_interconnect_0" instantiated altera_merlin_router "router"
+2026.04.16.13:09:28 Info: router_001: "mm_interconnect_0" instantiated altera_merlin_router "router_001"
+2026.04.16.13:09:28 Info: cmd_demux: "mm_interconnect_0" instantiated altera_merlin_demultiplexer "cmd_demux"
+2026.04.16.13:09:28 Info: cmd_mux: "mm_interconnect_0" instantiated altera_merlin_multiplexer "cmd_mux"
+2026.04.16.13:09:28 Info: Reusing file /ChanduHDD/Research/ECE332/final_lab4/Lab4RequiredFiles/de1_soc/tests/gemm_kernel/bin/gemm_kernel/system/synthesis/submodules/altera_merlin_arbitrator.sv
+2026.04.16.13:09:28 Info: rsp_mux: "mm_interconnect_0" instantiated altera_merlin_multiplexer "rsp_mux"
+2026.04.16.13:09:28 Info: Reusing file /ChanduHDD/Research/ECE332/final_lab4/Lab4RequiredFiles/de1_soc/tests/gemm_kernel/bin/gemm_kernel/system/synthesis/submodules/altera_merlin_arbitrator.sv
+2026.04.16.13:09:28 Info: avalon_st_adapter: "mm_interconnect_0" instantiated altera_avalon_st_adapter "avalon_st_adapter"
+2026.04.16.13:09:28 Info: router: "mm_interconnect_1" instantiated altera_merlin_router "router"
+2026.04.16.13:09:28 Info: router_001: "mm_interconnect_1" instantiated altera_merlin_router "router_001"
+2026.04.16.13:09:28 Info: router_002: "mm_interconnect_1" instantiated altera_merlin_router "router_002"
+2026.04.16.13:09:28 Info: cmd_demux: "mm_interconnect_1" instantiated altera_merlin_demultiplexer "cmd_demux"
+2026.04.16.13:09:28 Info: cmd_mux: "mm_interconnect_1" instantiated altera_merlin_multiplexer "cmd_mux"
+2026.04.16.13:09:28 Info: Reusing file /ChanduHDD/Research/ECE332/final_lab4/Lab4RequiredFiles/de1_soc/tests/gemm_kernel/bin/gemm_kernel/system/synthesis/submodules/altera_merlin_arbitrator.sv
+2026.04.16.13:09:28 Info: rsp_demux: "mm_interconnect_1" instantiated altera_merlin_demultiplexer "rsp_demux"
+2026.04.16.13:09:28 Info: rsp_demux_002: "mm_interconnect_1" instantiated altera_merlin_demultiplexer "rsp_demux_002"
+2026.04.16.13:09:28 Info: rsp_mux: "mm_interconnect_1" instantiated altera_merlin_multiplexer "rsp_mux"
+2026.04.16.13:09:28 Info: Reusing file /ChanduHDD/Research/ECE332/final_lab4/Lab4RequiredFiles/de1_soc/tests/gemm_kernel/bin/gemm_kernel/system/synthesis/submodules/altera_merlin_arbitrator.sv
+2026.04.16.13:09:28 Info: crosser: "mm_interconnect_1" instantiated altera_avalon_st_handshake_clock_crosser "crosser"
+2026.04.16.13:09:28 Info: Reusing file /ChanduHDD/Research/ECE332/final_lab4/Lab4RequiredFiles/de1_soc/tests/gemm_kernel/bin/gemm_kernel/system/synthesis/submodules/altera_avalon_st_clock_crosser.v
+2026.04.16.13:09:28 Info: Reusing file /ChanduHDD/Research/ECE332/final_lab4/Lab4RequiredFiles/de1_soc/tests/gemm_kernel/bin/gemm_kernel/system/synthesis/submodules/altera_avalon_st_pipeline_base.v
+2026.04.16.13:09:28 Info: Reusing file /ChanduHDD/Research/ECE332/final_lab4/Lab4RequiredFiles/de1_soc/tests/gemm_kernel/bin/gemm_kernel/system/synthesis/submodules/altera_std_synchronizer_nocut.v
+2026.04.16.13:09:42 Info: border: "hps_io" instantiated altera_interface_generator "border"
+2026.04.16.13:09:42 Info: error_adapter_0: "avalon_st_adapter" instantiated error_adapter "error_adapter_0"
+2026.04.16.13:09:42 Info: error_adapter_0: "avalon_st_adapter" instantiated error_adapter "error_adapter_0"
+2026.04.16.13:09:42 Info: error_adapter_0: "avalon_st_adapter" instantiated error_adapter "error_adapter_0"
+2026.04.16.13:09:42 Info: error_adapter_0: "avalon_st_adapter" instantiated error_adapter "error_adapter_0"
+2026.04.16.13:09:42 Info: system: Done "system" with 155 modules, 389 files

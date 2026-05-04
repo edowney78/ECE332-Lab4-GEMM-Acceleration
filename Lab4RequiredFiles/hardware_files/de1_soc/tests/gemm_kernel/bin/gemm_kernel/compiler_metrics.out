@@ -1,0 +1,2 @@
+gemm_kernel,target_fmax,200
+gemm_kernel,gemm_kernel.B1,II,0
