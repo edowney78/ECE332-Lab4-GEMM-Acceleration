@@ -1,0 +1,8 @@
+{"name":"Info","rows":[
+{"name":"Project Name","data":["vector_add"],"classes":["info-table"]},
+{"name":"Target Family, Device, Board","data":["Cyclone V, 5CSXFC6D6F31C8ES, a10_ref:de1soc_sharedonly"]},
+{"name":"AOC Version","data":["18.1.0 Build 625"]},
+{"name":"Quartus Version","data":["18.1.0 Build 625"]},
+{"name":"Command","data":["aoc device/vector_add.cl -o bin/vector_add.aocx -board=de1soc_sharedonly"]},
+{"name":"Reports Generated At", "data":["Mon May  4 20:56:42 2026"]}
+]}
