@@ -4,25 +4,25 @@
     {
       "type":"kernel"
       , "id":2
-      , "name":"gemm_kernel"
+      , "name":"hidden"
       , "children":
       [
         {
           "type":"bb"
           , "id":3
-          , "name":"gemm_kernel.B0"
+          , "name":"hidden.B0"
           , "details":
           [
             {
               "type":"table"
-              , "Latency":"7"
+              , "Latency":"1"
             }
           ]
         }
         , {
           "type":"bb"
           , "id":4
-          , "name":"gemm_kernel.B1"
+          , "name":"hidden.B1"
           , "children":
           [
             {
@@ -33,8 +33,8 @@
               [
                 [
                   {
-                    "filename":"/ChanduHDD/Research/ECE332/final_lab4/Lab4RequiredFiles/de1_soc/tests/gemm_kernel/device/gemm_kernel.cl"
-                    , "line":14
+                    "filename":"c:/Users/edowney/Documents/GitHub/ECE332-Lab4-GEMM-Acceleration/Lab4RequiredFiles/hardware_files/de1_soc/tests/gemm_kernel/device/gemm_kernel.cl"
+                    , "line":19
                   }
                 ]
               ]
@@ -72,8 +72,8 @@
               [
                 [
                   {
-                    "filename":"/ChanduHDD/Research/ECE332/final_lab4/Lab4RequiredFiles/de1_soc/tests/gemm_kernel/device/gemm_kernel.cl"
-                    , "line":14
+                    "filename":"c:/Users/edowney/Documents/GitHub/ECE332-Lab4-GEMM-Acceleration/Lab4RequiredFiles/hardware_files/de1_soc/tests/gemm_kernel/device/gemm_kernel.cl"
+                    , "line":19
                   }
                 ]
               ]
@@ -136,18 +136,18 @@
             {
               "type":"table"
               , "Latency":"185"
-              , "II":"0"
+              , "II":"-391447256"
               , "Subloops":"No"
-              , "Pipelined":"No"
+              , "Pipelined":"Yes"
               , "Fmax Bottlenecks":"No"
-              , "Loop Info":"Loop is not pipelined. See Loops Analysis for more information."
+              , "Loop Info":"Loop is pipelined with II of 3903520040. See Loops Analysis for more information."
             }
           ]
         }
         , {
           "type":"bb"
           , "id":5
-          , "name":"gemm_kernel.B2"
+          , "name":"hidden.B2"
           , "children":
           [
             {
@@ -158,8 +158,8 @@
               [
                 [
                   {
-                    "filename":"/ChanduHDD/Research/ECE332/final_lab4/Lab4RequiredFiles/de1_soc/tests/gemm_kernel/device/gemm_kernel.cl"
-                    , "line":16
+                    "filename":"c:/Users/edowney/Documents/GitHub/ECE332-Lab4-GEMM-Acceleration/Lab4RequiredFiles/hardware_files/de1_soc/tests/gemm_kernel/device/gemm_kernel.cl"
+                    , "line":22
                   }
                 ]
               ]
@@ -170,7 +170,7 @@
                   , "Width":"32 bits"
                   , "Type":"Burst-coalesced"
                   , "Stall-free":"No"
-                  , "Start Cycle":"9"
+                  , "Start Cycle":"2"
                   , "Latency":"2"
                   , "Reference":
                   [
@@ -210,7 +210,7 @@
               [
                 {
                   "type":"table"
-                  , "Start Cycle":"11"
+                  , "Start Cycle":"4"
                   , "Latency":"1"
                 }
               ]
@@ -220,7 +220,7 @@
           [
             {
               "type":"table"
-              , "Latency":"11"
+              , "Latency":"4"
             }
           ]
         }
@@ -287,7 +287,7 @@
     }
     , {
       "from":13
-      , "to":6
+      , "to":7
     }
     , {
       "from":8
@@ -295,7 +295,7 @@
     }
     , {
       "from":13
-      , "to":7
+      , "to":6
     }
   ]
 }

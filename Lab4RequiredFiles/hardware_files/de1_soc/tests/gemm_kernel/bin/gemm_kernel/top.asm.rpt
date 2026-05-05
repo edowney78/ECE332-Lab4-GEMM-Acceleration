@@ -1,5 +1,5 @@
 Assembler report for top
-Thu Apr 16 13:22:54 2026
+Mon May 04 20:03:46 2026
 Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 
 
@@ -11,7 +11,7 @@ Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
   3. Assembler Settings
   4. Assembler Encrypted IP Cores Summary
   5. Assembler Generated Files
-  6. Assembler Device Options: top.sof
+  6. Assembler Device Options: C:/Users/edowney/Documents/GitHub/ECE332-Lab4-GEMM-Acceleration/Lab4RequiredFiles/hardware_files/de1_soc/tests/gemm_kernel/bin/gemm_kernel/top.sof
   7. Assembler Messages
 
 
@@ -38,7 +38,7 @@ refer to the applicable agreement for further details.
 +---------------------------------------------------------------+
 ; Assembler Summary                                             ;
 +-----------------------+---------------------------------------+
-; Assembler Status      ; Successful - Thu Apr 16 13:22:54 2026 ;
+; Assembler Status      ; Successful - Mon May 04 20:03:46 2026 ;
 ; Revision Name         ; top                                   ;
 ; Top-level Entity Name ; top                                   ;
 ; Family                ; Cyclone V                             ;
@@ -90,23 +90,23 @@ refer to the applicable agreement for further details.
 +--------+------------------------+--------------+
 
 
-+-----------------------------------------------------------------------------------------------------------+
-; Assembler Generated Files                                                                                 ;
-+-----------------------------------------------------------------------------------------------------------+
-; File Name                                                                                                 ;
-+-----------------------------------------------------------------------------------------------------------+
-; /ChanduHDD/Research/ECE332/final_lab4/Lab4RequiredFiles/de1_soc/tests/gemm_kernel/bin/gemm_kernel/top.sof ;
-+-----------------------------------------------------------------------------------------------------------+
++----------------------------------------------------------------------------------------------------------------------------------------------------+
+; Assembler Generated Files                                                                                                                          ;
++----------------------------------------------------------------------------------------------------------------------------------------------------+
+; File Name                                                                                                                                          ;
++----------------------------------------------------------------------------------------------------------------------------------------------------+
+; C:/Users/edowney/Documents/GitHub/ECE332-Lab4-GEMM-Acceleration/Lab4RequiredFiles/hardware_files/de1_soc/tests/gemm_kernel/bin/gemm_kernel/top.sof ;
++----------------------------------------------------------------------------------------------------------------------------------------------------+
 
 
-+-----------------------------------+
-; Assembler Device Options: top.sof ;
-+----------------+------------------+
-; Option         ; Setting          ;
-+----------------+------------------+
-; JTAG usercode  ; 0x08DC4AFF       ;
-; Checksum       ; 0x08DC4AFF       ;
-+----------------+------------------+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Assembler Device Options: C:/Users/edowney/Documents/GitHub/ECE332-Lab4-GEMM-Acceleration/Lab4RequiredFiles/hardware_files/de1_soc/tests/gemm_kernel/bin/gemm_kernel/top.sof ;
++----------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Option         ; Setting                                                                                                                                                     ;
++----------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; JTAG usercode  ; 0x087937F1                                                                                                                                                  ;
+; Checksum       ; 0x087937F1                                                                                                                                                  ;
++----------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 
 +--------------------+
@@ -115,18 +115,18 @@ refer to the applicable agreement for further details.
 Info: *******************************************************************
 Info: Running Quartus Prime Assembler
     Info: Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
-    Info: Processing started: Thu Apr 16 13:22:33 2026
+    Info: Processing started: Mon May 04 20:03:26 2026
 Info: Command: quartus_asm --read_settings_files=on --write_settings_files=off top -c top
-Info: Using INI file /ChanduHDD/Research/ECE332/final_lab4/Lab4RequiredFiles/de1_soc/tests/gemm_kernel/bin/gemm_kernel/quartus.ini
+Info: Using INI file C:/Users/edowney/Documents/GitHub/ECE332-Lab4-GEMM-Acceleration/Lab4RequiredFiles/hardware_files/de1_soc/tests/gemm_kernel/bin/gemm_kernel/quartus.ini
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (115030): Assembler is generating device programming files
 Warning (11713): The configuration of the Hard Processor Subsystem (HPS) within this design has changed.
 The Preloader software that initializes the HPS requires an update.
 Using hps_isw_handoff/system_acl_iface_hps/, run the Preloader Support Package Generator to update your Preloader software
 Info: Quartus Prime Assembler was successful. 0 errors, 2 warnings
-    Info: Peak virtual memory: 1199 megabytes
-    Info: Processing ended: Thu Apr 16 13:22:54 2026
-    Info: Elapsed time: 00:00:21
-    Info: Total CPU time (on all processors): 00:00:20
+    Info: Peak virtual memory: 5086 megabytes
+    Info: Processing ended: Mon May 04 20:03:46 2026
+    Info: Elapsed time: 00:00:20
+    Info: Total CPU time (on all processors): 00:00:18
 
 

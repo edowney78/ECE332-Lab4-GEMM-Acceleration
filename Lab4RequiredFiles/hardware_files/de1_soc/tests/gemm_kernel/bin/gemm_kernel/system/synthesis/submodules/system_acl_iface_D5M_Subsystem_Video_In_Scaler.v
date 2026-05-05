@@ -60,15 +60,15 @@ parameter CW					= 0; // Frame's Channel Width
 parameter DW					= 15; // Frame's Data Width
 parameter EW					= 0; // Frame's Empty Width
 
-parameter WIW					= 10; // Incoming frame's width's address width
+parameter WIW					= 9; // Incoming frame's width's address width
 parameter HIW					= 9; // Incoming frame's height's address width
-parameter WIDTH_IN			= 1280;
+parameter WIDTH_IN			= 960;
 
 parameter WIDTH_DROP_MASK	= 4'b0111;
 parameter HEIGHT_DROP_MASK	= 4'b1110;
 
-parameter MH_WW				= 8; // Multiply height's incoming width's address width
-parameter MH_WIDTH_IN		= 320; // Multiply height's incoming width
+parameter MH_WW				= 7; // Multiply height's incoming width's address width
+parameter MH_WIDTH_IN		= 240; // Multiply height's incoming width
 parameter MH_CW				= 0; // Multiply height's counter width
 
 parameter MW_CW				= 0; // Multiply width's counter width

@@ -98,6 +98,7 @@ module system_acl_iface (
 		inout  wire         peripheral_hps_io_i2c0_inst_SCL,         //                                 .hps_io_i2c0_inst_SCL
 		inout  wire         peripheral_hps_io_gpio_inst_GPIO53,      //                                 .hps_io_gpio_inst_GPIO53
 		input  wire [3:0]   pushbuttons_export,                      //                      pushbuttons.export
+		output wire [15:0]  seven_segment_pio_export,                //                seven_segment_pio.export
 		output wire         vga_CLK,                                 //                              vga.CLK
 		output wire         vga_HS,                                  //                                 .HS
 		output wire         vga_VS,                                  //                                 .VS
@@ -330,6 +331,11 @@ module system_acl_iface (
 	wire    [1:0] mm_interconnect_3_pushbuttons_s1_address;                                    // mm_interconnect_3:Pushbuttons_s1_address -> Pushbuttons:address
 	wire          mm_interconnect_3_pushbuttons_s1_write;                                      // mm_interconnect_3:Pushbuttons_s1_write -> Pushbuttons:write_n
 	wire   [31:0] mm_interconnect_3_pushbuttons_s1_writedata;                                  // mm_interconnect_3:Pushbuttons_s1_writedata -> Pushbuttons:writedata
+	wire          mm_interconnect_3_seven_segment_s1_chipselect;                               // mm_interconnect_3:seven_segment_s1_chipselect -> seven_segment:chipselect
+	wire   [31:0] mm_interconnect_3_seven_segment_s1_readdata;                                 // seven_segment:readdata -> mm_interconnect_3:seven_segment_s1_readdata
+	wire    [1:0] mm_interconnect_3_seven_segment_s1_address;                                  // mm_interconnect_3:seven_segment_s1_address -> seven_segment:address
+	wire          mm_interconnect_3_seven_segment_s1_write;                                    // mm_interconnect_3:seven_segment_s1_write -> seven_segment:write_n
+	wire   [31:0] mm_interconnect_3_seven_segment_s1_writedata;                                // mm_interconnect_3:seven_segment_s1_writedata -> seven_segment:writedata
 	wire   [31:0] mm_interconnect_3_pixel_dma_addr_translation_slave_readdata;                 // Pixel_DMA_Addr_Translation:slave_readdata -> mm_interconnect_3:Pixel_DMA_Addr_Translation_slave_readdata
 	wire          mm_interconnect_3_pixel_dma_addr_translation_slave_waitrequest;              // Pixel_DMA_Addr_Translation:slave_waitrequest -> mm_interconnect_3:Pixel_DMA_Addr_Translation_slave_waitrequest
 	wire    [1:0] mm_interconnect_3_pixel_dma_addr_translation_slave_address;                  // mm_interconnect_3:Pixel_DMA_Addr_Translation_slave_address -> Pixel_DMA_Addr_Translation:slave_address
@@ -373,7 +379,7 @@ module system_acl_iface (
 	wire   [31:0] hps_f2h_irq0_irq;                                                            // irq_mapper:sender_irq -> hps:f2h_irq_p0
 	wire          irq_mapper_001_receiver0_irq;                                                // Pushbuttons:irq -> irq_mapper_001:receiver0_irq
 	wire   [31:0] hps_f2h_irq1_irq;                                                            // irq_mapper_001:sender_irq -> hps:f2h_irq_p1
-	wire          rst_controller_reset_out_reset;                                              // rst_controller:reset_out -> [ADC:reset, AV_Config:reset, Onchip_SRAM:reset, Pixel_DMA_Addr_Translation:reset, Pushbuttons:reset_n, SDRAM:reset_n, Video_In_DMA_Addr_Translation:reset, acl_kernel_clk:reset_reset_n, acl_kernel_interface:reset_reset_n, acl_kernel_interface:sw_reset_in_reset, led:reset_n, mm_interconnect_1:JTAG_to_FPGA_Bridge_clk_reset_reset_bridge_in_reset_reset, mm_interconnect_1:Onchip_SRAM_reset1_reset_bridge_in_reset_reset, mm_interconnect_2:pipe_stage_host_ctrl_reset_reset_bridge_in_reset_reset, mm_interconnect_3:D5M_Subsystem_sys_reset_reset_bridge_in_reset_reset, mm_interconnect_3:pipe_stage_host_ctrl_reset_reset_bridge_in_reset_reset, pipe_stage_host_ctrl:reset, rst_translator:in_reset, version_id:resetn]
+	wire          rst_controller_reset_out_reset;                                              // rst_controller:reset_out -> [ADC:reset, AV_Config:reset, Onchip_SRAM:reset, Pixel_DMA_Addr_Translation:reset, Pushbuttons:reset_n, SDRAM:reset_n, Video_In_DMA_Addr_Translation:reset, acl_kernel_clk:reset_reset_n, acl_kernel_interface:reset_reset_n, acl_kernel_interface:sw_reset_in_reset, led:reset_n, mm_interconnect_1:JTAG_to_FPGA_Bridge_clk_reset_reset_bridge_in_reset_reset, mm_interconnect_1:Onchip_SRAM_reset1_reset_bridge_in_reset_reset, mm_interconnect_2:pipe_stage_host_ctrl_reset_reset_bridge_in_reset_reset, mm_interconnect_3:D5M_Subsystem_sys_reset_reset_bridge_in_reset_reset, mm_interconnect_3:pipe_stage_host_ctrl_reset_reset_bridge_in_reset_reset, pipe_stage_host_ctrl:reset, rst_translator:in_reset, seven_segment:reset_n, version_id:resetn]
 	wire          rst_controller_reset_out_reset_req;                                          // rst_controller:reset_req -> [Onchip_SRAM:reset_req, rst_translator:reset_req_in]
 	wire          rst_controller_001_reset_out_reset;                                          // rst_controller_001:reset_out -> [address_span_extender_kernel:reset, clock_cross_kernel_mem1:m0_reset, mm_interconnect_0:address_span_extender_kernel_reset_reset_bridge_in_reset_reset, mm_interconnect_4:clock_cross_kernel_mem1_m0_reset_reset_bridge_in_reset_reset]
 	wire          acl_kernel_interface_sw_reset_export_reset;                                  // acl_kernel_interface:sw_reset_export_reset_n -> rst_controller_001:reset_in0
@@ -931,6 +937,17 @@ module system_acl_iface (
 		.locked   ()                 // (terminated)
 	);
 
+	system_acl_iface_seven_segment seven_segment (
+		.clk        (config_clk_clk),                                //                 clk.clk
+		.reset_n    (~rst_controller_reset_out_reset),               //               reset.reset_n
+		.address    (mm_interconnect_3_seven_segment_s1_address),    //                  s1.address
+		.write_n    (~mm_interconnect_3_seven_segment_s1_write),     //                    .write_n
+		.writedata  (mm_interconnect_3_seven_segment_s1_writedata),  //                    .writedata
+		.chipselect (mm_interconnect_3_seven_segment_s1_chipselect), //                    .chipselect
+		.readdata   (mm_interconnect_3_seven_segment_s1_readdata),   //                    .readdata
+		.out_port   (seven_segment_pio_export)                       // external_connection.export
+	);
+
 	version_id #(
 		.WIDTH      (32),
 		.VERSION_ID (-1597521440)
@@ -1182,6 +1199,11 @@ module system_acl_iface (
 		.Pushbuttons_s1_readdata                                (mm_interconnect_3_pushbuttons_s1_readdata),                             //                                                 .readdata
 		.Pushbuttons_s1_writedata                               (mm_interconnect_3_pushbuttons_s1_writedata),                            //                                                 .writedata
 		.Pushbuttons_s1_chipselect                              (mm_interconnect_3_pushbuttons_s1_chipselect),                           //                                                 .chipselect
+		.seven_segment_s1_address                               (mm_interconnect_3_seven_segment_s1_address),                            //                                 seven_segment_s1.address
+		.seven_segment_s1_write                                 (mm_interconnect_3_seven_segment_s1_write),                              //                                                 .write
+		.seven_segment_s1_readdata                              (mm_interconnect_3_seven_segment_s1_readdata),                           //                                                 .readdata
+		.seven_segment_s1_writedata                             (mm_interconnect_3_seven_segment_s1_writedata),                          //                                                 .writedata
+		.seven_segment_s1_chipselect                            (mm_interconnect_3_seven_segment_s1_chipselect),                         //                                                 .chipselect
 		.version_id_s_read                                      (mm_interconnect_3_version_id_s_read),                                   //                                     version_id_s.read
 		.version_id_s_readdata                                  (mm_interconnect_3_version_id_s_readdata),                               //                                                 .readdata
 		.VGA_Subsystem_pixel_dma_control_slave_address          (mm_interconnect_3_vga_subsystem_pixel_dma_control_slave_address),       //            VGA_Subsystem_pixel_dma_control_slave.address

@@ -214,6 +214,14 @@
          type = "int";
       }
    }
+   element seven_segment
+   {
+      datum _sortIndex
+      {
+         value = "23";
+         type = "int";
+      }
+   }
    element version_id
    {
       datum _sortIndex
@@ -318,6 +326,11 @@
  <interface
    name="pushbuttons"
    internal="Pushbuttons.external_connection"
+   type="conduit"
+   dir="end" />
+ <interface
+   name="seven_segment_pio"
+   internal="seven_segment.external_connection"
    type="conduit"
    dir="end" />
  <interface name="vga" internal="VGA_Subsystem.vga" type="conduit" dir="end" />
@@ -1377,6 +1390,24 @@
   <parameter name="gui_switchover_mode">Automatic Switchover</parameter>
   <parameter name="gui_use_locked" value="false" />
  </module>
+ <module
+   name="seven_segment"
+   kind="altera_avalon_pio"
+   version="18.1"
+   enabled="1">
+  <parameter name="bitClearingEdgeCapReg" value="false" />
+  <parameter name="bitModifyingOutReg" value="false" />
+  <parameter name="captureEdge" value="false" />
+  <parameter name="clockRate" value="50000000" />
+  <parameter name="direction" value="Output" />
+  <parameter name="edgeType" value="RISING" />
+  <parameter name="generateIRQ" value="false" />
+  <parameter name="irqType" value="LEVEL" />
+  <parameter name="resetValue" value="0" />
+  <parameter name="simDoTestBenchWiring" value="false" />
+  <parameter name="simDrivenValue" value="0" />
+  <parameter name="width" value="16" />
+ </module>
  <module name="version_id" kind="version_id" version="10.0" enabled="1">
   <parameter name="AUTO_CLK_CLOCK_RATE" value="50000000" />
   <parameter name="VERSION_ID" value="-1597521440" />
@@ -1488,6 +1519,15 @@
    end="Pushbuttons.s1">
   <parameter name="arbitrationPriority" value="1" />
   <parameter name="baseAddress" value="0x3010" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="18.1"
+   start="pipe_stage_host_ctrl.m0"
+   end="seven_segment.s1">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x3000" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1664,6 +1704,11 @@
    kind="clock"
    version="18.1"
    start="config_clk.out_clk"
+   end="seven_segment.clk" />
+ <connection
+   kind="clock"
+   version="18.1"
+   start="config_clk.out_clk"
    end="Onchip_SRAM.clk1" />
  <connection
    kind="clock"
@@ -1804,6 +1849,11 @@
    version="18.1"
    start="global_reset.out_reset"
    end="SDRAM.reset" />
+ <connection
+   kind="reset"
+   version="18.1"
+   start="global_reset.out_reset"
+   end="seven_segment.reset" />
  <connection
    kind="reset"
    version="18.1"

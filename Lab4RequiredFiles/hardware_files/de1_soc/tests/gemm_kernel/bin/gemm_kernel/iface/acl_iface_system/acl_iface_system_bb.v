@@ -94,7 +94,8 @@ module acl_iface_system (
 	video_in_LINE_VALID,
 	video_in_FRAME_VALID,
 	video_in_pixel_clk_reset,
-	video_in_PIXEL_DATA);	
+	video_in_PIXEL_DATA,
+	seven_segment_pio_export);	
 
 	output		adc_sclk;
 	output		adc_cs_n;
@@ -191,4 +192,5 @@ module acl_iface_system (
 	input		video_in_FRAME_VALID;
 	input		video_in_pixel_clk_reset;
 	input	[11:0]	video_in_PIXEL_DATA;
+	output	[15:0]	seven_segment_pio_export;
 endmodule

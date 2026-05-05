@@ -291,6 +291,21 @@ bool gemm_backend_run_fpga(const std::vector<float>& A,
     }
 
     //TODO 1: create buffer for B and C
+    
+    buf_B = clCreateBuffer(g_context, CL_MEM_READ_ONLY, bytes_B, 0, &status);
+     if (status != CL_SUCCESS || !buf_B) {
+        std::cerr << "gemm_backend_run_fpga: clCreateBuffer B failed, status = "
+                  << status << std::endl;
+        return false;
+    }
+
+    buf_C = clCreateBuffer(g_context, CL_MEM_WRITE_ONLY, bytes_C, 0, &status);
+     if (status != CL_SUCCESS || !buf_C) {
+        std::cerr << "gemm_backend_run_fpga: clCreateBuffer C failed, status = "
+                  << status << std::endl;
+        return false;
+    }
+    
 
     
 
@@ -306,9 +321,24 @@ bool gemm_backend_run_fpga(const std::vector<float>& A,
     }
 
     //TODO 2: write to buffer for B
-
+    status = clEnqueueWriteBuffer(g_queue, buf_B, CL_TRUE, 0, bytes_B,(const void*)A.data(), 0, 0, 0);
+    if (status != CL_SUCCESS) {
+        std::cerr << "gemm_backend_run_fpga: write B failed, status = "
+                  << status << std::endl;
+        clReleaseMemObject(buf_A);
+        clReleaseMemObject(buf_B);
+        clReleaseMemObject(buf_C);
+        return false;
+    }
+    
+    
+    
     status  = clSetKernelArg(g_kernel, 0, sizeof(cl_mem), &buf_A);
     //TODO 3: set kernel arguments for remaining
+    status  = clSetKernelArg(g_kernel, 1, sizeof(cl_mem), &buf_B);
+    status  = clSetKernelArg(g_kernel, 2, sizeof(cl_mem), &buf_C);
+    status  = clSetKernelArg(g_kernel, 3, sizeof(int), &M);
+    status  = clSetKernelArg(g_kernel, 4, sizeof(int), &K);
     status |= clSetKernelArg(g_kernel, 5, sizeof(int), &N);
 
     if (status != CL_SUCCESS) {
@@ -354,9 +384,23 @@ bool gemm_backend_run_fpga(const std::vector<float>& A,
 
     //TODO 4: Read out put C data 
     
+    //******************************/
+    status = clEnqeueReadBuffer(
+        g_queue,
+        buf_C,
+        CL_FALSE,
+        0,
+        bytes_C,
+        0,
+        0,
+        0,
+        0
+    );
+
     clReleaseMemObject(buf_A);
     clReleaseMemObject(buf_B);
     clReleaseMemObject(buf_C);
+
 
     return true;
 }

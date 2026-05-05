@@ -4,15 +4,15 @@
   , "children":
   [
     {
-      "name":"Kernel: gemm_kernel"
+      "name":"Kernel: hidden"
       , "data":
       ["", "", ""]
       , "debug":
       [
         [
           {
-            "filename":"/ChanduHDD/Research/ECE332/final_lab4/Lab4RequiredFiles/de1_soc/tests/gemm_kernel/device/gemm_kernel.cl"
-            , "line":7
+            "filename":"c:/Users/edowney/Documents/GitHub/ECE332-Lab4-GEMM-Acceleration/Lab4RequiredFiles/hardware_files/de1_soc/tests/gemm_kernel/device/gemm_kernel.cl"
+            , "line":6
           }
         ]
       ]
@@ -41,27 +41,27 @@
       , "children":
       [
         {
-          "name":"gemm_kernel.B1"
+          "name":"hidden.B1"
           , "data":
-          ["No", "n/a", "n/a"]
+          ["Yes", "3903520040", "n/a"]
           , "debug":
           [
             [
               {
-                "filename":"/ChanduHDD/Research/ECE332/final_lab4/Lab4RequiredFiles/de1_soc/tests/gemm_kernel/device/gemm_kernel.cl"
-                , "line":13
+                "filename":"c:/Users/edowney/Documents/GitHub/ECE332-Lab4-GEMM-Acceleration/Lab4RequiredFiles/hardware_files/de1_soc/tests/gemm_kernel/device/gemm_kernel.cl"
+                , "line":16
               }
             ]
             , [
               {
-                "filename":"/ChanduHDD/Research/ECE332/final_lab4/Lab4RequiredFiles/de1_soc/tests/gemm_kernel/device/gemm_kernel.cl"
-                , "line":13
+                "filename":"c:/Users/edowney/Documents/GitHub/ECE332-Lab4-GEMM-Acceleration/Lab4RequiredFiles/hardware_files/de1_soc/tests/gemm_kernel/device/gemm_kernel.cl"
+                , "line":16
               }
             ]
             , [
               {
-                "filename":"/ChanduHDD/Research/ECE332/final_lab4/Lab4RequiredFiles/de1_soc/tests/gemm_kernel/device/gemm_kernel.cl"
-                , "line":15
+                "filename":"c:/Users/edowney/Documents/GitHub/ECE332-Lab4-GEMM-Acceleration/Lab4RequiredFiles/hardware_files/de1_soc/tests/gemm_kernel/device/gemm_kernel.cl"
+                , "line":20
               }
             ]
           ]

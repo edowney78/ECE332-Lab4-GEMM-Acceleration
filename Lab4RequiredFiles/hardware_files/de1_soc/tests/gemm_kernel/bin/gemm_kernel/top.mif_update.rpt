@@ -1,5 +1,5 @@
 MIF/HEX Update report for top
-Thu Apr 16 13:22:30 2026
+Mon May 04 20:03:25 2026
 Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 
 
@@ -35,7 +35,7 @@ refer to the applicable agreement for further details.
 +---------------------------------------------------------------+
 ; MIF/HEX Update Summary                                        ;
 +-----------------------+---------------------------------------+
-; MIF/HEX Update Status ; Successful - Thu Apr 16 13:22:30 2026 ;
+; MIF/HEX Update Status ; Successful - Mon May 04 20:03:25 2026 ;
 ; Revision Name         ; top                                   ;
 ; Top-level Entity Name ; top                                   ;
 ; Family                ; Cyclone V                             ;
@@ -43,15 +43,15 @@ refer to the applicable agreement for further details.
 +-----------------------+---------------------------------------+
 
 
-+------------------------------------------------------------------------------------------------------------------------------------------------+
-; MIF/HEX Update Processed Files                                                                                                                 ;
-+------------------------------------------------------------------------------------------------------------------------------------------------+
-; File Name                                                                                                                                      ;
-+------------------------------------------------------------------------------------------------------------------------------------------------+
-; /ChanduHDD/Research/ECE332/final_lab4/Lab4RequiredFiles/de1_soc/tests/gemm_kernel/bin/gemm_kernel/sys_description.hex                          ;
-; /ChanduHDD/Research/ECE332/final_lab4/Lab4RequiredFiles/de1_soc/tests/gemm_kernel/bin/gemm_kernel/system/synthesis/submodules/hps_AC_ROM.hex   ;
-; /ChanduHDD/Research/ECE332/final_lab4/Lab4RequiredFiles/de1_soc/tests/gemm_kernel/bin/gemm_kernel/system/synthesis/submodules/hps_inst_ROM.hex ;
-+------------------------------------------------------------------------------------------------------------------------------------------------+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; MIF/HEX Update Processed Files                                                                                                                                                          ;
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; File Name                                                                                                                                                                               ;
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; C:/Users/edowney/Documents/GitHub/ECE332-Lab4-GEMM-Acceleration/Lab4RequiredFiles/hardware_files/de1_soc/tests/gemm_kernel/bin/gemm_kernel/sys_description.hex                          ;
+; C:/Users/edowney/Documents/GitHub/ECE332-Lab4-GEMM-Acceleration/Lab4RequiredFiles/hardware_files/de1_soc/tests/gemm_kernel/bin/gemm_kernel/system/synthesis/submodules/hps_AC_ROM.hex   ;
+; C:/Users/edowney/Documents/GitHub/ECE332-Lab4-GEMM-Acceleration/Lab4RequiredFiles/hardware_files/de1_soc/tests/gemm_kernel/bin/gemm_kernel/system/synthesis/submodules/hps_inst_ROM.hex ;
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 
 +-------------------------+
@@ -60,21 +60,21 @@ refer to the applicable agreement for further details.
 Info: *******************************************************************
 Info: Running Quartus Prime MIF/HEX Update
     Info: Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
-    Info: Processing started: Thu Apr 16 13:22:06 2026
+    Info: Processing started: Mon May 04 20:03:00 2026
 Info: Command: quartus_cdb top -c top --update_mif
-Info: Using INI file /ChanduHDD/Research/ECE332/final_lab4/Lab4RequiredFiles/de1_soc/tests/gemm_kernel/bin/gemm_kernel/quartus.ini
+Info: Using INI file C:/Users/edowney/Documents/GitHub/ECE332-Lab4-GEMM-Acceleration/Lab4RequiredFiles/hardware_files/de1_soc/tests/gemm_kernel/bin/gemm_kernel/quartus.ini
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
-Warning (39023): Can't find Memory Initialization File system_acl_iface_Onchip_SRAM.hex -- skipped updates for this file
+Warning (39023): Can't find Memory Initialization File system_acl_iface_onchip_sram.hex -- skipped updates for this file
 Warning (39023): Can't find Memory Initialization File altera_up_video_char_mode_rom_128.mif -- skipped updates for this file
-Critical Warning (127005): Memory depth (512) in the design file differs from memory depth (17) in the Memory Initialization File "/ChanduHDD/Research/ECE332/final_lab4/Lab4RequiredFiles/de1_soc/tests/gemm_kernel/bin/gemm_kernel/sys_description.hex" -- setting initial value for remaining addresses to 0
+Critical Warning (127005): Memory depth (512) in the design file differs from memory depth (16) in the Memory Initialization File "C:/Users/edowney/Documents/GitHub/ECE332-Lab4-GEMM-Acceleration/Lab4RequiredFiles/hardware_files/de1_soc/tests/gemm_kernel/bin/gemm_kernel/sys_description.hex" -- setting initial value for remaining addresses to 0
 Info (39024): Processed the following Memory Initialization File(s)
-    Info (39025): Processed Memory Initialization File /ChanduHDD/Research/ECE332/final_lab4/Lab4RequiredFiles/de1_soc/tests/gemm_kernel/bin/gemm_kernel/sys_description.hex File: /ChanduHDD/Research/ECE332/final_lab4/Lab4RequiredFiles/de1_soc/tests/gemm_kernel/bin/gemm_kernel/sys_description.hex Line: 0
-    Info (39025): Processed Memory Initialization File /ChanduHDD/Research/ECE332/final_lab4/Lab4RequiredFiles/de1_soc/tests/gemm_kernel/bin/gemm_kernel/system/synthesis/submodules/hps_AC_ROM.hex File: /ChanduHDD/Research/ECE332/final_lab4/Lab4RequiredFiles/de1_soc/tests/gemm_kernel/bin/gemm_kernel/system/synthesis/submodules/hps_AC_ROM.hex Line: 0
-    Info (39025): Processed Memory Initialization File /ChanduHDD/Research/ECE332/final_lab4/Lab4RequiredFiles/de1_soc/tests/gemm_kernel/bin/gemm_kernel/system/synthesis/submodules/hps_inst_ROM.hex File: /ChanduHDD/Research/ECE332/final_lab4/Lab4RequiredFiles/de1_soc/tests/gemm_kernel/bin/gemm_kernel/system/synthesis/submodules/hps_inst_ROM.hex Line: 0
+    Info (39025): Processed Memory Initialization File C:/Users/edowney/Documents/GitHub/ECE332-Lab4-GEMM-Acceleration/Lab4RequiredFiles/hardware_files/de1_soc/tests/gemm_kernel/bin/gemm_kernel/sys_description.hex File: C:/Users/edowney/Documents/GitHub/ECE332-Lab4-GEMM-Acceleration/Lab4RequiredFiles/hardware_files/de1_soc/tests/gemm_kernel/bin/gemm_kernel/sys_description.hex Line: 0
+    Info (39025): Processed Memory Initialization File C:/Users/edowney/Documents/GitHub/ECE332-Lab4-GEMM-Acceleration/Lab4RequiredFiles/hardware_files/de1_soc/tests/gemm_kernel/bin/gemm_kernel/system/synthesis/submodules/hps_AC_ROM.hex File: C:/Users/edowney/Documents/GitHub/ECE332-Lab4-GEMM-Acceleration/Lab4RequiredFiles/hardware_files/de1_soc/tests/gemm_kernel/bin/gemm_kernel/system/synthesis/submodules/hps_AC_ROM.hex Line: 0
+    Info (39025): Processed Memory Initialization File C:/Users/edowney/Documents/GitHub/ECE332-Lab4-GEMM-Acceleration/Lab4RequiredFiles/hardware_files/de1_soc/tests/gemm_kernel/bin/gemm_kernel/system/synthesis/submodules/hps_inst_ROM.hex File: C:/Users/edowney/Documents/GitHub/ECE332-Lab4-GEMM-Acceleration/Lab4RequiredFiles/hardware_files/de1_soc/tests/gemm_kernel/bin/gemm_kernel/system/synthesis/submodules/hps_inst_ROM.hex Line: 0
 Info: Quartus Prime MIF/HEX Update was successful. 0 errors, 4 warnings
-    Info: Peak virtual memory: 1528 megabytes
-    Info: Processing ended: Thu Apr 16 13:22:30 2026
-    Info: Elapsed time: 00:00:24
-    Info: Total CPU time (on all processors): 00:00:24
+    Info: Peak virtual memory: 5091 megabytes
+    Info: Processing ended: Mon May 04 20:03:25 2026
+    Info: Elapsed time: 00:00:25
+    Info: Total CPU time (on all processors): 00:00:26
 
 

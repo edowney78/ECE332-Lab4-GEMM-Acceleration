@@ -64,14 +64,14 @@ parameter HEIGHT_IN					= 972; // Incoming frame's height in lines
 parameter WW_IN						= 10; // Incoming frame's width's address width
 parameter HW_IN						= 9; // Incoming frame's height's address width
 
-parameter DROP_PIXELS_AT_START	= 8;
-parameter DROP_PIXELS_AT_END		= 8;
+parameter DROP_PIXELS_AT_START	= 168;
+parameter DROP_PIXELS_AT_END		= 168;
 parameter DROP_LINES_AT_START		= 6;
 parameter DROP_LINES_AT_END		= 6;
 
-parameter WIDTH_OUT					= 1280; // Final frame's width in pixels
+parameter WIDTH_OUT					= 960; // Final frame's width in pixels
 parameter HEIGHT_OUT					= 960; // Final frame's height in lines
-parameter WW_OUT						= 10; // Final frame's width's address width
+parameter WW_OUT						= 9; // Final frame's width's address width
 parameter HW_OUT						= 9; // Final frame's height's address width
 
 parameter ADD_PIXELS_AT_START		= 0;

@@ -25,7 +25,7 @@
          type = "boolean";
       }
    }
-   element avs_gemm_kernel_cra_cra_ring
+   element avs_hidden_cra_cra_ring
    {
       datum _sortIndex
       {
@@ -171,7 +171,7 @@
   <parameter name="AUTO_VGA_PLL_REF_CLK_RESET_DOMAIN" value="2" />
  </module>
  <module
-   name="avs_gemm_kernel_cra_cra_ring"
+   name="avs_hidden_cra_cra_ring"
    kind="cra_ring_node"
    version="1.0"
    enabled="1">
@@ -215,8 +215,8 @@
  <connection
    kind="avalon"
    version="18.1"
-   start="avs_gemm_kernel_cra_cra_ring.cra_master"
-   end="gemm_kernel_system.avs_gemm_kernel_cra">
+   start="avs_hidden_cra_cra_ring.cra_master"
+   end="gemm_kernel_system.avs_hidden_cra">
   <parameter name="arbitrationPriority" value="1" />
   <parameter name="baseAddress" value="0x0000" />
   <parameter name="defaultConnection" value="false" />
@@ -249,7 +249,7 @@
    kind="clock"
    version="18.1"
    start="acl_iface.kernel_clk"
-   end="avs_gemm_kernel_cra_cra_ring.clock" />
+   end="avs_hidden_cra_cra_ring.clock" />
  <connection
    kind="clock"
    version="18.1"
@@ -264,7 +264,7 @@
    kind="conduit"
    version="18.1"
    start="cra_root.ring_out"
-   end="avs_gemm_kernel_cra_cra_ring.ring_in">
+   end="avs_hidden_cra_cra_ring.ring_in">
   <parameter name="endPort" value="" />
   <parameter name="endPortLSB" value="0" />
   <parameter name="startPort" value="" />
@@ -274,7 +274,7 @@
  <connection
    kind="conduit"
    version="18.1"
-   start="avs_gemm_kernel_cra_cra_ring.ring_out"
+   start="avs_hidden_cra_cra_ring.ring_out"
    end="cra_root.ring_in">
   <parameter name="endPort" value="" />
   <parameter name="endPortLSB" value="0" />
@@ -308,7 +308,7 @@
    kind="reset"
    version="18.1"
    start="acl_iface.kernel_reset"
-   end="avs_gemm_kernel_cra_cra_ring.reset" />
+   end="avs_hidden_cra_cra_ring.reset" />
  <interconnectRequirement for="$system" name="qsys_mm.clockCrossingAdapter" value="FIFO" />
  <interconnectRequirement for="$system" name="qsys_mm.maxAdditionalLatency" value="0" />
 </system>

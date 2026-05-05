@@ -7,7 +7,7 @@
     , "children":
     [
       {
-        "name":"gemm_kernel"
+        "name":"hidden"
         , "data":
         [
           "NDRange"
@@ -26,8 +26,8 @@
         [
           [
             {
-              "filename":"/ChanduHDD/Research/ECE332/final_lab4/Lab4RequiredFiles/de1_soc/tests/gemm_kernel/device/gemm_kernel.cl"
-              , "line":7
+              "filename":"c:/Users/edowney/Documents/GitHub/ECE332-Lab4-GEMM-Acceleration/Lab4RequiredFiles/hardware_files/de1_soc/tests/gemm_kernel/device/gemm_kernel.cl"
+              , "line":6
             }
           ]
         ]
@@ -42,15 +42,15 @@
     , "children":
     [
       {
-        "name":"gemm_kernel"
+        "name":"hidden"
         , "data":
-        [10771, 14164, 102, 7]
+        [7499, 11377, 72, 3]
         , "debug":
         [
           [
             {
-              "filename":"/ChanduHDD/Research/ECE332/final_lab4/Lab4RequiredFiles/de1_soc/tests/gemm_kernel/device/gemm_kernel.cl"
-              , "line":7
+              "filename":"c:/Users/edowney/Documents/GitHub/ECE332-Lab4-GEMM-Acceleration/Lab4RequiredFiles/hardware_files/de1_soc/tests/gemm_kernel/device/gemm_kernel.cl"
+              , "line":6
             }
           ]
         ]
@@ -74,9 +74,9 @@
         , "classes":
         ["summary-highlight", "nohover"]
         , "data":
-        [19508, 24987, 122, 7]
+        [16236, 22200, 92, 3]
         , "data_percent":
-        [17.8038, 11.4021, 23.7354, 6.25]
+        [14.8177, 10.1303, 17.8988, 2.67857]
       }
       , {
         "name":"Available"
@@ -105,27 +105,8 @@
         [
           [
             {
-              "filename":"/ChanduHDD/Research/ECE332/final_lab4/Lab4RequiredFiles/de1_soc/tests/gemm_kernel/device/gemm_kernel.cl"
-              , "line":14
-            }
-          ]
-        ]
-      }
-      , {
-        "name":"Load uses a Burst-coalesced cached LSU"
-        , "details":
-        [
-          {
-            "type":"text"
-            , "text":"Load with a private 64 kilobit cache. Cache is not shared with any other load. It is flushed on kernel start. Use Dynamic Profiler to verify cache effectiveness. Other kernels should not be updating the data in global memory while this kernel is using it. Cache is created when memory access pattern is data-dependent or appears to be repetitive. Simplify access pattern or mark pointer as 'volatile' to disable generation of this cache."
-          }
-        ]
-        , "debug":
-        [
-          [
-            {
-              "filename":"/ChanduHDD/Research/ECE332/final_lab4/Lab4RequiredFiles/de1_soc/tests/gemm_kernel/device/gemm_kernel.cl"
-              , "line":14
+              "filename":"c:/Users/edowney/Documents/GitHub/ECE332-Lab4-GEMM-Acceleration/Lab4RequiredFiles/hardware_files/de1_soc/tests/gemm_kernel/device/gemm_kernel.cl"
+              , "line":19
             }
           ]
         ]

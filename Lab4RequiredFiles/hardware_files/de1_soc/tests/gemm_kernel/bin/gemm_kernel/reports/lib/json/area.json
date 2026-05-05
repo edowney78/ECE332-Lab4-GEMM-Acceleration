@@ -4,9 +4,9 @@
   , "debug_enabled":"true"
   , "type":"module"
   , "total_percent":
-  [27.5331, 17.8038, 11.4021, 23.7354, 6.25]
+  [23.6198, 14.8177, 10.1303, 17.8988, 2.67857]
   , "total":
-  [19508, 24987, 122, 7]
+  [16236, 22200, 92, 3]
   , "name":"Kernel System"
   , "max_resources":
   [109572, 219144, 514, 112]
@@ -50,13 +50,13 @@
       ]
     }
     , {
-      "name":"gemm_kernel"
+      "name":"hidden"
       , "compute_units":1
       , "type":"function"
       , "total_percent":
-      [15.3866, 9.83007, 6.46333, 19.8444, 6.25]
+      [11.4733, 6.8439, 5.19156, 14.0078, 2.67857]
       , "total_kernel_resources":
-      [10771, 14164, 102, 7]
+      [7499, 11377, 72, 3]
       , "details":
       [
         {
@@ -80,97 +80,7 @@
           ]
         }
         , {
-          "name":"gemm_kernel.B0"
-          , "type":"basicblock"
-          , "children":
-          [
-            {
-              "name":"State"
-              , "type":"resource"
-              , "data":
-              [51, 101, 0, 0]
-              , "details":
-              [
-                {
-                  "type":"text"
-                  , "text":"Resources for live values and control logic. To reduce this area:"
-                  , "details":
-                  [
-                    {
-                      "type":"text"
-                      , "text":"reduce size of local variables"
-                    }
-                    , {
-                      "type":"text"
-                      , "text":"reduce scope of local variables, localizing them as much as possible"
-                    }
-                    , {
-                      "type":"text"
-                      , "text":"reduce number of nested loops"
-                    }
-                  ]
-                }
-              ]
-              , "children":
-              [
-                {
-                  "name":"No Source Line"
-                  , "type":"resource"
-                  , "data":
-                  [51, 101, 0, 0]
-                }
-              ]
-            }
-            , {
-              "name":"Cluster logic"
-              , "type":"resource"
-              , "data":
-              [84, 44, 0, 0]
-              , "details":
-              [
-                {
-                  "type":"text"
-                  , "text":"Logic required to efficiently support sets of operations that do not stall. This area cannot be affected directly."
-                }
-              ]
-            }
-            , {
-              "name":"Computation"
-              , "type":"resource"
-              , "children":
-              [
-                {
-                  "name":"gemm_kernel.cl:14"
-                  , "type":"resource"
-                  , "data":
-                  [66, 0, 0, 2]
-                  , "debug":
-                  [
-                    [
-                      {
-                        "filename":"/ChanduHDD/Research/ECE332/final_lab4/Lab4RequiredFiles/de1_soc/tests/gemm_kernel/device/gemm_kernel.cl"
-                        , "line":14
-                      }
-                    ]
-                  ]
-                  , "children":
-                  [
-                    {
-                      "name":"32-bit Integer Multiply"
-                      , "type":"resource"
-                      , "count":1
-                      , "data":
-                      [66, 0, 0, 2]
-                    }
-                  ]
-                  , "replace_name":"true"
-                }
-              ]
-            }
-          ]
-        }
-        , {
-          "name":"gemm_kernel.B1"
+          "name":"hidden.B1"
           , "type":"basicblock"
           , "children":
           [
@@ -233,7 +143,7 @@
                   "name":"No Source Line"
                   , "type":"resource"
                   , "data":
-                  [106, 4, 0, 0]
+                  [71, 3, 0, 0]
                   , "debug":
                   [
                     [
@@ -248,21 +158,21 @@
                     {
                       "name":"Integer Compare"
                       , "type":"resource"
-                      , "count":3
+                      , "count":2
                       , "data":
-                      [105, 3, 0, 0]
+                      [70, 2, 0, 0]
                     }
                     , {
                       "name":"Or"
                       , "type":"resource"
-                      , "count":4
+                      , "count":3
                       , "data":
                       [1, 1, 0, 0]
                     }
                   ]
                 }
                 , {
-                  "name":"gemm_kernel.cl:13"
+                  "name":"gemm_kernel.cl:16"
                   , "type":"resource"
                   , "data":
                   [40.3333, 0.666667, 0, 0]
@@ -270,8 +180,8 @@
                   [
                     [
                       {
-                        "filename":"/ChanduHDD/Research/ECE332/final_lab4/Lab4RequiredFiles/de1_soc/tests/gemm_kernel/device/gemm_kernel.cl"
-                        , "line":13
+                        "filename":"c:/Users/edowney/Documents/GitHub/ECE332-Lab4-GEMM-Acceleration/Lab4RequiredFiles/hardware_files/de1_soc/tests/gemm_kernel/device/gemm_kernel.cl"
+                        , "line":16
                       }
                     ]
                   ]
@@ -295,16 +205,16 @@
                   , "replace_name":"true"
                 }
                 , {
-                  "name":"gemm_kernel.cl:14"
+                  "name":"gemm_kernel.cl:19"
                   , "type":"resource"
                   , "data":
-                  [7429, 9555, 86, 3]
+                  [4852, 7274, 56, 3]
                   , "debug":
                   [
                     [
                       {
-                        "filename":"/ChanduHDD/Research/ECE332/final_lab4/Lab4RequiredFiles/de1_soc/tests/gemm_kernel/device/gemm_kernel.cl"
-                        , "line":14
+                        "filename":"c:/Users/edowney/Documents/GitHub/ECE332-Lab4-GEMM-Acceleration/Lab4RequiredFiles/hardware_files/de1_soc/tests/gemm_kernel/device/gemm_kernel.cl"
+                        , "line":19
                       }
                     ]
                   ]
@@ -313,9 +223,9 @@
                     {
                       "name":"32-bit Integer Add"
                       , "type":"resource"
-                      , "count":2
+                      , "count":1
                       , "data":
-                      [66, 0, 0, 0]
+                      [33, 0, 0, 0]
                     }
                     , {
                       "name":"32-bit Integer Multiply"
@@ -343,12 +253,16 @@
                       , "type":"resource"
                       , "count":2
                       , "data":
-                      [6028, 8598, 86, 0]
+                      [3484, 6317, 56, 0]
                       , "details":
                       [
                         {
                           "type":"text"
                           , "text":"Load uses a Burst-coalesced cached LSU.  Load with a private 64 kilobit cache. Cache is not shared with any other load. It is flushed on kernel start. Use Dynamic Profiler to verify cache effectiveness. Other kernels should not be updating the data in global memory while this kernel is using it. Cache is created when memory access pattern is data-dependent or appears to be repetitive. Simplify access pattern or mark pointer as 'volatile' to disable generation of this cache."
+                        }
+                        , {
+                          "type":"text"
+                          , "text":"Load uses a Burst-coalesced LSU"
                         }
                       ]
                     }
@@ -356,7 +270,7 @@
                   , "replace_name":"true"
                 }
                 , {
-                  "name":"gemm_kernel.cl:15"
+                  "name":"gemm_kernel.cl:20"
                   , "type":"resource"
                   , "data":
                   [3.66667, 0.333333, 0, 0]
@@ -364,8 +278,8 @@
                   [
                     [
                       {
-                        "filename":"/ChanduHDD/Research/ECE332/final_lab4/Lab4RequiredFiles/de1_soc/tests/gemm_kernel/device/gemm_kernel.cl"
-                        , "line":15
+                        "filename":"c:/Users/edowney/Documents/GitHub/ECE332-Lab4-GEMM-Acceleration/Lab4RequiredFiles/hardware_files/de1_soc/tests/gemm_kernel/device/gemm_kernel.cl"
+                        , "line":20
                       }
                     ]
                   ]
@@ -386,61 +300,11 @@
           ]
         }
         , {
-          "name":"gemm_kernel.B2"
+          "name":"hidden.B2"
           , "type":"basicblock"
           , "children":
           [
             {
-              "name":"State"
-              , "type":"resource"
-              , "data":
-              [174, 264, 0, 0]
-              , "details":
-              [
-                {
-                  "type":"text"
-                  , "text":"Resources for live values and control logic. To reduce this area:"
-                  , "details":
-                  [
-                    {
-                      "type":"text"
-                      , "text":"reduce size of local variables"
-                    }
-                    , {
-                      "type":"text"
-                      , "text":"reduce scope of local variables, localizing them as much as possible"
-                    }
-                    , {
-                      "type":"text"
-                      , "text":"reduce number of nested loops"
-                    }
-                  ]
-                }
-              ]
-              , "children":
-              [
-                {
-                  "name":"No Source Line"
-                  , "type":"resource"
-                  , "data":
-                  [174, 264, 0, 0]
-                }
-              ]
-            }
-            , {
-              "name":"Cluster logic"
-              , "type":"resource"
-              , "data":
-              [145, 63, 0, 0]
-              , "details":
-              [
-                {
-                  "type":"text"
-                  , "text":"Logic required to efficiently support sets of operations that do not stall. This area cannot be affected directly."
-                }
-              ]
-            }
-            , {
               "name":"Computation"
               , "type":"resource"
               , "children":
@@ -449,7 +313,7 @@
                   "name":"No Source Line"
                   , "type":"resource"
                   , "data":
-                  [32, 32, 0, 0]
+                  [26, 0, 0, 0]
                   , "debug":
                   [
                     [
@@ -466,38 +330,12 @@
                       , "type":"resource"
                       , "count":1
                       , "data":
-                      [32, 32, 0, 0]
+                      [26, 0, 0, 0]
                     }
                   ]
                 }
                 , {
-                  "name":"gemm_kernel.cl:11"
-                  , "type":"resource"
-                  , "data":
-                  [70, 2, 0, 0]
-                  , "debug":
-                  [
-                    [
-                      {
-                        "filename":"/ChanduHDD/Research/ECE332/final_lab4/Lab4RequiredFiles/de1_soc/tests/gemm_kernel/device/gemm_kernel.cl"
-                        , "line":11
-                      }
-                    ]
-                  ]
-                  , "children":
-                  [
-                    {
-                      "name":"Integer Compare"
-                      , "type":"resource"
-                      , "count":2
-                      , "data":
-                      [70, 2, 0, 0]
-                    }
-                  ]
-                  , "replace_name":"true"
-                }
-                , {
-                  "name":"gemm_kernel.cl:13"
+                  "name":"gemm_kernel.cl:12"
                   , "type":"resource"
                   , "data":
                   [35, 1, 0, 0]
@@ -505,8 +343,8 @@
                   [
                     [
                       {
-                        "filename":"/ChanduHDD/Research/ECE332/final_lab4/Lab4RequiredFiles/de1_soc/tests/gemm_kernel/device/gemm_kernel.cl"
-                        , "line":13
+                        "filename":"c:/Users/edowney/Documents/GitHub/ECE332-Lab4-GEMM-Acceleration/Lab4RequiredFiles/hardware_files/de1_soc/tests/gemm_kernel/device/gemm_kernel.cl"
+                        , "line":12
                       }
                     ]
                   ]
@@ -526,12 +364,12 @@
                   "name":"gemm_kernel.cl:16"
                   , "type":"resource"
                   , "data":
-                  [465, 2128, 16, 2]
+                  [35, 1, 0, 0]
                   , "debug":
                   [
                     [
                       {
-                        "filename":"/ChanduHDD/Research/ECE332/final_lab4/Lab4RequiredFiles/de1_soc/tests/gemm_kernel/device/gemm_kernel.cl"
+                        "filename":"c:/Users/edowney/Documents/GitHub/ECE332-Lab4-GEMM-Acceleration/Lab4RequiredFiles/hardware_files/de1_soc/tests/gemm_kernel/device/gemm_kernel.cl"
                         , "line":16
                       }
                     ]
@@ -539,20 +377,32 @@
                   , "children":
                   [
                     {
-                      "name":"32-bit Integer Add"
+                      "name":"Integer Compare"
                       , "type":"resource"
                       , "count":1
                       , "data":
-                      [33, 0, 0, 0]
+                      [35, 1, 0, 0]
                     }
-                    , {
-                      "name":"32-bit Integer Multiply"
-                      , "type":"resource"
-                      , "count":1
-                      , "data":
-                      [66, 0, 0, 2]
-                    }
-                    , {
+                  ]
+                  , "replace_name":"true"
+                }
+                , {
+                  "name":"gemm_kernel.cl:22"
+                  , "type":"resource"
+                  , "data":
+                  [366, 2128, 16, 0]
+                  , "debug":
+                  [
+                    [
+                      {
+                        "filename":"c:/Users/edowney/Documents/GitHub/ECE332-Lab4-GEMM-Acceleration/Lab4RequiredFiles/hardware_files/de1_soc/tests/gemm_kernel/device/gemm_kernel.cl"
+                        , "line":22
+                      }
+                    ]
+                  ]
+                  , "children":
+                  [
+                    {
                       "name":"Store"
                       , "type":"resource"
                       , "count":1
