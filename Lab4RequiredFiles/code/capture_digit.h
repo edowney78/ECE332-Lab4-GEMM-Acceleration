@@ -10,6 +10,7 @@ struct CaptureDevice {
     void* virtual_base_image;
     volatile unsigned int* video_in_dma;
     volatile unsigned short* key_ptr;
+    volatile unsigned short* hex_ptr;
     volatile unsigned short* video_mem;
 
     int roi_x;
@@ -31,7 +32,7 @@ bool init_capture_device(
 
 void shutdown_capture_device(CaptureDevice& dev);
 
-// void display_digit_on_leds(CaptureDevice& dev, int digit);
+void display_label(CaptureDevice& dev,int label);
 
 GrayImage capture_roi_gray_on_button(
     CaptureDevice& dev,
