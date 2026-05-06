@@ -321,7 +321,7 @@ bool gemm_backend_run_fpga(const std::vector<float>& A,
     }
 
     //TODO 2: write to buffer for B
-    status = clEnqueueWriteBuffer(g_queue, buf_B, CL_TRUE, 0, bytes_B,(const void*)A.data(), 0, 0, 0);
+    status = clEnqueueWriteBuffer(g_queue, buf_B, CL_TRUE, 0, bytes_B,(const void*)B.data(), 0, 0, 0);
     if (status != CL_SUCCESS) {
         std::cerr << "gemm_backend_run_fpga: write B failed, status = "
                   << status << std::endl;
@@ -388,10 +388,10 @@ bool gemm_backend_run_fpga(const std::vector<float>& A,
     status = clEnqueueReadBuffer(
         g_queue,
         buf_C,
-        CL_FALSE,
+        CL_TRUE,
         0,
         bytes_C,
-        0,
+        C.data(),
         0,
         0,
         0

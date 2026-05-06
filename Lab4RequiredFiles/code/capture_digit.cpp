@@ -138,7 +138,8 @@ bool init_capture_device(CaptureDevice& dev, int roi_w, int roi_h, int border_in
     dev.roi_h = roi_h;
     dev.border_inset = border_inset;
     dev.roi_x = (CAP_W - roi_w) / 2;
-    dev.roi_y = (CAP_H - roi_h) / 2;
+    // dev.roi_y = (CAP_H - roi_h) / 2;
+    dev.roi_y = 0;
 
     dev.fd = open("/dev/mem", O_RDWR | O_SYNC);
     if (dev.fd == -1) {

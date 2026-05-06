@@ -31,7 +31,7 @@ int main(int argc, char** argv) {
         std::cout << "FPGA ready = " << (fpga_ok ? "yes" : "no") << "\n";
 
         CaptureDevice cap;
-        if (!init_capture_device(cap, 160, 160, 6)) {
+        if (!init_capture_device(cap, 120, 120, 6)) {
             std::cerr << "Failed to initialize capture device.\n";
             return 1;
         }
