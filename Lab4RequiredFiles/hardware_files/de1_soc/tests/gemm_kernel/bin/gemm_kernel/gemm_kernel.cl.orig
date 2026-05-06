@@ -1,4 +1,4 @@
-__kernel void hidden(__global const float *input_tile,
+__kernel void gemm_kernel(__global const float *input_tile,
                      __global const float *weights_tile,
                      const int input_tile_size,
                      const int output_neurons_tile_size,

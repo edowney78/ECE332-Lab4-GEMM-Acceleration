@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <deploy
- date="2026.05.04.19:53:05"
+ date="2026.05.05.20:26:53"
  outputDirectory="C:/Users/edowney/Documents/GitHub/ECE332-Lab4-GEMM-Acceleration/Lab4RequiredFiles/hardware_files/de1_soc/tests/gemm_kernel/bin/gemm_kernel/db/ip/sld4d43b179/">
  <perimeter>
   <parameter

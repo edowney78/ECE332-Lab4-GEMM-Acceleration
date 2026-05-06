@@ -4,7 +4,7 @@
   , "children":
   [
     {
-      "name":"Kernel: hidden"
+      "name":"Kernel: gemm_kernel"
       , "data":
       ["", "", ""]
       , "debug":
@@ -41,9 +41,9 @@
       , "children":
       [
         {
-          "name":"hidden.B1"
+          "name":"gemm_kernel.B1"
           , "data":
-          ["Yes", "3903520040", "n/a"]
+          ["Yes", "0", "n/a"]
           , "debug":
           [
             [

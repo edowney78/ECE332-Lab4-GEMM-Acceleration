@@ -4,13 +4,13 @@
     {
       "type":"kernel"
       , "id":2
-      , "name":"hidden"
+      , "name":"gemm_kernel"
       , "children":
       [
         {
           "type":"bb"
           , "id":3
-          , "name":"hidden.B0"
+          , "name":"gemm_kernel.B0"
           , "details":
           [
             {
@@ -22,7 +22,7 @@
         , {
           "type":"bb"
           , "id":4
-          , "name":"hidden.B1"
+          , "name":"gemm_kernel.B1"
           , "children":
           [
             {
@@ -136,18 +136,18 @@
             {
               "type":"table"
               , "Latency":"185"
-              , "II":"-391447256"
+              , "II":"0"
               , "Subloops":"No"
               , "Pipelined":"Yes"
               , "Fmax Bottlenecks":"No"
-              , "Loop Info":"Loop is pipelined with II of 3903520040. See Loops Analysis for more information."
+              , "Loop Info":""
             }
           ]
         }
         , {
           "type":"bb"
           , "id":5
-          , "name":"hidden.B2"
+          , "name":"gemm_kernel.B2"
           , "children":
           [
             {

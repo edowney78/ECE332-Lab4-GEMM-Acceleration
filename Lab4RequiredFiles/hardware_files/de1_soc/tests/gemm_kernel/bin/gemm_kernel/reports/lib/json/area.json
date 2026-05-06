@@ -50,7 +50,7 @@
       ]
     }
     , {
-      "name":"hidden"
+      "name":"gemm_kernel"
       , "compute_units":1
       , "type":"function"
       , "total_percent":
@@ -80,7 +80,7 @@
           ]
         }
         , {
-          "name":"hidden.B1"
+          "name":"gemm_kernel.B1"
           , "type":"basicblock"
           , "children":
           [
@@ -300,7 +300,7 @@
           ]
         }
         , {
-          "name":"hidden.B2"
+          "name":"gemm_kernel.B2"
           , "type":"basicblock"
           , "children":
           [

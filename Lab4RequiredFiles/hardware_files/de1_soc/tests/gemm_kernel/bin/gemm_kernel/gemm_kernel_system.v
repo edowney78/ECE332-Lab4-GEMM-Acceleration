@@ -25,15 +25,15 @@ module gemm_kernel_system
    input logic clock,
    input logic clock2x,
    input logic resetn,
-   // AVS avs_hidden_cra
-   input logic avs_hidden_cra_enable,
-   input logic avs_hidden_cra_read,
-   input logic avs_hidden_cra_write,
-   input logic [4:0] avs_hidden_cra_address,
-   input logic [63:0] avs_hidden_cra_writedata,
-   input logic [7:0] avs_hidden_cra_byteenable,
-   output logic [63:0] avs_hidden_cra_readdata,
-   output logic avs_hidden_cra_readdatavalid,
+   // AVS avs_gemm_kernel_cra
+   input logic avs_gemm_kernel_cra_enable,
+   input logic avs_gemm_kernel_cra_read,
+   input logic avs_gemm_kernel_cra_write,
+   input logic [4:0] avs_gemm_kernel_cra_address,
+   input logic [63:0] avs_gemm_kernel_cra_writedata,
+   input logic [7:0] avs_gemm_kernel_cra_byteenable,
+   output logic [63:0] avs_gemm_kernel_cra_readdata,
+   output logic avs_gemm_kernel_cra_readdatavalid,
    output logic kernel_irq,
    // AVM avm_mem_gmem0_port_0_0_rw
    output logic avm_mem_gmem0_port_0_0_rw_enable,
@@ -61,58 +61,58 @@ module gemm_kernel_system
    logic gmem0_global_avm_readdatavalid [3];
    logic gmem0_global_avm_writeack [3];
 
-   // INST hidden_std_ic_inst of hidden_std_ic_partition_wrapper
-   hidden_std_ic_partition_wrapper hidden_std_ic_inst
+   // INST gemm_kernel_std_ic_inst of gemm_kernel_std_ic_partition_wrapper
+   gemm_kernel_std_ic_partition_wrapper gemm_kernel_std_ic_inst
    (
       .clock(clock),
       .clock2x(clock2x),
       .resetn(resetn),
-      .cra_irq_hidden(kernel_irqs),
-      // AVS avs_hidden_cra
-      .avs_hidden_cra_enable(avs_hidden_cra_enable),
-      .avs_hidden_cra_read(avs_hidden_cra_read),
-      .avs_hidden_cra_write(avs_hidden_cra_write),
-      .avs_hidden_cra_address(avs_hidden_cra_address),
-      .avs_hidden_cra_writedata(avs_hidden_cra_writedata),
-      .avs_hidden_cra_byteenable(avs_hidden_cra_byteenable),
-      .avs_hidden_cra_readdata(avs_hidden_cra_readdata),
-      .avs_hidden_cra_readdatavalid(avs_hidden_cra_readdatavalid),
-      // AVM hidden_0_avm_unnamed_hidden0
-      .hidden_0_avm_unnamed_hidden0_enable(gmem0_global_avm_enable[0]),
-      .hidden_0_avm_unnamed_hidden0_read(gmem0_global_avm_read[0]),
-      .hidden_0_avm_unnamed_hidden0_write(gmem0_global_avm_write[0]),
-      .hidden_0_avm_unnamed_hidden0_burstcount(gmem0_global_avm_burstcount[0]),
-      .hidden_0_avm_unnamed_hidden0_address(gmem0_global_avm_address[0]),
-      .hidden_0_avm_unnamed_hidden0_writedata(gmem0_global_avm_writedata[0]),
-      .hidden_0_avm_unnamed_hidden0_byteenable(gmem0_global_avm_byteenable[0]),
-      .hidden_0_avm_unnamed_hidden0_waitrequest(gmem0_global_avm_waitrequest[0]),
-      .hidden_0_avm_unnamed_hidden0_readdata(gmem0_global_avm_readdata[0]),
-      .hidden_0_avm_unnamed_hidden0_readdatavalid(gmem0_global_avm_readdatavalid[0]),
-      .hidden_0_avm_unnamed_hidden0_writeack(gmem0_global_avm_writeack[0]),
-      // AVM hidden_0_avm_unnamed_hidden1
-      .hidden_0_avm_unnamed_hidden1_enable(gmem0_global_avm_enable[1]),
-      .hidden_0_avm_unnamed_hidden1_read(gmem0_global_avm_read[1]),
-      .hidden_0_avm_unnamed_hidden1_write(gmem0_global_avm_write[1]),
-      .hidden_0_avm_unnamed_hidden1_burstcount(gmem0_global_avm_burstcount[1]),
-      .hidden_0_avm_unnamed_hidden1_address(gmem0_global_avm_address[1]),
-      .hidden_0_avm_unnamed_hidden1_writedata(gmem0_global_avm_writedata[1]),
-      .hidden_0_avm_unnamed_hidden1_byteenable(gmem0_global_avm_byteenable[1]),
-      .hidden_0_avm_unnamed_hidden1_waitrequest(gmem0_global_avm_waitrequest[1]),
-      .hidden_0_avm_unnamed_hidden1_readdata(gmem0_global_avm_readdata[1]),
-      .hidden_0_avm_unnamed_hidden1_readdatavalid(gmem0_global_avm_readdatavalid[1]),
-      .hidden_0_avm_unnamed_hidden1_writeack(gmem0_global_avm_writeack[1]),
-      // AVM hidden_0_avm_unnamed_hidden2
-      .hidden_0_avm_unnamed_hidden2_enable(gmem0_global_avm_enable[2]),
-      .hidden_0_avm_unnamed_hidden2_read(gmem0_global_avm_read[2]),
-      .hidden_0_avm_unnamed_hidden2_write(gmem0_global_avm_write[2]),
-      .hidden_0_avm_unnamed_hidden2_burstcount(gmem0_global_avm_burstcount[2]),
-      .hidden_0_avm_unnamed_hidden2_address(gmem0_global_avm_address[2]),
-      .hidden_0_avm_unnamed_hidden2_writedata(gmem0_global_avm_writedata[2]),
-      .hidden_0_avm_unnamed_hidden2_byteenable(gmem0_global_avm_byteenable[2]),
-      .hidden_0_avm_unnamed_hidden2_waitrequest(gmem0_global_avm_waitrequest[2]),
-      .hidden_0_avm_unnamed_hidden2_readdata(gmem0_global_avm_readdata[2]),
-      .hidden_0_avm_unnamed_hidden2_readdatavalid(gmem0_global_avm_readdatavalid[2]),
-      .hidden_0_avm_unnamed_hidden2_writeack(gmem0_global_avm_writeack[2])
+      .cra_irq_gemm_kernel(kernel_irqs),
+      // AVS avs_gemm_kernel_cra
+      .avs_gemm_kernel_cra_enable(avs_gemm_kernel_cra_enable),
+      .avs_gemm_kernel_cra_read(avs_gemm_kernel_cra_read),
+      .avs_gemm_kernel_cra_write(avs_gemm_kernel_cra_write),
+      .avs_gemm_kernel_cra_address(avs_gemm_kernel_cra_address),
+      .avs_gemm_kernel_cra_writedata(avs_gemm_kernel_cra_writedata),
+      .avs_gemm_kernel_cra_byteenable(avs_gemm_kernel_cra_byteenable),
+      .avs_gemm_kernel_cra_readdata(avs_gemm_kernel_cra_readdata),
+      .avs_gemm_kernel_cra_readdatavalid(avs_gemm_kernel_cra_readdatavalid),
+      // AVM gemm_kernel_0_avm_unnamed_gemm_kernel0
+      .gemm_kernel_0_avm_unnamed_gemm_kernel0_enable(gmem0_global_avm_enable[0]),
+      .gemm_kernel_0_avm_unnamed_gemm_kernel0_read(gmem0_global_avm_read[0]),
+      .gemm_kernel_0_avm_unnamed_gemm_kernel0_write(gmem0_global_avm_write[0]),
+      .gemm_kernel_0_avm_unnamed_gemm_kernel0_burstcount(gmem0_global_avm_burstcount[0]),
+      .gemm_kernel_0_avm_unnamed_gemm_kernel0_address(gmem0_global_avm_address[0]),
+      .gemm_kernel_0_avm_unnamed_gemm_kernel0_writedata(gmem0_global_avm_writedata[0]),
+      .gemm_kernel_0_avm_unnamed_gemm_kernel0_byteenable(gmem0_global_avm_byteenable[0]),
+      .gemm_kernel_0_avm_unnamed_gemm_kernel0_waitrequest(gmem0_global_avm_waitrequest[0]),
+      .gemm_kernel_0_avm_unnamed_gemm_kernel0_readdata(gmem0_global_avm_readdata[0]),
+      .gemm_kernel_0_avm_unnamed_gemm_kernel0_readdatavalid(gmem0_global_avm_readdatavalid[0]),
+      .gemm_kernel_0_avm_unnamed_gemm_kernel0_writeack(gmem0_global_avm_writeack[0]),
+      // AVM gemm_kernel_0_avm_unnamed_gemm_kernel1
+      .gemm_kernel_0_avm_unnamed_gemm_kernel1_enable(gmem0_global_avm_enable[1]),
+      .gemm_kernel_0_avm_unnamed_gemm_kernel1_read(gmem0_global_avm_read[1]),
+      .gemm_kernel_0_avm_unnamed_gemm_kernel1_write(gmem0_global_avm_write[1]),
+      .gemm_kernel_0_avm_unnamed_gemm_kernel1_burstcount(gmem0_global_avm_burstcount[1]),
+      .gemm_kernel_0_avm_unnamed_gemm_kernel1_address(gmem0_global_avm_address[1]),
+      .gemm_kernel_0_avm_unnamed_gemm_kernel1_writedata(gmem0_global_avm_writedata[1]),
+      .gemm_kernel_0_avm_unnamed_gemm_kernel1_byteenable(gmem0_global_avm_byteenable[1]),
+      .gemm_kernel_0_avm_unnamed_gemm_kernel1_waitrequest(gmem0_global_avm_waitrequest[1]),
+      .gemm_kernel_0_avm_unnamed_gemm_kernel1_readdata(gmem0_global_avm_readdata[1]),
+      .gemm_kernel_0_avm_unnamed_gemm_kernel1_readdatavalid(gmem0_global_avm_readdatavalid[1]),
+      .gemm_kernel_0_avm_unnamed_gemm_kernel1_writeack(gmem0_global_avm_writeack[1]),
+      // AVM gemm_kernel_0_avm_unnamed_gemm_kernel2
+      .gemm_kernel_0_avm_unnamed_gemm_kernel2_enable(gmem0_global_avm_enable[2]),
+      .gemm_kernel_0_avm_unnamed_gemm_kernel2_read(gmem0_global_avm_read[2]),
+      .gemm_kernel_0_avm_unnamed_gemm_kernel2_write(gmem0_global_avm_write[2]),
+      .gemm_kernel_0_avm_unnamed_gemm_kernel2_burstcount(gmem0_global_avm_burstcount[2]),
+      .gemm_kernel_0_avm_unnamed_gemm_kernel2_address(gmem0_global_avm_address[2]),
+      .gemm_kernel_0_avm_unnamed_gemm_kernel2_writedata(gmem0_global_avm_writedata[2]),
+      .gemm_kernel_0_avm_unnamed_gemm_kernel2_byteenable(gmem0_global_avm_byteenable[2]),
+      .gemm_kernel_0_avm_unnamed_gemm_kernel2_waitrequest(gmem0_global_avm_waitrequest[2]),
+      .gemm_kernel_0_avm_unnamed_gemm_kernel2_readdata(gmem0_global_avm_readdata[2]),
+      .gemm_kernel_0_avm_unnamed_gemm_kernel2_readdatavalid(gmem0_global_avm_readdatavalid[2]),
+      .gemm_kernel_0_avm_unnamed_gemm_kernel2_writeack(gmem0_global_avm_writeack[2])
    );
 
    assign kernel_irq = |kernel_irqs;
@@ -151,102 +151,102 @@ module gemm_kernel_system
 endmodule
 
 /////////////////////////////////////////////////////////////////
-// MODULE hidden_std_ic_partition_wrapper
+// MODULE gemm_kernel_std_ic_partition_wrapper
 /////////////////////////////////////////////////////////////////
-module hidden_std_ic_partition_wrapper
+module gemm_kernel_std_ic_partition_wrapper
 (
    input logic clock,
    input logic clock2x,
    input logic resetn,
-   output logic cra_irq_hidden,
-   // AVS avs_hidden_cra
-   input logic avs_hidden_cra_enable,
-   input logic avs_hidden_cra_read,
-   input logic avs_hidden_cra_write,
-   input logic [4:0] avs_hidden_cra_address,
-   input logic [63:0] avs_hidden_cra_writedata,
-   input logic [7:0] avs_hidden_cra_byteenable,
-   output logic [63:0] avs_hidden_cra_readdata,
-   output logic avs_hidden_cra_readdatavalid,
-   // AVM hidden_0_avm_unnamed_hidden0
-   output logic hidden_0_avm_unnamed_hidden0_enable,
-   output logic hidden_0_avm_unnamed_hidden0_read,
-   output logic hidden_0_avm_unnamed_hidden0_write,
-   output logic [4:0] hidden_0_avm_unnamed_hidden0_burstcount,
-   output logic [29:0] hidden_0_avm_unnamed_hidden0_address,
-   output logic [255:0] hidden_0_avm_unnamed_hidden0_writedata,
-   output logic [31:0] hidden_0_avm_unnamed_hidden0_byteenable,
-   input logic hidden_0_avm_unnamed_hidden0_waitrequest,
-   input logic [255:0] hidden_0_avm_unnamed_hidden0_readdata,
-   input logic hidden_0_avm_unnamed_hidden0_readdatavalid,
-   input logic hidden_0_avm_unnamed_hidden0_writeack,
-   // AVM hidden_0_avm_unnamed_hidden1
-   output logic hidden_0_avm_unnamed_hidden1_enable,
-   output logic hidden_0_avm_unnamed_hidden1_read,
-   output logic hidden_0_avm_unnamed_hidden1_write,
-   output logic [4:0] hidden_0_avm_unnamed_hidden1_burstcount,
-   output logic [29:0] hidden_0_avm_unnamed_hidden1_address,
-   output logic [255:0] hidden_0_avm_unnamed_hidden1_writedata,
-   output logic [31:0] hidden_0_avm_unnamed_hidden1_byteenable,
-   input logic hidden_0_avm_unnamed_hidden1_waitrequest,
-   input logic [255:0] hidden_0_avm_unnamed_hidden1_readdata,
-   input logic hidden_0_avm_unnamed_hidden1_readdatavalid,
-   input logic hidden_0_avm_unnamed_hidden1_writeack,
-   // AVM hidden_0_avm_unnamed_hidden2
-   output logic hidden_0_avm_unnamed_hidden2_enable,
-   output logic hidden_0_avm_unnamed_hidden2_read,
-   output logic hidden_0_avm_unnamed_hidden2_write,
-   output logic [4:0] hidden_0_avm_unnamed_hidden2_burstcount,
-   output logic [29:0] hidden_0_avm_unnamed_hidden2_address,
-   output logic [255:0] hidden_0_avm_unnamed_hidden2_writedata,
-   output logic [31:0] hidden_0_avm_unnamed_hidden2_byteenable,
-   input logic hidden_0_avm_unnamed_hidden2_waitrequest,
-   input logic [255:0] hidden_0_avm_unnamed_hidden2_readdata,
-   input logic hidden_0_avm_unnamed_hidden2_readdatavalid,
-   input logic hidden_0_avm_unnamed_hidden2_writeack
+   output logic cra_irq_gemm_kernel,
+   // AVS avs_gemm_kernel_cra
+   input logic avs_gemm_kernel_cra_enable,
+   input logic avs_gemm_kernel_cra_read,
+   input logic avs_gemm_kernel_cra_write,
+   input logic [4:0] avs_gemm_kernel_cra_address,
+   input logic [63:0] avs_gemm_kernel_cra_writedata,
+   input logic [7:0] avs_gemm_kernel_cra_byteenable,
+   output logic [63:0] avs_gemm_kernel_cra_readdata,
+   output logic avs_gemm_kernel_cra_readdatavalid,
+   // AVM gemm_kernel_0_avm_unnamed_gemm_kernel0
+   output logic gemm_kernel_0_avm_unnamed_gemm_kernel0_enable,
+   output logic gemm_kernel_0_avm_unnamed_gemm_kernel0_read,
+   output logic gemm_kernel_0_avm_unnamed_gemm_kernel0_write,
+   output logic [4:0] gemm_kernel_0_avm_unnamed_gemm_kernel0_burstcount,
+   output logic [29:0] gemm_kernel_0_avm_unnamed_gemm_kernel0_address,
+   output logic [255:0] gemm_kernel_0_avm_unnamed_gemm_kernel0_writedata,
+   output logic [31:0] gemm_kernel_0_avm_unnamed_gemm_kernel0_byteenable,
+   input logic gemm_kernel_0_avm_unnamed_gemm_kernel0_waitrequest,
+   input logic [255:0] gemm_kernel_0_avm_unnamed_gemm_kernel0_readdata,
+   input logic gemm_kernel_0_avm_unnamed_gemm_kernel0_readdatavalid,
+   input logic gemm_kernel_0_avm_unnamed_gemm_kernel0_writeack,
+   // AVM gemm_kernel_0_avm_unnamed_gemm_kernel1
+   output logic gemm_kernel_0_avm_unnamed_gemm_kernel1_enable,
+   output logic gemm_kernel_0_avm_unnamed_gemm_kernel1_read,
+   output logic gemm_kernel_0_avm_unnamed_gemm_kernel1_write,
+   output logic [4:0] gemm_kernel_0_avm_unnamed_gemm_kernel1_burstcount,
+   output logic [29:0] gemm_kernel_0_avm_unnamed_gemm_kernel1_address,
+   output logic [255:0] gemm_kernel_0_avm_unnamed_gemm_kernel1_writedata,
+   output logic [31:0] gemm_kernel_0_avm_unnamed_gemm_kernel1_byteenable,
+   input logic gemm_kernel_0_avm_unnamed_gemm_kernel1_waitrequest,
+   input logic [255:0] gemm_kernel_0_avm_unnamed_gemm_kernel1_readdata,
+   input logic gemm_kernel_0_avm_unnamed_gemm_kernel1_readdatavalid,
+   input logic gemm_kernel_0_avm_unnamed_gemm_kernel1_writeack,
+   // AVM gemm_kernel_0_avm_unnamed_gemm_kernel2
+   output logic gemm_kernel_0_avm_unnamed_gemm_kernel2_enable,
+   output logic gemm_kernel_0_avm_unnamed_gemm_kernel2_read,
+   output logic gemm_kernel_0_avm_unnamed_gemm_kernel2_write,
+   output logic [4:0] gemm_kernel_0_avm_unnamed_gemm_kernel2_burstcount,
+   output logic [29:0] gemm_kernel_0_avm_unnamed_gemm_kernel2_address,
+   output logic [255:0] gemm_kernel_0_avm_unnamed_gemm_kernel2_writedata,
+   output logic [31:0] gemm_kernel_0_avm_unnamed_gemm_kernel2_byteenable,
+   input logic gemm_kernel_0_avm_unnamed_gemm_kernel2_waitrequest,
+   input logic [255:0] gemm_kernel_0_avm_unnamed_gemm_kernel2_readdata,
+   input logic gemm_kernel_0_avm_unnamed_gemm_kernel2_readdatavalid,
+   input logic gemm_kernel_0_avm_unnamed_gemm_kernel2_writeack
 );
-   logic hidden_start;
-   logic [0:0] hidden_start_chain;
-   logic [0:0] hidden_start_kernel_copy;
-   logic [0:0] hidden_start_task_fd;
-   logic [0:0] hidden_start_finish_element;
-   logic hidden_finish;
-   logic [0:0] hidden_finish_kernel_copy;
-   logic [0:0] hidden_finish_chain;
-   logic [31:0] hidden_global_size [2:0];
-   logic [31:0] hidden_num_groups [2:0];
-   logic [31:0] hidden_local_size [2:0];
-   logic [31:0] hidden_global_offset [2:0];
-   logic [31:0] hidden_work_dim;
-   logic [31:0] hidden_wg_size;
-   logic [0:0] hidden_wg_disp_stall_in;
-   logic [0:0] hidden_wg_disp_stall_in_lookahead;
-   logic [0:0] hidden_wg_disp_valid_out;
-   logic hidden_wg_disp_start_out;
-   logic [31:0] hidden_wg_disp_group_id_out [2:0];
-   logic [31:0] hidden_wg_disp_global_id_base_out [2:0];
-   logic hidden_wg_disp_dispatched_all_groups;
-   logic [31:0] hidden_global_id [1][2:0];
-   logic [31:0] hidden_local_id [1][2:0];
-   logic [31:0] hidden_group_id [1][2:0];
-   logic [0:0] hidden_pending_write;
-   logic [0:0] hidden_lsu_active;
-   logic [0:0] hidden_valid_in;
-   logic [0:0] hidden_valid_out;
-   logic [0:0] hidden_stall_in;
-   logic [0:0] hidden_stall_out;
-   logic hidden_cra_pending_write;
-   logic hidden_cra_lsu_active;
-   logic hidden_cra_valid_in;
-   logic [255:0] hidden_kernel_arguments;
+   logic gemm_kernel_start;
+   logic [0:0] gemm_kernel_start_chain;
+   logic [0:0] gemm_kernel_start_kernel_copy;
+   logic [0:0] gemm_kernel_start_task_fd;
+   logic [0:0] gemm_kernel_start_finish_element;
+   logic gemm_kernel_finish;
+   logic [0:0] gemm_kernel_finish_kernel_copy;
+   logic [0:0] gemm_kernel_finish_chain;
+   logic [31:0] gemm_kernel_global_size [2:0];
+   logic [31:0] gemm_kernel_num_groups [2:0];
+   logic [31:0] gemm_kernel_local_size [2:0];
+   logic [31:0] gemm_kernel_global_offset [2:0];
+   logic [31:0] gemm_kernel_work_dim;
+   logic [31:0] gemm_kernel_wg_size;
+   logic [0:0] gemm_kernel_wg_disp_stall_in;
+   logic [0:0] gemm_kernel_wg_disp_stall_in_lookahead;
+   logic [0:0] gemm_kernel_wg_disp_valid_out;
+   logic gemm_kernel_wg_disp_start_out;
+   logic [31:0] gemm_kernel_wg_disp_group_id_out [2:0];
+   logic [31:0] gemm_kernel_wg_disp_global_id_base_out [2:0];
+   logic gemm_kernel_wg_disp_dispatched_all_groups;
+   logic [31:0] gemm_kernel_global_id [1][2:0];
+   logic [31:0] gemm_kernel_local_id [1][2:0];
+   logic [31:0] gemm_kernel_group_id [1][2:0];
+   logic [0:0] gemm_kernel_pending_write;
+   logic [0:0] gemm_kernel_lsu_active;
+   logic [0:0] gemm_kernel_valid_in;
+   logic [0:0] gemm_kernel_valid_out;
+   logic [0:0] gemm_kernel_stall_in;
+   logic [0:0] gemm_kernel_stall_out;
+   logic gemm_kernel_cra_pending_write;
+   logic gemm_kernel_cra_lsu_active;
+   logic gemm_kernel_cra_valid_in;
+   logic [255:0] gemm_kernel_kernel_arguments;
 
-   assign hidden_start_chain[0] = hidden_start;
-   assign hidden_finish_chain[0] = 1'b1;
-   assign hidden_cra_pending_write = |hidden_pending_write;
-   assign hidden_cra_lsu_active = |hidden_lsu_active;
-   assign hidden_cra_valid_in = |hidden_valid_in;
-   assign hidden_stall_in = 0;
-   // INST hidden_workgroup_dispatcher of acl_work_group_dispatcher
+   assign gemm_kernel_start_chain[0] = gemm_kernel_start;
+   assign gemm_kernel_finish_chain[0] = 1'b1;
+   assign gemm_kernel_cra_pending_write = |gemm_kernel_pending_write;
+   assign gemm_kernel_cra_lsu_active = |gemm_kernel_lsu_active;
+   assign gemm_kernel_cra_valid_in = |gemm_kernel_valid_in;
+   assign gemm_kernel_stall_in = 0;
+   // INST gemm_kernel_workgroup_dispatcher of acl_work_group_dispatcher
    acl_work_group_dispatcher
    #(
       .WIDTH(32),
@@ -254,23 +254,23 @@ module hidden_std_ic_partition_wrapper
       .RUN_FOREVER(0),
       .FAMILY("Cyclone V")
    )
-   hidden_workgroup_dispatcher
+   gemm_kernel_workgroup_dispatcher
    (
       .clock(clock),
       .resetn(resetn),
-      .start(hidden_start),
-      .num_groups(hidden_num_groups),
-      .local_size(hidden_local_size),
-      .stall_in(hidden_wg_disp_stall_in),
-      .stall_in_lookahead(hidden_wg_disp_stall_in_lookahead),
-      .valid_out(hidden_wg_disp_valid_out),
-      .group_id_out(hidden_wg_disp_group_id_out),
-      .global_id_base_out(hidden_wg_disp_global_id_base_out),
-      .start_out(hidden_wg_disp_start_out),
-      .dispatched_all_groups(hidden_wg_disp_dispatched_all_groups)
+      .start(gemm_kernel_start),
+      .num_groups(gemm_kernel_num_groups),
+      .local_size(gemm_kernel_local_size),
+      .stall_in(gemm_kernel_wg_disp_stall_in),
+      .stall_in_lookahead(gemm_kernel_wg_disp_stall_in_lookahead),
+      .valid_out(gemm_kernel_wg_disp_valid_out),
+      .group_id_out(gemm_kernel_wg_disp_group_id_out),
+      .global_id_base_out(gemm_kernel_wg_disp_global_id_base_out),
+      .start_out(gemm_kernel_wg_disp_start_out),
+      .dispatched_all_groups(gemm_kernel_wg_disp_dispatched_all_groups)
    );
 
-   // INST hidden_finish_detector of acl_kernel_finish_detector
+   // INST gemm_kernel_finish_detector of acl_kernel_finish_detector
    acl_kernel_finish_detector
    #(
       .NUM_COPIES(1),
@@ -281,59 +281,59 @@ module hidden_std_ic_partition_wrapper
       .SYNCHRONIZE_RESET(0),
       .HYPER_PIPELINE(0)
    )
-   hidden_finish_detector
+   gemm_kernel_finish_detector
    (
       .clock(clock),
       .resetn(resetn),
-      .start(hidden_start),
-      .wg_size(hidden_wg_size),
-      .wg_dispatch_valid_out(hidden_wg_disp_valid_out),
-      .wg_dispatch_stall_in(hidden_wg_disp_stall_in),
-      .dispatched_all_groups(hidden_wg_disp_dispatched_all_groups),
-      .kernel_copy_valid_out(hidden_valid_out),
-      .kernel_copy_stall_in(hidden_stall_in),
-      .pending_writes(hidden_cra_pending_write),
-      .finish(hidden_finish)
+      .start(gemm_kernel_start),
+      .wg_size(gemm_kernel_wg_size),
+      .wg_dispatch_valid_out(gemm_kernel_wg_disp_valid_out),
+      .wg_dispatch_stall_in(gemm_kernel_wg_disp_stall_in),
+      .dispatched_all_groups(gemm_kernel_wg_disp_dispatched_all_groups),
+      .kernel_copy_valid_out(gemm_kernel_valid_out),
+      .kernel_copy_stall_in(gemm_kernel_stall_in),
+      .pending_writes(gemm_kernel_cra_pending_write),
+      .finish(gemm_kernel_finish)
    );
 
-   // INST hidden_cra_slave_inst of hidden_function_cra_slave
-   hidden_function_cra_slave hidden_cra_slave_inst
+   // INST gemm_kernel_cra_slave_inst of gemm_kernel_function_cra_slave
+   gemm_kernel_function_cra_slave gemm_kernel_cra_slave_inst
    (
       .clock(clock),
       .resetn(resetn),
-      .start(hidden_start),
-      .finish(hidden_finish),
-      .global_offset_0(hidden_global_offset[0]),
-      .global_offset_1(hidden_global_offset[1]),
-      .global_offset_2(hidden_global_offset[2]),
-      .work_dim(hidden_work_dim),
-      .has_a_lsu_active(hidden_cra_lsu_active),
-      .has_a_write_pending(hidden_cra_pending_write),
-      .valid_in(hidden_cra_valid_in),
-      .global_size_0(hidden_global_size[0]),
-      .global_size_1(hidden_global_size[1]),
-      .global_size_2(hidden_global_size[2]),
-      .num_groups_0(hidden_num_groups[0]),
-      .num_groups_1(hidden_num_groups[1]),
-      .num_groups_2(hidden_num_groups[2]),
-      .local_size_0(hidden_local_size[0]),
-      .local_size_1(hidden_local_size[1]),
-      .local_size_2(hidden_local_size[2]),
-      .workgroup_size(hidden_wg_size),
-      .kernel_arguments(hidden_kernel_arguments),
-      .cra_irq(cra_irq_hidden),
+      .start(gemm_kernel_start),
+      .finish(gemm_kernel_finish),
+      .global_offset_0(gemm_kernel_global_offset[0]),
+      .global_offset_1(gemm_kernel_global_offset[1]),
+      .global_offset_2(gemm_kernel_global_offset[2]),
+      .work_dim(gemm_kernel_work_dim),
+      .has_a_lsu_active(gemm_kernel_cra_lsu_active),
+      .has_a_write_pending(gemm_kernel_cra_pending_write),
+      .valid_in(gemm_kernel_cra_valid_in),
+      .global_size_0(gemm_kernel_global_size[0]),
+      .global_size_1(gemm_kernel_global_size[1]),
+      .global_size_2(gemm_kernel_global_size[2]),
+      .num_groups_0(gemm_kernel_num_groups[0]),
+      .num_groups_1(gemm_kernel_num_groups[1]),
+      .num_groups_2(gemm_kernel_num_groups[2]),
+      .local_size_0(gemm_kernel_local_size[0]),
+      .local_size_1(gemm_kernel_local_size[1]),
+      .local_size_2(gemm_kernel_local_size[2]),
+      .workgroup_size(gemm_kernel_wg_size),
+      .kernel_arguments(gemm_kernel_kernel_arguments),
+      .cra_irq(cra_irq_gemm_kernel),
       // AVS avs_cra
-      .avs_cra_enable(avs_hidden_cra_enable),
-      .avs_cra_read(avs_hidden_cra_read),
-      .avs_cra_write(avs_hidden_cra_write),
-      .avs_cra_address(avs_hidden_cra_address),
-      .avs_cra_writedata(avs_hidden_cra_writedata),
-      .avs_cra_byteenable(avs_hidden_cra_byteenable),
-      .avs_cra_readdata(avs_hidden_cra_readdata),
-      .avs_cra_readdatavalid(avs_hidden_cra_readdatavalid)
+      .avs_cra_enable(avs_gemm_kernel_cra_enable),
+      .avs_cra_read(avs_gemm_kernel_cra_read),
+      .avs_cra_write(avs_gemm_kernel_cra_write),
+      .avs_cra_address(avs_gemm_kernel_cra_address),
+      .avs_cra_writedata(avs_gemm_kernel_cra_writedata),
+      .avs_cra_byteenable(avs_gemm_kernel_cra_byteenable),
+      .avs_cra_readdata(avs_gemm_kernel_cra_readdata),
+      .avs_cra_readdatavalid(avs_gemm_kernel_cra_readdatavalid)
    );
 
-   // INST hidden_id_iter_inst_0 of acl_id_iterator
+   // INST gemm_kernel_id_iter_inst_0 of acl_id_iterator
    acl_id_iterator
    #(
       .WIDTH(32),
@@ -345,108 +345,108 @@ module hidden_std_ic_partition_wrapper
       .ENABLE_TESSELLATION(0),
       .FAMILY("Cyclone V")
    )
-   hidden_id_iter_inst_0
+   gemm_kernel_id_iter_inst_0
    (
       .clock(clock),
       .resetn(resetn),
-      .start(hidden_wg_disp_start_out),
-      .valid_in(hidden_wg_disp_valid_out[0]),
-      .stall_out(hidden_wg_disp_stall_in[0]),
-      .stall_out_lookahead(hidden_wg_disp_stall_in_lookahead[0]),
-      .stall_in(hidden_stall_out[0]),
-      .valid_out(hidden_valid_in[0]),
-      .group_id_in(hidden_wg_disp_group_id_out),
-      .global_id_base_in(hidden_wg_disp_global_id_base_out),
-      .local_size(hidden_local_size),
-      .global_size(hidden_global_size),
-      .local_id(hidden_local_id[0]),
-      .global_id(hidden_global_id[0]),
-      .group_id(hidden_group_id[0])
+      .start(gemm_kernel_wg_disp_start_out),
+      .valid_in(gemm_kernel_wg_disp_valid_out[0]),
+      .stall_out(gemm_kernel_wg_disp_stall_in[0]),
+      .stall_out_lookahead(gemm_kernel_wg_disp_stall_in_lookahead[0]),
+      .stall_in(gemm_kernel_stall_out[0]),
+      .valid_out(gemm_kernel_valid_in[0]),
+      .group_id_in(gemm_kernel_wg_disp_group_id_out),
+      .global_id_base_in(gemm_kernel_wg_disp_global_id_base_out),
+      .local_size(gemm_kernel_local_size),
+      .global_size(gemm_kernel_global_size),
+      .local_id(gemm_kernel_local_id[0]),
+      .global_id(gemm_kernel_global_id[0]),
+      .group_id(gemm_kernel_group_id[0])
    );
 
-   // INST hidden_inst_0 of hidden_top_wrapper_0
-   hidden_top_wrapper_0 hidden_inst_0
+   // INST gemm_kernel_inst_0 of gemm_kernel_top_wrapper_0
+   gemm_kernel_top_wrapper_0 gemm_kernel_inst_0
    (
-      .start(hidden_start_kernel_copy[0]),
-      .kernel_arguments(hidden_kernel_arguments),
-      .work_dim(hidden_work_dim),
-      .global_offset(hidden_global_offset),
-      .kernel_valid_out(hidden_valid_out[0]),
-      .has_a_write_pending(hidden_pending_write[0]),
-      .has_a_lsu_active(hidden_lsu_active[0]),
-      .global_id(hidden_global_id[0]),
-      .local_id(hidden_local_id[0]),
-      .group_id(hidden_group_id[0]),
-      .global_size(hidden_global_size),
-      .local_size(hidden_local_size),
-      .num_groups(hidden_num_groups),
-      .workgroup_size(hidden_wg_size),
-      .kernel_stall_out(hidden_stall_out[0]),
-      .kernel_valid_in(hidden_valid_in[0]),
+      .start(gemm_kernel_start_kernel_copy[0]),
+      .kernel_arguments(gemm_kernel_kernel_arguments),
+      .work_dim(gemm_kernel_work_dim),
+      .global_offset(gemm_kernel_global_offset),
+      .kernel_valid_out(gemm_kernel_valid_out[0]),
+      .has_a_write_pending(gemm_kernel_pending_write[0]),
+      .has_a_lsu_active(gemm_kernel_lsu_active[0]),
+      .global_id(gemm_kernel_global_id[0]),
+      .local_id(gemm_kernel_local_id[0]),
+      .group_id(gemm_kernel_group_id[0]),
+      .global_size(gemm_kernel_global_size),
+      .local_size(gemm_kernel_local_size),
+      .num_groups(gemm_kernel_num_groups),
+      .workgroup_size(gemm_kernel_wg_size),
+      .kernel_stall_out(gemm_kernel_stall_out[0]),
+      .kernel_valid_in(gemm_kernel_valid_in[0]),
       .clock(clock),
       .resetn(resetn),
       .clock2x(clock2x),
-      // AVM avm_unnamed_hidden0
-      .avm_unnamed_hidden0_enable(hidden_0_avm_unnamed_hidden0_enable),
-      .avm_unnamed_hidden0_read(hidden_0_avm_unnamed_hidden0_read),
-      .avm_unnamed_hidden0_write(hidden_0_avm_unnamed_hidden0_write),
-      .avm_unnamed_hidden0_burstcount(hidden_0_avm_unnamed_hidden0_burstcount),
-      .avm_unnamed_hidden0_address(hidden_0_avm_unnamed_hidden0_address),
-      .avm_unnamed_hidden0_writedata(hidden_0_avm_unnamed_hidden0_writedata),
-      .avm_unnamed_hidden0_byteenable(hidden_0_avm_unnamed_hidden0_byteenable),
-      .avm_unnamed_hidden0_waitrequest(hidden_0_avm_unnamed_hidden0_waitrequest),
-      .avm_unnamed_hidden0_readdata(hidden_0_avm_unnamed_hidden0_readdata),
-      .avm_unnamed_hidden0_readdatavalid(hidden_0_avm_unnamed_hidden0_readdatavalid),
-      .avm_unnamed_hidden0_writeack(hidden_0_avm_unnamed_hidden0_writeack),
-      // AVM avm_unnamed_hidden1
-      .avm_unnamed_hidden1_enable(hidden_0_avm_unnamed_hidden1_enable),
-      .avm_unnamed_hidden1_read(hidden_0_avm_unnamed_hidden1_read),
-      .avm_unnamed_hidden1_write(hidden_0_avm_unnamed_hidden1_write),
-      .avm_unnamed_hidden1_burstcount(hidden_0_avm_unnamed_hidden1_burstcount),
-      .avm_unnamed_hidden1_address(hidden_0_avm_unnamed_hidden1_address),
-      .avm_unnamed_hidden1_writedata(hidden_0_avm_unnamed_hidden1_writedata),
-      .avm_unnamed_hidden1_byteenable(hidden_0_avm_unnamed_hidden1_byteenable),
-      .avm_unnamed_hidden1_waitrequest(hidden_0_avm_unnamed_hidden1_waitrequest),
-      .avm_unnamed_hidden1_readdata(hidden_0_avm_unnamed_hidden1_readdata),
-      .avm_unnamed_hidden1_readdatavalid(hidden_0_avm_unnamed_hidden1_readdatavalid),
-      .avm_unnamed_hidden1_writeack(hidden_0_avm_unnamed_hidden1_writeack),
-      // AVM avm_unnamed_hidden2
-      .avm_unnamed_hidden2_enable(hidden_0_avm_unnamed_hidden2_enable),
-      .avm_unnamed_hidden2_read(hidden_0_avm_unnamed_hidden2_read),
-      .avm_unnamed_hidden2_write(hidden_0_avm_unnamed_hidden2_write),
-      .avm_unnamed_hidden2_burstcount(hidden_0_avm_unnamed_hidden2_burstcount),
-      .avm_unnamed_hidden2_address(hidden_0_avm_unnamed_hidden2_address),
-      .avm_unnamed_hidden2_writedata(hidden_0_avm_unnamed_hidden2_writedata),
-      .avm_unnamed_hidden2_byteenable(hidden_0_avm_unnamed_hidden2_byteenable),
-      .avm_unnamed_hidden2_waitrequest(hidden_0_avm_unnamed_hidden2_waitrequest),
-      .avm_unnamed_hidden2_readdata(hidden_0_avm_unnamed_hidden2_readdata),
-      .avm_unnamed_hidden2_readdatavalid(hidden_0_avm_unnamed_hidden2_readdatavalid),
-      .avm_unnamed_hidden2_writeack(hidden_0_avm_unnamed_hidden2_writeack)
+      // AVM avm_unnamed_gemm_kernel0
+      .avm_unnamed_gemm_kernel0_enable(gemm_kernel_0_avm_unnamed_gemm_kernel0_enable),
+      .avm_unnamed_gemm_kernel0_read(gemm_kernel_0_avm_unnamed_gemm_kernel0_read),
+      .avm_unnamed_gemm_kernel0_write(gemm_kernel_0_avm_unnamed_gemm_kernel0_write),
+      .avm_unnamed_gemm_kernel0_burstcount(gemm_kernel_0_avm_unnamed_gemm_kernel0_burstcount),
+      .avm_unnamed_gemm_kernel0_address(gemm_kernel_0_avm_unnamed_gemm_kernel0_address),
+      .avm_unnamed_gemm_kernel0_writedata(gemm_kernel_0_avm_unnamed_gemm_kernel0_writedata),
+      .avm_unnamed_gemm_kernel0_byteenable(gemm_kernel_0_avm_unnamed_gemm_kernel0_byteenable),
+      .avm_unnamed_gemm_kernel0_waitrequest(gemm_kernel_0_avm_unnamed_gemm_kernel0_waitrequest),
+      .avm_unnamed_gemm_kernel0_readdata(gemm_kernel_0_avm_unnamed_gemm_kernel0_readdata),
+      .avm_unnamed_gemm_kernel0_readdatavalid(gemm_kernel_0_avm_unnamed_gemm_kernel0_readdatavalid),
+      .avm_unnamed_gemm_kernel0_writeack(gemm_kernel_0_avm_unnamed_gemm_kernel0_writeack),
+      // AVM avm_unnamed_gemm_kernel1
+      .avm_unnamed_gemm_kernel1_enable(gemm_kernel_0_avm_unnamed_gemm_kernel1_enable),
+      .avm_unnamed_gemm_kernel1_read(gemm_kernel_0_avm_unnamed_gemm_kernel1_read),
+      .avm_unnamed_gemm_kernel1_write(gemm_kernel_0_avm_unnamed_gemm_kernel1_write),
+      .avm_unnamed_gemm_kernel1_burstcount(gemm_kernel_0_avm_unnamed_gemm_kernel1_burstcount),
+      .avm_unnamed_gemm_kernel1_address(gemm_kernel_0_avm_unnamed_gemm_kernel1_address),
+      .avm_unnamed_gemm_kernel1_writedata(gemm_kernel_0_avm_unnamed_gemm_kernel1_writedata),
+      .avm_unnamed_gemm_kernel1_byteenable(gemm_kernel_0_avm_unnamed_gemm_kernel1_byteenable),
+      .avm_unnamed_gemm_kernel1_waitrequest(gemm_kernel_0_avm_unnamed_gemm_kernel1_waitrequest),
+      .avm_unnamed_gemm_kernel1_readdata(gemm_kernel_0_avm_unnamed_gemm_kernel1_readdata),
+      .avm_unnamed_gemm_kernel1_readdatavalid(gemm_kernel_0_avm_unnamed_gemm_kernel1_readdatavalid),
+      .avm_unnamed_gemm_kernel1_writeack(gemm_kernel_0_avm_unnamed_gemm_kernel1_writeack),
+      // AVM avm_unnamed_gemm_kernel2
+      .avm_unnamed_gemm_kernel2_enable(gemm_kernel_0_avm_unnamed_gemm_kernel2_enable),
+      .avm_unnamed_gemm_kernel2_read(gemm_kernel_0_avm_unnamed_gemm_kernel2_read),
+      .avm_unnamed_gemm_kernel2_write(gemm_kernel_0_avm_unnamed_gemm_kernel2_write),
+      .avm_unnamed_gemm_kernel2_burstcount(gemm_kernel_0_avm_unnamed_gemm_kernel2_burstcount),
+      .avm_unnamed_gemm_kernel2_address(gemm_kernel_0_avm_unnamed_gemm_kernel2_address),
+      .avm_unnamed_gemm_kernel2_writedata(gemm_kernel_0_avm_unnamed_gemm_kernel2_writedata),
+      .avm_unnamed_gemm_kernel2_byteenable(gemm_kernel_0_avm_unnamed_gemm_kernel2_byteenable),
+      .avm_unnamed_gemm_kernel2_waitrequest(gemm_kernel_0_avm_unnamed_gemm_kernel2_waitrequest),
+      .avm_unnamed_gemm_kernel2_readdata(gemm_kernel_0_avm_unnamed_gemm_kernel2_readdata),
+      .avm_unnamed_gemm_kernel2_readdatavalid(gemm_kernel_0_avm_unnamed_gemm_kernel2_readdatavalid),
+      .avm_unnamed_gemm_kernel2_writeack(gemm_kernel_0_avm_unnamed_gemm_kernel2_writeack)
    );
 
-   // INST hidden_start_elem_inst_0 of acl_start_signal_chain_element
+   // INST gemm_kernel_start_elem_inst_0 of acl_start_signal_chain_element
    acl_start_signal_chain_element
    #(
       .ASYNC_RESET(1),
       .SYNCHRONIZE_RESET(0)
    )
-   hidden_start_elem_inst_0
+   gemm_kernel_start_elem_inst_0
    (
       .clock(clock),
       .resetn(resetn),
-      .start_in(hidden_start_chain[0]),
-      .start_kernel(hidden_start_kernel_copy[0]),
-      .start_finish_detector(hidden_start_task_fd[0]),
-      .start_finish_chain_element(hidden_start_finish_element[0]),
+      .start_in(gemm_kernel_start_chain[0]),
+      .start_kernel(gemm_kernel_start_kernel_copy[0]),
+      .start_finish_detector(gemm_kernel_start_task_fd[0]),
+      .start_finish_chain_element(gemm_kernel_start_finish_element[0]),
       .start_chain()
    );
 
 endmodule
 
 /////////////////////////////////////////////////////////////////
-// MODULE hidden_top_wrapper_0
+// MODULE gemm_kernel_top_wrapper_0
 /////////////////////////////////////////////////////////////////
-module hidden_top_wrapper_0
+module gemm_kernel_top_wrapper_0
 (
    input logic start,
    input logic [255:0] kernel_arguments,
@@ -467,47 +467,47 @@ module hidden_top_wrapper_0
    input logic clock,
    input logic resetn,
    input logic clock2x,
-   // AVM avm_unnamed_hidden0
-   output logic avm_unnamed_hidden0_enable,
-   output logic avm_unnamed_hidden0_read,
-   output logic avm_unnamed_hidden0_write,
-   output logic [4:0] avm_unnamed_hidden0_burstcount,
-   output logic [29:0] avm_unnamed_hidden0_address,
-   output logic [255:0] avm_unnamed_hidden0_writedata,
-   output logic [31:0] avm_unnamed_hidden0_byteenable,
-   input logic avm_unnamed_hidden0_waitrequest,
-   input logic [255:0] avm_unnamed_hidden0_readdata,
-   input logic avm_unnamed_hidden0_readdatavalid,
-   input logic avm_unnamed_hidden0_writeack,
-   // AVM avm_unnamed_hidden1
-   output logic avm_unnamed_hidden1_enable,
-   output logic avm_unnamed_hidden1_read,
-   output logic avm_unnamed_hidden1_write,
-   output logic [4:0] avm_unnamed_hidden1_burstcount,
-   output logic [29:0] avm_unnamed_hidden1_address,
-   output logic [255:0] avm_unnamed_hidden1_writedata,
-   output logic [31:0] avm_unnamed_hidden1_byteenable,
-   input logic avm_unnamed_hidden1_waitrequest,
-   input logic [255:0] avm_unnamed_hidden1_readdata,
-   input logic avm_unnamed_hidden1_readdatavalid,
-   input logic avm_unnamed_hidden1_writeack,
-   // AVM avm_unnamed_hidden2
-   output logic avm_unnamed_hidden2_enable,
-   output logic avm_unnamed_hidden2_read,
-   output logic avm_unnamed_hidden2_write,
-   output logic [4:0] avm_unnamed_hidden2_burstcount,
-   output logic [29:0] avm_unnamed_hidden2_address,
-   output logic [255:0] avm_unnamed_hidden2_writedata,
-   output logic [31:0] avm_unnamed_hidden2_byteenable,
-   input logic avm_unnamed_hidden2_waitrequest,
-   input logic [255:0] avm_unnamed_hidden2_readdata,
-   input logic avm_unnamed_hidden2_readdatavalid,
-   input logic avm_unnamed_hidden2_writeack
+   // AVM avm_unnamed_gemm_kernel0
+   output logic avm_unnamed_gemm_kernel0_enable,
+   output logic avm_unnamed_gemm_kernel0_read,
+   output logic avm_unnamed_gemm_kernel0_write,
+   output logic [4:0] avm_unnamed_gemm_kernel0_burstcount,
+   output logic [29:0] avm_unnamed_gemm_kernel0_address,
+   output logic [255:0] avm_unnamed_gemm_kernel0_writedata,
+   output logic [31:0] avm_unnamed_gemm_kernel0_byteenable,
+   input logic avm_unnamed_gemm_kernel0_waitrequest,
+   input logic [255:0] avm_unnamed_gemm_kernel0_readdata,
+   input logic avm_unnamed_gemm_kernel0_readdatavalid,
+   input logic avm_unnamed_gemm_kernel0_writeack,
+   // AVM avm_unnamed_gemm_kernel1
+   output logic avm_unnamed_gemm_kernel1_enable,
+   output logic avm_unnamed_gemm_kernel1_read,
+   output logic avm_unnamed_gemm_kernel1_write,
+   output logic [4:0] avm_unnamed_gemm_kernel1_burstcount,
+   output logic [29:0] avm_unnamed_gemm_kernel1_address,
+   output logic [255:0] avm_unnamed_gemm_kernel1_writedata,
+   output logic [31:0] avm_unnamed_gemm_kernel1_byteenable,
+   input logic avm_unnamed_gemm_kernel1_waitrequest,
+   input logic [255:0] avm_unnamed_gemm_kernel1_readdata,
+   input logic avm_unnamed_gemm_kernel1_readdatavalid,
+   input logic avm_unnamed_gemm_kernel1_writeack,
+   // AVM avm_unnamed_gemm_kernel2
+   output logic avm_unnamed_gemm_kernel2_enable,
+   output logic avm_unnamed_gemm_kernel2_read,
+   output logic avm_unnamed_gemm_kernel2_write,
+   output logic [4:0] avm_unnamed_gemm_kernel2_burstcount,
+   output logic [29:0] avm_unnamed_gemm_kernel2_address,
+   output logic [255:0] avm_unnamed_gemm_kernel2_writedata,
+   output logic [31:0] avm_unnamed_gemm_kernel2_byteenable,
+   input logic avm_unnamed_gemm_kernel2_waitrequest,
+   input logic [255:0] avm_unnamed_gemm_kernel2_readdata,
+   input logic avm_unnamed_gemm_kernel2_readdatavalid,
+   input logic avm_unnamed_gemm_kernel2_writeack
 );
    logic lmem_invalid_single_bit;
 
-   // INST kernel of hidden_function_wrapper
-   hidden_function_wrapper kernel
+   // INST kernel of gemm_kernel_function_wrapper
+   gemm_kernel_function_wrapper kernel
    (
       .local_router_hang(lmem_invalid_single_bit),
       .start(start),
@@ -543,42 +543,42 @@ module hidden_top_wrapper_0
       .clock(clock),
       .resetn(resetn),
       .clock2x(clock2x),
-      // AVM avm_unnamed_hidden0
-      .avm_unnamed_hidden0_enable(avm_unnamed_hidden0_enable),
-      .avm_unnamed_hidden0_read(avm_unnamed_hidden0_read),
-      .avm_unnamed_hidden0_write(avm_unnamed_hidden0_write),
-      .avm_unnamed_hidden0_burstcount(avm_unnamed_hidden0_burstcount),
-      .avm_unnamed_hidden0_address(avm_unnamed_hidden0_address),
-      .avm_unnamed_hidden0_writedata(avm_unnamed_hidden0_writedata),
-      .avm_unnamed_hidden0_byteenable(avm_unnamed_hidden0_byteenable),
-      .avm_unnamed_hidden0_waitrequest(avm_unnamed_hidden0_waitrequest),
-      .avm_unnamed_hidden0_readdata(avm_unnamed_hidden0_readdata),
-      .avm_unnamed_hidden0_readdatavalid(avm_unnamed_hidden0_readdatavalid),
-      .avm_unnamed_hidden0_writeack(avm_unnamed_hidden0_writeack),
-      // AVM avm_unnamed_hidden1
-      .avm_unnamed_hidden1_enable(avm_unnamed_hidden1_enable),
-      .avm_unnamed_hidden1_read(avm_unnamed_hidden1_read),
-      .avm_unnamed_hidden1_write(avm_unnamed_hidden1_write),
-      .avm_unnamed_hidden1_burstcount(avm_unnamed_hidden1_burstcount),
-      .avm_unnamed_hidden1_address(avm_unnamed_hidden1_address),
-      .avm_unnamed_hidden1_writedata(avm_unnamed_hidden1_writedata),
-      .avm_unnamed_hidden1_byteenable(avm_unnamed_hidden1_byteenable),
-      .avm_unnamed_hidden1_waitrequest(avm_unnamed_hidden1_waitrequest),
-      .avm_unnamed_hidden1_readdata(avm_unnamed_hidden1_readdata),
-      .avm_unnamed_hidden1_readdatavalid(avm_unnamed_hidden1_readdatavalid),
-      .avm_unnamed_hidden1_writeack(avm_unnamed_hidden1_writeack),
-      // AVM avm_unnamed_hidden2
-      .avm_unnamed_hidden2_enable(avm_unnamed_hidden2_enable),
-      .avm_unnamed_hidden2_read(avm_unnamed_hidden2_read),
-      .avm_unnamed_hidden2_write(avm_unnamed_hidden2_write),
-      .avm_unnamed_hidden2_burstcount(avm_unnamed_hidden2_burstcount),
-      .avm_unnamed_hidden2_address(avm_unnamed_hidden2_address),
-      .avm_unnamed_hidden2_writedata(avm_unnamed_hidden2_writedata),
-      .avm_unnamed_hidden2_byteenable(avm_unnamed_hidden2_byteenable),
-      .avm_unnamed_hidden2_waitrequest(avm_unnamed_hidden2_waitrequest),
-      .avm_unnamed_hidden2_readdata(avm_unnamed_hidden2_readdata),
-      .avm_unnamed_hidden2_readdatavalid(avm_unnamed_hidden2_readdatavalid),
-      .avm_unnamed_hidden2_writeack(avm_unnamed_hidden2_writeack)
+      // AVM avm_unnamed_gemm_kernel0
+      .avm_unnamed_gemm_kernel0_enable(avm_unnamed_gemm_kernel0_enable),
+      .avm_unnamed_gemm_kernel0_read(avm_unnamed_gemm_kernel0_read),
+      .avm_unnamed_gemm_kernel0_write(avm_unnamed_gemm_kernel0_write),
+      .avm_unnamed_gemm_kernel0_burstcount(avm_unnamed_gemm_kernel0_burstcount),
+      .avm_unnamed_gemm_kernel0_address(avm_unnamed_gemm_kernel0_address),
+      .avm_unnamed_gemm_kernel0_writedata(avm_unnamed_gemm_kernel0_writedata),
+      .avm_unnamed_gemm_kernel0_byteenable(avm_unnamed_gemm_kernel0_byteenable),
+      .avm_unnamed_gemm_kernel0_waitrequest(avm_unnamed_gemm_kernel0_waitrequest),
+      .avm_unnamed_gemm_kernel0_readdata(avm_unnamed_gemm_kernel0_readdata),
+      .avm_unnamed_gemm_kernel0_readdatavalid(avm_unnamed_gemm_kernel0_readdatavalid),
+      .avm_unnamed_gemm_kernel0_writeack(avm_unnamed_gemm_kernel0_writeack),
+      // AVM avm_unnamed_gemm_kernel1
+      .avm_unnamed_gemm_kernel1_enable(avm_unnamed_gemm_kernel1_enable),
+      .avm_unnamed_gemm_kernel1_read(avm_unnamed_gemm_kernel1_read),
+      .avm_unnamed_gemm_kernel1_write(avm_unnamed_gemm_kernel1_write),
+      .avm_unnamed_gemm_kernel1_burstcount(avm_unnamed_gemm_kernel1_burstcount),
+      .avm_unnamed_gemm_kernel1_address(avm_unnamed_gemm_kernel1_address),
+      .avm_unnamed_gemm_kernel1_writedata(avm_unnamed_gemm_kernel1_writedata),
+      .avm_unnamed_gemm_kernel1_byteenable(avm_unnamed_gemm_kernel1_byteenable),
+      .avm_unnamed_gemm_kernel1_waitrequest(avm_unnamed_gemm_kernel1_waitrequest),
+      .avm_unnamed_gemm_kernel1_readdata(avm_unnamed_gemm_kernel1_readdata),
+      .avm_unnamed_gemm_kernel1_readdatavalid(avm_unnamed_gemm_kernel1_readdatavalid),
+      .avm_unnamed_gemm_kernel1_writeack(avm_unnamed_gemm_kernel1_writeack),
+      // AVM avm_unnamed_gemm_kernel2
+      .avm_unnamed_gemm_kernel2_enable(avm_unnamed_gemm_kernel2_enable),
+      .avm_unnamed_gemm_kernel2_read(avm_unnamed_gemm_kernel2_read),
+      .avm_unnamed_gemm_kernel2_write(avm_unnamed_gemm_kernel2_write),
+      .avm_unnamed_gemm_kernel2_burstcount(avm_unnamed_gemm_kernel2_burstcount),
+      .avm_unnamed_gemm_kernel2_address(avm_unnamed_gemm_kernel2_address),
+      .avm_unnamed_gemm_kernel2_writedata(avm_unnamed_gemm_kernel2_writedata),
+      .avm_unnamed_gemm_kernel2_byteenable(avm_unnamed_gemm_kernel2_byteenable),
+      .avm_unnamed_gemm_kernel2_waitrequest(avm_unnamed_gemm_kernel2_waitrequest),
+      .avm_unnamed_gemm_kernel2_readdata(avm_unnamed_gemm_kernel2_readdata),
+      .avm_unnamed_gemm_kernel2_readdatavalid(avm_unnamed_gemm_kernel2_readdatavalid),
+      .avm_unnamed_gemm_kernel2_writeack(avm_unnamed_gemm_kernel2_writeack)
    );
 
    assign lmem_invalid_single_bit = 'b0;

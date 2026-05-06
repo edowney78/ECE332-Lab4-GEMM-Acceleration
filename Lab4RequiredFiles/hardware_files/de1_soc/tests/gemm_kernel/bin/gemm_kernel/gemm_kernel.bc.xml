@@ -1,7 +1,7 @@
 <KERNEL_LIST>
 	<PROGRAM_GLOBAL_MEM_SIZE value="0" />
-	<KERNEL_BUNDLE name="hidden" compute_units="1">
-	<KERNEL name="hidden" filename="kernel_hdl/hidden/hidden_function_wrapper.vhd" version="1" cosim_name="hidden" enable_global_profiling="1" workgroup_invariant="0" has_global_atomics="0" num_vector_lanes="1" num_profiling_signals="0" arbitration_latency="5" kernel_side_mem_latency="8">
+	<KERNEL_BUNDLE name="gemm_kernel" compute_units="1">
+	<KERNEL name="gemm_kernel" filename="kernel_hdl/gemm_kernel/gemm_kernel_function_wrapper.vhd" version="1" cosim_name="gemm_kernel" enable_global_profiling="1" workgroup_invariant="0" has_global_atomics="0" num_vector_lanes="1" num_profiling_signals="0" arbitration_latency="5" kernel_side_mem_latency="8">
 		<RESOURCE_INFO>
 			<ID value="0" />
 			<AGGREGATE_STATIC_LOCAL_MEM_SIZE value="0" />
@@ -59,58 +59,58 @@
 			<FILE name="$::env(INTELFPGAOCLSDKROOT)/ip/acl_fifo_stall_valid_lookahead.sv" />
 			<FILE name="$::env(INTELFPGAOCLSDKROOT)/ip/acl_loop_limiter.v" />
 			<FILE name="$::env(INTELFPGAOCLSDKROOT)/ip/acl_clock2x_holder.v" />
-			<FILE name="kernel_hdl/hidden/hidden_function_wrapper.vhd" />
-			<FILE name="kernel_hdl/hidden/hidden_function.vhd" />
-			<FILE name="kernel_hdl/hidden/bb_hidden_B1_sr_0.vhd" />
-			<FILE name="kernel_hdl/hidden/bb_hidden_B1_sr_1.vhd" />
-			<FILE name="kernel_hdl/hidden/bb_hidden_B2_sr_0.vhd" />
-			<FILE name="kernel_hdl/hidden/bb_hidden_B0.vhd" />
-			<FILE name="kernel_hdl/hidden/bb_hidden_B0_stall_region.vhd" />
-			<FILE name="kernel_hdl/hidden/hidden_B0_merge_reg.vhd" />
-			<FILE name="kernel_hdl/hidden/hidden_B0_branch.vhd" />
-			<FILE name="kernel_hdl/hidden/hidden_B0_merge.vhd" />
-			<FILE name="kernel_hdl/hidden/bb_hidden_B1.vhd" />
-			<FILE name="kernel_hdl/hidden/bb_hidden_B1_stall_region.vhd" />
-			<FILE name="kernel_hdl/hidden/hidden_B1_merge_reg.vhd" />
-			<FILE name="kernel_hdl/hidden/i_sfc_c0_for_body_hidden_c0_enter_hidden.vhd" />
-			<FILE name="kernel_hdl/hidden/i_acl_sfc_exit_c0_for_body_hidden_c0_exit_hidden15.vhd" />
-			<FILE name="kernel_hdl/hidden/i_acl_sfc_exit_c0_for_body_hidden_c0_exiA0Zdden38_data_fifo.vhd" />
-			<FILE name="kernel_hdl/hidden/i_acl_sfc_exit_c0_for_body_hidden_c0_exiA0Zen_full_detector.vhd" />
-			<FILE name="kernel_hdl/hidden/i_sfc_logic_c0_for_body_hidden_c0_enter_hidden8.vhd" />
-			<FILE name="kernel_hdl/hidden/i_syncbuf_output_neurons_tile_size_sync_A0Zbuffer4_hidden10.vhd" />
-			<FILE name="kernel_hdl/hidden/i_syncbuf_weights_tile_sync_buffer_hidden12.vhd" />
-			<FILE name="kernel_hdl/hidden/i_sfc_c1_for_body_hidden_c1_enter_hidden.vhd" />
-			<FILE name="kernel_hdl/hidden/i_acl_sfc_exit_c1_for_body_hidden_c1_exit_hidden26.vhd" />
-			<FILE name="kernel_hdl/hidden/i_acl_sfc_exit_c1_for_body_hidden_c1_exiA0Zdden40_data_fifo.vhd" />
-			<FILE name="kernel_hdl/hidden/i_acl_sfc_exit_c1_for_body_hidden_c1_exiA0Zen_full_detector.vhd" />
-			<FILE name="kernel_hdl/hidden/i_sfc_logic_c1_for_body_hidden_c1_enter_hidden24.vhd" />
-			<FILE name="kernel_hdl/hidden/floatComponent_i_sfc_logic_c1_for_body_hA0Zo00rf00d06of5q0u.vhd" />
-			<FILE name="kernel_hdl/hidden/floatComponent_i_sfc_logic_c1_for_body_hA0Z303d06o00rf01pzc.vhd" />
-			<FILE name="kernel_hdl/hidden/i_load_unnamed_hidden0_hidden20.vhd" />
-			<FILE name="kernel_hdl/hidden/readdata_reg_unnamed_hidden0_hidden0.vhd" />
-			<FILE name="kernel_hdl/hidden/i_load_unnamed_hidden1_hidden22.vhd" />
-			<FILE name="kernel_hdl/hidden/readdata_reg_unnamed_hidden1_hidden1.vhd" />
-			<FILE name="kernel_hdl/hidden/i_syncbuf_input_tile_size_sync_buffer2_hidden6.vhd" />
-			<FILE name="kernel_hdl/hidden/i_syncbuf_input_tile_size_sync_buffer_hidden2.vhd" />
-			<FILE name="kernel_hdl/hidden/i_syncbuf_input_tile_sync_buffer_hidden0.vhd" />
-			<FILE name="kernel_hdl/hidden/i_syncbuf_output_neurons_tile_size_sync_buffer_hidden4.vhd" />
-			<FILE name="kernel_hdl/hidden/hidden_B1_branch.vhd" />
-			<FILE name="kernel_hdl/hidden/hidden_B1_merge.vhd" />
-			<FILE name="kernel_hdl/hidden/bb_hidden_B2.vhd" />
-			<FILE name="kernel_hdl/hidden/bb_hidden_B2_stall_region.vhd" />
-			<FILE name="kernel_hdl/hidden/i_store_unnamed_hidden2_hidden36.vhd" />
-			<FILE name="kernel_hdl/hidden/i_syncbuf_input_tile_size_sync_buffer1_hidden30.vhd" />
-			<FILE name="kernel_hdl/hidden/i_syncbuf_output_neurons_tile_size_sync_A0Zbuffer3_hidden27.vhd" />
-			<FILE name="kernel_hdl/hidden/i_syncbuf_output_tile_sync_buffer_hidden33.vhd" />
-			<FILE name="kernel_hdl/hidden/hidden_B2_branch.vhd" />
-			<FILE name="kernel_hdl/hidden/hidden_B2_merge.vhd" />
-			<FILE name="kernel_hdl/hidden/loop_limiter_hidden0.vhd" />
-			<FILE name="kernel_hdl/hidden/hidden_function_cra_slave.vhd" />
+			<FILE name="kernel_hdl/gemm_kernel/gemm_kernel_function_wrapper.vhd" />
+			<FILE name="kernel_hdl/gemm_kernel/gemm_kernel_function.vhd" />
+			<FILE name="kernel_hdl/gemm_kernel/bb_gemm_kernel_B1_sr_0.vhd" />
+			<FILE name="kernel_hdl/gemm_kernel/bb_gemm_kernel_B1_sr_1.vhd" />
+			<FILE name="kernel_hdl/gemm_kernel/bb_gemm_kernel_B2_sr_0.vhd" />
+			<FILE name="kernel_hdl/gemm_kernel/bb_gemm_kernel_B0.vhd" />
+			<FILE name="kernel_hdl/gemm_kernel/bb_gemm_kernel_B0_stall_region.vhd" />
+			<FILE name="kernel_hdl/gemm_kernel/gemm_kernel_B0_merge_reg.vhd" />
+			<FILE name="kernel_hdl/gemm_kernel/gemm_kernel_B0_branch.vhd" />
+			<FILE name="kernel_hdl/gemm_kernel/gemm_kernel_B0_merge.vhd" />
+			<FILE name="kernel_hdl/gemm_kernel/bb_gemm_kernel_B1.vhd" />
+			<FILE name="kernel_hdl/gemm_kernel/bb_gemm_kernel_B1_stall_region.vhd" />
+			<FILE name="kernel_hdl/gemm_kernel/gemm_kernel_B1_merge_reg.vhd" />
+			<FILE name="kernel_hdl/gemm_kernel/i_sfc_c0_for_body_gemm_kernel_c0_enter_gemm_kernel.vhd" />
+			<FILE name="kernel_hdl/gemm_kernel/i_acl_sfc_exit_c0_for_body_gemm_kernel_cA0Zit_gemm_kernel15.vhd" />
+			<FILE name="kernel_hdl/gemm_kernel/i_acl_sfc_exit_c0_for_body_gemm_kernel_cA0Zrnel38_data_fifo.vhd" />
+			<FILE name="kernel_hdl/gemm_kernel/i_acl_sfc_exit_c0_for_body_gemm_kernel_cA0Zel_full_detector.vhd" />
+			<FILE name="kernel_hdl/gemm_kernel/i_sfc_logic_c0_for_body_gemm_kernel_c0_eA0Zter_gemm_kernel8.vhd" />
+			<FILE name="kernel_hdl/gemm_kernel/i_syncbuf_output_neurons_tile_size_sync_A0Zr4_gemm_kernel10.vhd" />
+			<FILE name="kernel_hdl/gemm_kernel/i_syncbuf_weights_tile_sync_buffer_gemm_kernel12.vhd" />
+			<FILE name="kernel_hdl/gemm_kernel/i_sfc_c1_for_body_gemm_kernel_c1_enter_gemm_kernel.vhd" />
+			<FILE name="kernel_hdl/gemm_kernel/i_acl_sfc_exit_c1_for_body_gemm_kernel_cA0Zit_gemm_kernel26.vhd" />
+			<FILE name="kernel_hdl/gemm_kernel/i_acl_sfc_exit_c1_for_body_gemm_kernel_cA0Zrnel40_data_fifo.vhd" />
+			<FILE name="kernel_hdl/gemm_kernel/i_acl_sfc_exit_c1_for_body_gemm_kernel_cA0Zel_full_detector.vhd" />
+			<FILE name="kernel_hdl/gemm_kernel/i_sfc_logic_c1_for_body_gemm_kernel_c1_eA0Zer_gemm_kernel24.vhd" />
+			<FILE name="kernel_hdl/gemm_kernel/floatComponent_i_sfc_logic_c1_for_body_gA0Zuq0dp0ioq0cp5d0u.vhd" />
+			<FILE name="kernel_hdl/gemm_kernel/floatComponent_i_sfc_logic_c1_for_body_gA0Zp0jo00uq0dp0iuzo.vhd" />
+			<FILE name="kernel_hdl/gemm_kernel/i_load_unnamed_gemm_kernel0_gemm_kernel20.vhd" />
+			<FILE name="kernel_hdl/gemm_kernel/readdata_reg_unnamed_gemm_kernel0_gemm_kernel0.vhd" />
+			<FILE name="kernel_hdl/gemm_kernel/i_load_unnamed_gemm_kernel1_gemm_kernel22.vhd" />
+			<FILE name="kernel_hdl/gemm_kernel/readdata_reg_unnamed_gemm_kernel1_gemm_kernel1.vhd" />
+			<FILE name="kernel_hdl/gemm_kernel/i_syncbuf_input_tile_size_sync_buffer2_gemm_kernel6.vhd" />
+			<FILE name="kernel_hdl/gemm_kernel/i_syncbuf_input_tile_size_sync_buffer_gemm_kernel2.vhd" />
+			<FILE name="kernel_hdl/gemm_kernel/i_syncbuf_input_tile_sync_buffer_gemm_kernel0.vhd" />
+			<FILE name="kernel_hdl/gemm_kernel/i_syncbuf_output_neurons_tile_size_sync_A0Zfer_gemm_kernel4.vhd" />
+			<FILE name="kernel_hdl/gemm_kernel/gemm_kernel_B1_branch.vhd" />
+			<FILE name="kernel_hdl/gemm_kernel/gemm_kernel_B1_merge.vhd" />
+			<FILE name="kernel_hdl/gemm_kernel/bb_gemm_kernel_B2.vhd" />
+			<FILE name="kernel_hdl/gemm_kernel/bb_gemm_kernel_B2_stall_region.vhd" />
+			<FILE name="kernel_hdl/gemm_kernel/i_store_unnamed_gemm_kernel2_gemm_kernel36.vhd" />
+			<FILE name="kernel_hdl/gemm_kernel/i_syncbuf_input_tile_size_sync_buffer1_gemm_kernel30.vhd" />
+			<FILE name="kernel_hdl/gemm_kernel/i_syncbuf_output_neurons_tile_size_sync_A0Zr3_gemm_kernel27.vhd" />
+			<FILE name="kernel_hdl/gemm_kernel/i_syncbuf_output_tile_sync_buffer_gemm_kernel33.vhd" />
+			<FILE name="kernel_hdl/gemm_kernel/gemm_kernel_B2_branch.vhd" />
+			<FILE name="kernel_hdl/gemm_kernel/gemm_kernel_B2_merge.vhd" />
+			<FILE name="kernel_hdl/gemm_kernel/loop_limiter_gemm_kernel0.vhd" />
+			<FILE name="kernel_hdl/gemm_kernel/gemm_kernel_function_cra_slave.vhd" />
 		</REQUIREMENTS>
 		<DATA>
-			<INTERFACE port="unnamed_hidden0" cosim_name="" type="master" width="256" true_lsu_width="32" burstwidth="5" pipelined="true" addr_space="__global" aspace_id="1" optype="read" criticality="1048576" buffer_location="" group_id="0" />
-			<INTERFACE port="unnamed_hidden1" cosim_name="" type="master" width="256" true_lsu_width="32" burstwidth="5" pipelined="true" addr_space="__global" aspace_id="1" optype="read" criticality="1048576" buffer_location="" group_id="0" />
-			<INTERFACE port="unnamed_hidden2" cosim_name="" type="master" width="256" true_lsu_width="32" burstwidth="5" pipelined="true" addr_space="__global" aspace_id="1" optype="write" criticality="1024" buffer_location="" group_id="0" />
+			<INTERFACE port="unnamed_gemm_kernel0" cosim_name="" type="master" width="256" true_lsu_width="32" burstwidth="5" pipelined="true" addr_space="__global" aspace_id="1" optype="read" criticality="1048576" buffer_location="" group_id="0" />
+			<INTERFACE port="unnamed_gemm_kernel1" cosim_name="" type="master" width="256" true_lsu_width="32" burstwidth="5" pipelined="true" addr_space="__global" aspace_id="1" optype="read" criticality="1048576" buffer_location="" group_id="0" />
+			<INTERFACE port="unnamed_gemm_kernel2" cosim_name="" type="master" width="256" true_lsu_width="32" burstwidth="5" pipelined="true" addr_space="__global" aspace_id="1" optype="write" criticality="1024" buffer_location="" group_id="0" />
 		</DATA>
 		<KERNEL_ARGS>
 			<ARGUMENT name="input_tile" cosim_name="" opencl_access_type="ACL_ARG_ADDR_GLOBAL" opencl_type_category="ACL_ARG_MEM_OBJ" size="8" type_qualifier="C" access_qualifier="ARG_ACCESS_NONE" type_name="float*" >

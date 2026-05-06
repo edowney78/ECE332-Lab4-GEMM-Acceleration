@@ -89,28 +89,28 @@ module system (
 		input  wire        reset_50_reset_n                     //                    reset_50.reset_n
 	);
 
-	wire   [63:0] avs_hidden_cra_cra_ring_cra_master_readdata;                // gemm_kernel_system:avs_hidden_cra_readdata -> avs_hidden_cra_cra_ring:avm_readdata
-	wire          avs_hidden_cra_cra_ring_cra_master_read;                    // avs_hidden_cra_cra_ring:avm_read -> gemm_kernel_system:avs_hidden_cra_read
-	wire    [4:0] avs_hidden_cra_cra_ring_cra_master_address;                 // avs_hidden_cra_cra_ring:avm_addr -> gemm_kernel_system:avs_hidden_cra_address
-	wire    [7:0] avs_hidden_cra_cra_ring_cra_master_byteenable;              // avs_hidden_cra_cra_ring:avm_byteena -> gemm_kernel_system:avs_hidden_cra_byteenable
-	wire          avs_hidden_cra_cra_ring_cra_master_readdatavalid;           // gemm_kernel_system:avs_hidden_cra_readdatavalid -> avs_hidden_cra_cra_ring:avm_readdatavalid
-	wire          avs_hidden_cra_cra_ring_cra_master_write;                   // avs_hidden_cra_cra_ring:avm_write -> gemm_kernel_system:avs_hidden_cra_write
-	wire   [63:0] avs_hidden_cra_cra_ring_cra_master_writedata;               // avs_hidden_cra_cra_ring:avm_writedata -> gemm_kernel_system:avs_hidden_cra_writedata
-	wire          acl_iface_kernel_clk_clk;                                   // acl_iface:kernel_clk_clk -> [avs_hidden_cra_cra_ring:clk, cra_root:clk, gemm_kernel_system:clock, irq_mapper:clk, mm_interconnect_0:acl_iface_kernel_clk_clk, mm_interconnect_2:acl_iface_kernel_clk_clk, rst_controller:clk]
+	wire   [63:0] avs_gemm_kernel_cra_cra_ring_cra_master_readdata;           // gemm_kernel_system:avs_gemm_kernel_cra_readdata -> avs_gemm_kernel_cra_cra_ring:avm_readdata
+	wire          avs_gemm_kernel_cra_cra_ring_cra_master_read;               // avs_gemm_kernel_cra_cra_ring:avm_read -> gemm_kernel_system:avs_gemm_kernel_cra_read
+	wire    [4:0] avs_gemm_kernel_cra_cra_ring_cra_master_address;            // avs_gemm_kernel_cra_cra_ring:avm_addr -> gemm_kernel_system:avs_gemm_kernel_cra_address
+	wire    [7:0] avs_gemm_kernel_cra_cra_ring_cra_master_byteenable;         // avs_gemm_kernel_cra_cra_ring:avm_byteena -> gemm_kernel_system:avs_gemm_kernel_cra_byteenable
+	wire          avs_gemm_kernel_cra_cra_ring_cra_master_readdatavalid;      // gemm_kernel_system:avs_gemm_kernel_cra_readdatavalid -> avs_gemm_kernel_cra_cra_ring:avm_readdatavalid
+	wire          avs_gemm_kernel_cra_cra_ring_cra_master_write;              // avs_gemm_kernel_cra_cra_ring:avm_write -> gemm_kernel_system:avs_gemm_kernel_cra_write
+	wire   [63:0] avs_gemm_kernel_cra_cra_ring_cra_master_writedata;          // avs_gemm_kernel_cra_cra_ring:avm_writedata -> gemm_kernel_system:avs_gemm_kernel_cra_writedata
+	wire          acl_iface_kernel_clk_clk;                                   // acl_iface:kernel_clk_clk -> [avs_gemm_kernel_cra_cra_ring:clk, cra_root:clk, gemm_kernel_system:clock, irq_mapper:clk, mm_interconnect_0:acl_iface_kernel_clk_clk, mm_interconnect_2:acl_iface_kernel_clk_clk, rst_controller:clk]
 	wire          acl_iface_kernel_clk2x_clk;                                 // acl_iface:kernel_clk2x_clk -> gemm_kernel_system:clock2x
-	wire          cra_root_ring_out_datavalid;                                // cra_root:ro_datavalid -> avs_hidden_cra_cra_ring:ri_datavalid
-	wire          cra_root_ring_out_read;                                     // cra_root:ro_read -> avs_hidden_cra_cra_ring:ri_read
-	wire   [63:0] cra_root_ring_out_data;                                     // cra_root:ro_data -> avs_hidden_cra_cra_ring:ri_data
-	wire    [4:0] cra_root_ring_out_addr;                                     // cra_root:ro_addr -> avs_hidden_cra_cra_ring:ri_addr
-	wire          cra_root_ring_out_write;                                    // cra_root:ro_write -> avs_hidden_cra_cra_ring:ri_write
-	wire    [7:0] cra_root_ring_out_byteena;                                  // cra_root:ro_byteena -> avs_hidden_cra_cra_ring:ri_byteena
-	wire          avs_hidden_cra_cra_ring_ring_out_datavalid;                 // avs_hidden_cra_cra_ring:ro_datavalid -> cra_root:ri_datavalid
-	wire          avs_hidden_cra_cra_ring_ring_out_read;                      // avs_hidden_cra_cra_ring:ro_read -> cra_root:ri_read
-	wire   [63:0] avs_hidden_cra_cra_ring_ring_out_data;                      // avs_hidden_cra_cra_ring:ro_data -> cra_root:ri_data
-	wire    [4:0] avs_hidden_cra_cra_ring_ring_out_addr;                      // avs_hidden_cra_cra_ring:ro_addr -> cra_root:ri_addr
-	wire          avs_hidden_cra_cra_ring_ring_out_write;                     // avs_hidden_cra_cra_ring:ro_write -> cra_root:ri_write
-	wire    [7:0] avs_hidden_cra_cra_ring_ring_out_byteena;                   // avs_hidden_cra_cra_ring:ro_byteena -> cra_root:ri_byteena
-	wire          acl_iface_kernel_reset_reset;                               // acl_iface:kernel_reset_reset_n -> [avs_hidden_cra_cra_ring:rst_n, cra_root:rst_n, gemm_kernel_system:resetn, mm_interconnect_0:gemm_kernel_system_clock_reset_reset_reset_bridge_in_reset_reset, mm_interconnect_2:cra_root_reset_reset_bridge_in_reset_reset]
+	wire          cra_root_ring_out_datavalid;                                // cra_root:ro_datavalid -> avs_gemm_kernel_cra_cra_ring:ri_datavalid
+	wire          cra_root_ring_out_read;                                     // cra_root:ro_read -> avs_gemm_kernel_cra_cra_ring:ri_read
+	wire   [63:0] cra_root_ring_out_data;                                     // cra_root:ro_data -> avs_gemm_kernel_cra_cra_ring:ri_data
+	wire    [4:0] cra_root_ring_out_addr;                                     // cra_root:ro_addr -> avs_gemm_kernel_cra_cra_ring:ri_addr
+	wire          cra_root_ring_out_write;                                    // cra_root:ro_write -> avs_gemm_kernel_cra_cra_ring:ri_write
+	wire    [7:0] cra_root_ring_out_byteena;                                  // cra_root:ro_byteena -> avs_gemm_kernel_cra_cra_ring:ri_byteena
+	wire          avs_gemm_kernel_cra_cra_ring_ring_out_datavalid;            // avs_gemm_kernel_cra_cra_ring:ro_datavalid -> cra_root:ri_datavalid
+	wire          avs_gemm_kernel_cra_cra_ring_ring_out_read;                 // avs_gemm_kernel_cra_cra_ring:ro_read -> cra_root:ri_read
+	wire   [63:0] avs_gemm_kernel_cra_cra_ring_ring_out_data;                 // avs_gemm_kernel_cra_cra_ring:ro_data -> cra_root:ri_data
+	wire    [4:0] avs_gemm_kernel_cra_cra_ring_ring_out_addr;                 // avs_gemm_kernel_cra_cra_ring:ro_addr -> cra_root:ri_addr
+	wire          avs_gemm_kernel_cra_cra_ring_ring_out_write;                // avs_gemm_kernel_cra_cra_ring:ro_write -> cra_root:ri_write
+	wire    [7:0] avs_gemm_kernel_cra_cra_ring_ring_out_byteena;              // avs_gemm_kernel_cra_cra_ring:ro_byteena -> cra_root:ri_byteena
+	wire          acl_iface_kernel_reset_reset;                               // acl_iface:kernel_reset_reset_n -> [avs_gemm_kernel_cra_cra_ring:rst_n, cra_root:rst_n, gemm_kernel_system:resetn, mm_interconnect_0:gemm_kernel_system_clock_reset_reset_reset_bridge_in_reset_reset, mm_interconnect_2:cra_root_reset_reset_bridge_in_reset_reset]
 	wire  [255:0] gemm_kernel_system_avm_mem_gmem0_port_0_0_rw_readdata;      // mm_interconnect_0:gemm_kernel_system_avm_mem_gmem0_port_0_0_rw_readdata -> gemm_kernel_system:avm_mem_gmem0_port_0_0_rw_readdata
 	wire          gemm_kernel_system_avm_mem_gmem0_port_0_0_rw_waitrequest;   // mm_interconnect_0:gemm_kernel_system_avm_mem_gmem0_port_0_0_rw_waitrequest -> gemm_kernel_system:avm_mem_gmem0_port_0_0_rw_waitrequest
 	wire   [29:0] gemm_kernel_system_avm_mem_gmem0_port_0_0_rw_address;       // gemm_kernel_system:avm_mem_gmem0_port_0_0_rw_address -> mm_interconnect_0:gemm_kernel_system_avm_mem_gmem0_port_0_0_rw_address
@@ -274,28 +274,28 @@ module system (
 		.DATA_W            (64),
 		.ID_W              (0),
 		.ID                (32'b00000000000000000000000000000000)
-	) avs_hidden_cra_cra_ring (
-		.clk               (acl_iface_kernel_clk_clk),                         //      clock.clk
-		.rst_n             (acl_iface_kernel_reset_reset),                     //      reset.reset_n
-		.avm_read          (avs_hidden_cra_cra_ring_cra_master_read),          // cra_master.read
-		.avm_write         (avs_hidden_cra_cra_ring_cra_master_write),         //           .write
-		.avm_addr          (avs_hidden_cra_cra_ring_cra_master_address),       //           .address
-		.avm_byteena       (avs_hidden_cra_cra_ring_cra_master_byteenable),    //           .byteenable
-		.avm_writedata     (avs_hidden_cra_cra_ring_cra_master_writedata),     //           .writedata
-		.avm_readdata      (avs_hidden_cra_cra_ring_cra_master_readdata),      //           .readdata
-		.avm_readdatavalid (avs_hidden_cra_cra_ring_cra_master_readdatavalid), //           .readdatavalid
-		.ri_read           (cra_root_ring_out_read),                           //    ring_in.read
-		.ri_write          (cra_root_ring_out_write),                          //           .write
-		.ri_addr           (cra_root_ring_out_addr),                           //           .addr
-		.ri_data           (cra_root_ring_out_data),                           //           .data
-		.ri_byteena        (cra_root_ring_out_byteena),                        //           .byteena
-		.ri_datavalid      (cra_root_ring_out_datavalid),                      //           .datavalid
-		.ro_read           (avs_hidden_cra_cra_ring_ring_out_read),            //   ring_out.read
-		.ro_write          (avs_hidden_cra_cra_ring_ring_out_write),           //           .write
-		.ro_addr           (avs_hidden_cra_cra_ring_ring_out_addr),            //           .addr
-		.ro_data           (avs_hidden_cra_cra_ring_ring_out_data),            //           .data
-		.ro_byteena        (avs_hidden_cra_cra_ring_ring_out_byteena),         //           .byteena
-		.ro_datavalid      (avs_hidden_cra_cra_ring_ring_out_datavalid)        //           .datavalid
+	) avs_gemm_kernel_cra_cra_ring (
+		.clk               (acl_iface_kernel_clk_clk),                              //      clock.clk
+		.rst_n             (acl_iface_kernel_reset_reset),                          //      reset.reset_n
+		.avm_read          (avs_gemm_kernel_cra_cra_ring_cra_master_read),          // cra_master.read
+		.avm_write         (avs_gemm_kernel_cra_cra_ring_cra_master_write),         //           .write
+		.avm_addr          (avs_gemm_kernel_cra_cra_ring_cra_master_address),       //           .address
+		.avm_byteena       (avs_gemm_kernel_cra_cra_ring_cra_master_byteenable),    //           .byteenable
+		.avm_writedata     (avs_gemm_kernel_cra_cra_ring_cra_master_writedata),     //           .writedata
+		.avm_readdata      (avs_gemm_kernel_cra_cra_ring_cra_master_readdata),      //           .readdata
+		.avm_readdatavalid (avs_gemm_kernel_cra_cra_ring_cra_master_readdatavalid), //           .readdatavalid
+		.ri_read           (cra_root_ring_out_read),                                //    ring_in.read
+		.ri_write          (cra_root_ring_out_write),                               //           .write
+		.ri_addr           (cra_root_ring_out_addr),                                //           .addr
+		.ri_data           (cra_root_ring_out_data),                                //           .data
+		.ri_byteena        (cra_root_ring_out_byteena),                             //           .byteena
+		.ri_datavalid      (cra_root_ring_out_datavalid),                           //           .datavalid
+		.ro_read           (avs_gemm_kernel_cra_cra_ring_ring_out_read),            //   ring_out.read
+		.ro_write          (avs_gemm_kernel_cra_cra_ring_ring_out_write),           //           .write
+		.ro_addr           (avs_gemm_kernel_cra_cra_ring_ring_out_addr),            //           .addr
+		.ro_data           (avs_gemm_kernel_cra_cra_ring_ring_out_data),            //           .data
+		.ro_byteena        (avs_gemm_kernel_cra_cra_ring_ring_out_byteena),         //           .byteena
+		.ro_datavalid      (avs_gemm_kernel_cra_cra_ring_ring_out_datavalid)        //           .datavalid
 	);
 
 	cra_ring_root #(
@@ -317,12 +317,12 @@ module system (
 		.avs_readdatavalid (mm_interconnect_2_cra_root_cra_slave_readdatavalid), //          .readdatavalid
 		.avs_waitrequest   (mm_interconnect_2_cra_root_cra_slave_waitrequest),   //          .waitrequest
 		.avs_read          (mm_interconnect_2_cra_root_cra_slave_read),          //          .read
-		.ri_write          (avs_hidden_cra_cra_ring_ring_out_write),             //   ring_in.write
-		.ri_addr           (avs_hidden_cra_cra_ring_ring_out_addr),              //          .addr
-		.ri_byteena        (avs_hidden_cra_cra_ring_ring_out_byteena),           //          .byteena
-		.ri_data           (avs_hidden_cra_cra_ring_ring_out_data),              //          .data
-		.ri_read           (avs_hidden_cra_cra_ring_ring_out_read),              //          .read
-		.ri_datavalid      (avs_hidden_cra_cra_ring_ring_out_datavalid),         //          .datavalid
+		.ri_write          (avs_gemm_kernel_cra_cra_ring_ring_out_write),        //   ring_in.write
+		.ri_addr           (avs_gemm_kernel_cra_cra_ring_ring_out_addr),         //          .addr
+		.ri_byteena        (avs_gemm_kernel_cra_cra_ring_ring_out_byteena),      //          .byteena
+		.ri_data           (avs_gemm_kernel_cra_cra_ring_ring_out_data),         //          .data
+		.ri_read           (avs_gemm_kernel_cra_cra_ring_ring_out_read),         //          .read
+		.ri_datavalid      (avs_gemm_kernel_cra_cra_ring_ring_out_datavalid),    //          .datavalid
 		.ro_read           (cra_root_ring_out_read),                             //  ring_out.read
 		.ro_write          (cra_root_ring_out_write),                            //          .write
 		.ro_addr           (cra_root_ring_out_addr),                             //          .addr
@@ -335,13 +335,13 @@ module system (
 		.clock                                   (acl_iface_kernel_clk_clk),                                   //               clock_reset.clk
 		.resetn                                  (acl_iface_kernel_reset_reset),                               //         clock_reset_reset.reset_n
 		.clock2x                                 (acl_iface_kernel_clk2x_clk),                                 //             clock_reset2x.clk
-		.avs_hidden_cra_read                     (avs_hidden_cra_cra_ring_cra_master_read),                    //            avs_hidden_cra.read
-		.avs_hidden_cra_write                    (avs_hidden_cra_cra_ring_cra_master_write),                   //                          .write
-		.avs_hidden_cra_address                  (avs_hidden_cra_cra_ring_cra_master_address),                 //                          .address
-		.avs_hidden_cra_writedata                (avs_hidden_cra_cra_ring_cra_master_writedata),               //                          .writedata
-		.avs_hidden_cra_byteenable               (avs_hidden_cra_cra_ring_cra_master_byteenable),              //                          .byteenable
-		.avs_hidden_cra_readdata                 (avs_hidden_cra_cra_ring_cra_master_readdata),                //                          .readdata
-		.avs_hidden_cra_readdatavalid            (avs_hidden_cra_cra_ring_cra_master_readdatavalid),           //                          .readdatavalid
+		.avs_gemm_kernel_cra_read                (avs_gemm_kernel_cra_cra_ring_cra_master_read),               //       avs_gemm_kernel_cra.read
+		.avs_gemm_kernel_cra_write               (avs_gemm_kernel_cra_cra_ring_cra_master_write),              //                          .write
+		.avs_gemm_kernel_cra_address             (avs_gemm_kernel_cra_cra_ring_cra_master_address),            //                          .address
+		.avs_gemm_kernel_cra_writedata           (avs_gemm_kernel_cra_cra_ring_cra_master_writedata),          //                          .writedata
+		.avs_gemm_kernel_cra_byteenable          (avs_gemm_kernel_cra_cra_ring_cra_master_byteenable),         //                          .byteenable
+		.avs_gemm_kernel_cra_readdata            (avs_gemm_kernel_cra_cra_ring_cra_master_readdata),           //                          .readdata
+		.avs_gemm_kernel_cra_readdatavalid       (avs_gemm_kernel_cra_cra_ring_cra_master_readdatavalid),      //                          .readdatavalid
 		.kernel_irq                              (irq_mapper_receiver0_irq),                                   //                kernel_irq.irq
 		.avm_mem_gmem0_port_0_0_rw_address       (gemm_kernel_system_avm_mem_gmem0_port_0_0_rw_address),       // avm_mem_gmem0_port_0_0_rw.address
 		.avm_mem_gmem0_port_0_0_rw_byteenable    (gemm_kernel_system_avm_mem_gmem0_port_0_0_rw_byteenable),    //                          .byteenable

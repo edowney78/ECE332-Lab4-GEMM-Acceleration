@@ -1,4 +1,4 @@
-set kernel_fmax 158.779999614
+set kernel_fmax 151.939999312
 if { $::TimeQuestInfo(nameofexecutable) == "quartus_sta" } {
   post_message -type warning "Executing OpenCL guaranteed timing flow - this timing report assumes the kernel PLL will be reconfigured to run at $kernel_fmax MHz."
   if { [ get_collection_size [get_clocks the_system|acl_iface|acl_kernel_clk|kernel_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk] ] != 1 } {

@@ -7,7 +7,7 @@
     , "children":
     [
       {
-        "name":"hidden"
+        "name":"gemm_kernel"
         , "data":
         [
           "NDRange"
@@ -42,7 +42,7 @@
     , "children":
     [
       {
-        "name":"hidden"
+        "name":"gemm_kernel"
         , "data":
         [7499, 11377, 72, 3]
         , "debug":

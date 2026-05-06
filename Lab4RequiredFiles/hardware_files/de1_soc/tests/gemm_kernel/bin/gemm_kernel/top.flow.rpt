@@ -1,5 +1,5 @@
 Flow report for top
-Mon May 04 20:04:27 2026
+Tue May 05 20:39:11 2026
 Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 
 
@@ -40,15 +40,15 @@ refer to the applicable agreement for further details.
 +-------------------------------------------------------------------------------+
 ; Flow Summary                                                                  ;
 +---------------------------------+---------------------------------------------+
-; Flow Status                     ; Successful - Mon May 04 20:03:46 2026       ;
+; Flow Status                     ; Successful - Tue May 05 20:38:30 2026       ;
 ; Quartus Prime Version           ; 18.1.0 Build 625 09/12/2018 SJ Lite Edition ;
 ; Revision Name                   ; top                                         ;
 ; Top-level Entity Name           ; top                                         ;
 ; Family                          ; Cyclone V                                   ;
 ; Device                          ; 5CSEMA5F31C6                                ;
 ; Timing Models                   ; Final                                       ;
-; Logic utilization (in ALMs)     ; 7,324 / 32,070 ( 23 % )                     ;
-; Total registers                 ; 13682                                       ;
+; Logic utilization (in ALMs)     ; 7,356 / 32,070 ( 23 % )                     ;
+; Total registers                 ; 13624                                       ;
 ; Total pins                      ; 206 / 457 ( 45 % )                          ;
 ; Total virtual pins              ; 0                                           ;
 ; Total block memory bits         ; 2,534,128 / 4,065,280 ( 62 % )              ;
@@ -67,7 +67,7 @@ refer to the applicable agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 05/04/2026 19:51:44 ;
+; Start date & time ; 05/05/2026 20:25:28 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; top                 ;
 +-------------------+---------------------+
@@ -80,7 +80,7 @@ refer to the applicable agreement for further details.
 +-------------------------------------------------+----------------------------------------------------------------------+---------------+------------------------------------+------------+
 ; ALLOW_SHIFT_REGISTER_MERGING_ACROSS_HIERARCHIES ; Off                                                                  ; Auto          ; --                                 ; --         ;
 ; AUTO_PARALLEL_SYNTHESIS                         ; Off                                                                  ; On            ; --                                 ; --         ;
-; COMPILER_SIGNATURE_ID                           ; 256093508384233.177793870414892                                      ; --            ; --                                 ; --         ;
+; COMPILER_SIGNATURE_ID                           ; 233795698450606.177802712837268                                      ; --            ; --                                 ; --         ;
 ; DISABLE_REGISTER_MERGING_ACROSS_HIERARCHIES     ; On                                                                   ; Auto          ; --                                 ; --         ;
 ; FITTER_EFFORT                                   ; Standard Fit                                                         ; Auto Fit      ; --                                 ; --         ;
 ; FIT_ONLY_ONE_ATTEMPT                            ; -- (Not supported for targeted family)                               ; Off           ; --                                 ; --         ;
@@ -126,7 +126,7 @@ refer to the applicable agreement for further details.
 ; ROUTER_TIMING_OPTIMIZATION_LEVEL                ; MAXIMUM                                                              ; Normal        ; --                                 ; --         ;
 ; SEARCH_PATH                                     ; iface                                                                ; --            ; --                                 ; --         ;
 ; SEARCH_PATH                                     ; C:/intelFPGA_lite/18.1/hld/ip                                        ; --            ; --                                 ; --         ;
-; SLD_INFO                                        ; QSYS_NAME system HAS_SOPCINFO 0 GENERATION_ID 1777938575             ; --            ; system                             ; --         ;
+; SLD_INFO                                        ; QSYS_NAME system HAS_SOPCINFO 0 GENERATION_ID 1778026992             ; --            ; system                             ; --         ;
 ; SYNTHESIS_ONLY_QIP                              ; On                                                                   ; --            ; --                                 ; --         ;
 ; VERILOG_CONSTANT_LOOP_LIMIT                     ; 10000                                                                ; 5000          ; --                                 ; --         ;
 ; VERILOG_INPUT_VERSION                           ; SystemVerilog_2005                                                   ; Verilog_2001  ; --                                 ; --         ;
@@ -138,13 +138,13 @@ refer to the applicable agreement for further details.
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis ; 00:02:07     ; 1.0                     ; 5895 MB             ; 00:02:16                           ;
-; Fitter               ; 00:05:34     ; 1.6                     ; 9500 MB             ; 00:32:00                           ;
-; Timing Analyzer      ; 00:00:41     ; 2.8                     ; 6378 MB             ; 00:01:28                           ;
-; MIF/HEX Update       ; 00:00:25     ; 1.0                     ; 5091 MB             ; 00:00:25                           ;
-; Assembler            ; 00:00:20     ; 1.0                     ; 5086 MB             ; 00:00:18                           ;
-; Timing Analyzer      ; 00:00:38     ; 1.2                     ; 5651 MB             ; 00:00:42                           ;
-; Total                ; 00:09:45     ; --                      ; --                  ; 00:37:09                           ;
+; Analysis & Synthesis ; 00:02:11     ; 1.0                     ; 5898 MB             ; 00:02:22                           ;
+; Fitter               ; 00:06:23     ; 1.6                     ; 9555 MB             ; 00:35:12                           ;
+; Timing Analyzer      ; 00:00:40     ; 2.8                     ; 6387 MB             ; 00:01:25                           ;
+; MIF/HEX Update       ; 00:00:26     ; 1.0                     ; 5096 MB             ; 00:00:26                           ;
+; Assembler            ; 00:00:21     ; 1.0                     ; 5085 MB             ; 00:00:19                           ;
+; Timing Analyzer      ; 00:00:38     ; 1.2                     ; 5660 MB             ; 00:00:43                           ;
+; Total                ; 00:10:39     ; --                      ; --                  ; 00:40:27                           ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
@@ -153,12 +153,12 @@ refer to the applicable agreement for further details.
 +----------------------+------------------+------------+------------+----------------+
 ; Module Name          ; Machine Hostname ; OS Name    ; OS Version ; Processor type ;
 +----------------------+------------------+------------+------------+----------------+
-; Analysis & Synthesis ; ECS-200363       ; Windows 10 ; 10.0       ; x86_64         ;
-; Fitter               ; ECS-200363       ; Windows 10 ; 10.0       ; x86_64         ;
-; Timing Analyzer      ; ECS-200363       ; Windows 10 ; 10.0       ; x86_64         ;
-; MIF/HEX Update       ; ECS-200363       ; Windows 10 ; 10.0       ; x86_64         ;
-; Assembler            ; ECS-200363       ; Windows 10 ; 10.0       ; x86_64         ;
-; Timing Analyzer      ; ECS-200363       ; Windows 10 ; 10.0       ; x86_64         ;
+; Analysis & Synthesis ; ECS-200352       ; Windows 10 ; 10.0       ; x86_64         ;
+; Fitter               ; ECS-200352       ; Windows 10 ; 10.0       ; x86_64         ;
+; Timing Analyzer      ; ECS-200352       ; Windows 10 ; 10.0       ; x86_64         ;
+; MIF/HEX Update       ; ECS-200352       ; Windows 10 ; 10.0       ; x86_64         ;
+; Assembler            ; ECS-200352       ; Windows 10 ; 10.0       ; x86_64         ;
+; Timing Analyzer      ; ECS-200352       ; Windows 10 ; 10.0       ; x86_64         ;
 +----------------------+------------------+------------+------------+----------------+
 
 
